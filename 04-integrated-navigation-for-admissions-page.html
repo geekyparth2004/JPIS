@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | J.P. International School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #01254c;
+            --accent: #fdc236;
+            --text-primary: #242424;
+            --text-muted: #676767;
+            --error: #a2261f;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-text {
+            font-size: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .hero-shape {
+            border-radius: 4rem;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0efff 100%);
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 40px -10px rgba(1, 37, 76, 0.1);
+        }
+
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            bottom: -2rem;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-step::before {
+                left: 1.5rem;
+            }
+        }
+
+        .input-focus:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(1, 37, 76, 0.1);
+        }
+    </style>
+  <style>sd-component { display: block; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+</head>
+<body>
+    <div class="min-h-screen bg-white relative">
+        <!-- Shared Navigation Component -->
+        <!-- component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
+<div v-scope="{ ...{&quot;activeItem&quot;:&quot;admissions&quot;,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;}, $emit() {} }">
+<nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a :href="logoHref" class="flex items-center gap-3">
+            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg" alt="JPIS Logo" class="h-14 w-auto object-contain">
+        </a>
+        
+        <div class="hidden md:flex items-center gap-10">
+            <a :href="homeHref" :class="activeItem === 'home' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Home
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'home' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="aboutHref" :class="activeItem === 'about' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                About
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'about' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="programsHref" :class="activeItem === 'programs' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Programs
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'programs' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="admissionsHref" :class="activeItem === 'admissions' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Admissions
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'admissions' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="contactHref" :class="activeItem === 'contact' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Contact
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a :href="applyHref" class="bg-[#01254c] text-white px-8 py-3 rounded-full text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
+        </div>
+    </div>
+</nav>
+</div>
+<!-- /component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
+
+        <!-- Hero Section -->
+        <section class="pt-32 pb-16 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="hero-shape p-8 md:p-16 flex flex-col items-center text-center gap-8 relative overflow-hidden">
+                    <div class="z-10 space-y-6">
+                        <div class="inline-flex items-center gap-2 bg-white/80 border border-blue-100 px-4 py-2 rounded-full">
+                            <iconify-icon icon="lucide:graduation-cap" class="text-[var(--primary)]"></iconify-icon>
+                            <p class="text-xs font-bold uppercase tracking-widest text-[var(--primary)]">Academic Year 2024-25</p>
+                        </div>
+                        <h1 class="text-5xl lg:text-7xl font-bold leading-tight text-[var(--primary)] tracking-tight">
+                            Start Your <span class="text-[var(--accent)]">Journey</span> at JPIS
+                        </h1>
+                        <p class="text-[18px] text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
+                            Join a community dedicated to excellence. Our admission process is designed to be simple, transparent, and student-focused.
+                        </p>
+                        <div class="flex justify-center pt-4">
+                            <a href="#enrollment-form" id="hero-apply-now" class="bg-[var(--primary)] text-white px-12 py-5 rounded-2xl btn-text hover:bg-opacity-90 hover:shadow-xl transition-all active:scale-95 inline-block">
+                                Apply For Admission
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Decor -->
+                    <div class="absolute -bottom-10 -right-10 opacity-10">
+                        <iconify-icon icon="lucide:file-text" class="text-[300px] text-[var(--primary)]"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Process Timeline -->
+        <section class="py-24 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-20">
+                    <h2 class="text-[27px] font-bold text-[var(--primary)]">Application Process</h2>
+                    <p class="text-[var(--text-muted)] text-[14px] uppercase tracking-widest font-bold mt-2">Your path to joining the JPIS family</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                    <!-- Step 1 -->
+                    <div class="text-center space-y-4 group reveal-up">
+                        <div class="w-16 h-16 bg-blue-50 text-[var(--primary)] rounded-full flex items-center justify-center mx-auto group-hover:bg-[var(--accent)] group-hover:text-[var(--primary)] transition-colors relative z-10">
+                            <iconify-icon icon="lucide:info" width="32"></iconify-icon>
+                        </div>
+                        <h4 class="font-bold">1. Inquiry</h4>
+                        <p class="text-xs text-[var(--text-muted)]">Submit an online inquiry or visit campus</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="text-center space-y-4 group reveal-up" style="animation-delay: 100ms">
+                        <div class="w-16 h-16 bg-blue-50 text-[var(--primary)] rounded-full flex items-center justify-center mx-auto group-hover:bg-[var(--accent)] group-hover:text-[var(--primary)] transition-colors relative z-10">
+                            <iconify-icon icon="lucide:map" width="32"></iconify-icon>
+                        </div>
+                        <h4 class="font-bold">2. School Tour</h4>
+                        <p class="text-xs text-[var(--text-muted)]">Experience our world-class facilities</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="text-center space-y-4 group reveal-up" style="animation-delay: 200ms">
+                        <div class="w-16 h-16 bg-blue-50 text-[var(--primary)] rounded-full flex items-center justify-center mx-auto group-hover:bg-[var(--accent)] group-hover:text-[var(--primary)] transition-colors relative z-10">
+                            <iconify-icon icon="lucide:file-check" width="32"></iconify-icon>
+                        </div>
+                        <h4 class="font-bold">3. Application</h4>
+                        <p class="text-xs text-[var(--text-muted)]">Fill out the registration form below</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="text-center space-y-4 group reveal-up" style="animation-delay: 300ms">
+                        <div class="w-16 h-16 bg-blue-50 text-[var(--primary)] rounded-full flex items-center justify-center mx-auto group-hover:bg-[var(--accent)] group-hover:text-[var(--primary)] transition-colors relative z-10">
+                            <iconify-icon icon="lucide:users" width="32"></iconify-icon>
+                        </div>
+                        <h4 class="font-bold">4. Interaction</h4>
+                        <p class="text-xs text-[var(--text-muted)]">Student interaction and assessment</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="text-center space-y-4 group reveal-up" style="animation-delay: 400ms">
+                        <div class="w-16 h-16 bg-blue-50 text-[var(--primary)] rounded-full flex items-center justify-center mx-auto group-hover:bg-[var(--accent)] group-hover:text-[var(--primary)] transition-colors relative z-10">
+                            <iconify-icon icon="lucide:clipboard-check" width="32"></iconify-icon>
+                        </div>
+                        <h4 class="font-bold">5. Verification</h4>
+                        <p class="text-xs text-[var(--text-muted)]">Document verification and approval</p>
+                    </div>
+                    <!-- Step 6 -->
+                    <div class="text-center space-y-4 group reveal-up" style="animation-delay: 500ms">
+                        <div class="w-16 h-16 bg-[var(--primary)] text-white rounded-full flex items-center justify-center mx-auto relative z-10">
+                            <iconify-icon icon="lucide:check-circle" width="32"></iconify-icon>
+                        </div>
+                        <h4 class="font-bold">6. Admission</h4>
+                        <p class="text-xs text-[var(--text-muted)]">Payment of fees and confirmation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirements Section -->
+        <section class="py-24 bg-[#f8fafc] px-6">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Eligibility -->
+                <div class="space-y-12">
+                    <div>
+                        <h2 class="text-[27px] font-bold text-[var(--primary)] mb-2">Eligibility Criteria</h2>
+                        <p class="text-[var(--text-muted)]">Age requirements as on 31st March of the session year</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-3xl card-shadow border border-gray-100 reveal-up">
+                            <div class="text-[var(--accent)] text-2xl font-bold mb-1">3+ Years</div>
+                            <h4 class="font-bold text-[var(--primary)]">Nursery</h4>
+                            <p class="text-xs text-[var(--text-muted)] mt-2">Play-based curriculum for early development.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-3xl card-shadow border border-gray-100 reveal-up">
+                            <div class="text-[var(--accent)] text-2xl font-bold mb-1">4+ Years</div>
+                            <h4 class="font-bold text-[var(--primary)]">LKG</h4>
+                            <p class="text-xs text-[var(--text-muted)] mt-2">Foundational skills in literacy and numeracy.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-3xl card-shadow border border-gray-100 reveal-up">
+                            <div class="text-[var(--accent)] text-2xl font-bold mb-1">6+ Years</div>
+                            <h4 class="font-bold text-[var(--primary)]">Grade 1</h4>
+                            <p class="text-xs text-[var(--text-muted)] mt-2">Formal education following CBSE guidelines.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-3xl card-shadow border border-gray-100 reveal-up">
+                            <div class="text-[var(--accent)] text-2xl font-bold mb-1">11+ Years</div>
+                            <h4 class="font-bold text-[var(--primary)]">Grade 6</h4>
+                            <p class="text-xs text-[var(--text-muted)] mt-2">Middle school structure with elective options.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documents -->
+                <div class="space-y-8">
+                    <h2 class="text-[27px] font-bold text-[var(--primary)]">Required Documents</h2>
+                    <div class="bg-white rounded-[3rem] p-10 card-shadow border border-gray-100 reveal-up">
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                    <iconify-icon icon="lucide:check" class="text-green-600"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Birth Certificate</p>
+                                    <p class="text-xs text-[var(--text-muted)]">Photocopy of Municipal Corporation certificate</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                    <iconify-icon icon="lucide:check" class="text-green-600"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Transfer Certificate (TC)</p>
+                                    <p class="text-xs text-[var(--text-muted)]">Original TC from the previous school (Grade 2 upwards)</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                    <iconify-icon icon="lucide:check" class="text-green-600"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Passport Size Photographs</p>
+                                    <p class="text-xs text-[var(--text-muted)]">4 copies of the student and 2 each for parents</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                    <iconify-icon icon="lucide:check" class="text-green-600"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Aadhaar Card</p>
+                                    <p class="text-xs text-[var(--text-muted)]">Photocopy of Student and Parents' Aadhaar cards</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                    <iconify-icon icon="lucide:check" class="text-green-600"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Previous Report Card</p>
+                                    <p class="text-xs text-[var(--text-muted)]">Copy of result from the last class attended</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enrollment Form -->
+        <section id="enrollment-form" class="py-24 px-6">
+            <div class="max-w-4xl mx-auto bg-white rounded-[4rem] border border-gray-100 card-shadow p-8 md:p-16">
+                <div class="text-center mb-12 space-y-4">
+                    <h2 class="text-4xl font-bold text-[var(--primary)]">Online Registration Form</h2>
+                    <p class="text-[var(--text-muted)]">Please fill in the details below to initiate the admission process.</p>
+                </div>
+
+                <form class="space-y-12">
+                    <!-- Section: Student Information -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-[var(--primary)] flex items-center gap-2">
+                            <iconify-icon icon="lucide:user" class="text-[var(--accent)]"></iconify-icon>
+                            Student Information
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Full Name of Student</label>
+                                <input type="text" placeholder="Enter student name" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Date of Birth</label>
+                                <input type="date" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Grade Applying For</label>
+                                <select class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                                    <option>Select Grade</option>
+                                    <option>Nursery</option>
+                                    <option>LKG</option>
+                                    <option>UKG</option>
+                                    <option>Grade 1 - 5</option>
+                                    <option>Grade 6 - 10</option>
+                                    <option>Grade 11 - 12</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Gender</label>
+                                <div class="flex gap-6 mt-3">
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="radio" name="gender" class="w-5 h-5 accent-[var(--primary)]"> <span>Male</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="radio" name="gender" class="w-5 h-5 accent-[var(--primary)]"> <span>Female</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Parent Information -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-[var(--primary)] flex items-center gap-2">
+                            <iconify-icon icon="lucide:users" class="text-[var(--accent)]"></iconify-icon>
+                            Parent / Guardian Information
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Father's Name</label>
+                                <input type="text" placeholder="Full Name" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Mother's Name</label>
+                                <input type="text" placeholder="Full Name" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Contact Number</label>
+                                <input type="tel" placeholder="+91" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Email Address</label>
+                                <input type="email" placeholder="example@mail.com" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Additional Details -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-[var(--primary)] flex items-center gap-2">
+                            <iconify-icon icon="lucide:school" class="text-[var(--accent)]"></iconify-icon>
+                            Previous Schooling
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Last School Attended</label>
+                            <input type="text" placeholder="School name and location" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Special Needs / Medical Conditions (If any)</label>
+                            <textarea rows="3" placeholder="Please describe any special requirements" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Agreement and Submit -->
+                    <div class="pt-6 border-t border-gray-100">
+                        <label class="flex items-start gap-3 cursor-pointer group">
+                            <input type="checkbox" class="mt-1 w-5 h-5 accent-[var(--primary)] rounded">
+                            <span class="text-sm text-[var(--text-muted)] group-hover:text-[var(--primary)] transition-colors">I hereby declare that the information provided is true to the best of my knowledge. I agree to abide by the school's rules and admission policies.</span>
+                        </label>
+                        <button type="submit" id="submit-admission-form" class="w-full mt-10 bg-[var(--primary)] text-white p-6 rounded-2xl font-bold text-xl uppercase tracking-widest hover:bg-opacity-90 hover:shadow-2xl transition-all active:scale-95">
+                            Submit Registration
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-24 bg-[#f8fafc] px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-[27px] font-bold text-[var(--primary)]">Frequently Asked Questions</h2>
+                    <p class="text-[var(--text-muted)] mt-2">Got questions? We have answers.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow">
+                        <h4 class="font-bold text-[var(--primary)] mb-3">When do admissions start for the next academic year?</h4>
+                        <p class="text-[14px] text-[var(--text-muted)] leading-relaxed">Admissions typically open in November for the upcoming session starting in April. We recommend applying early as seats are limited.</p>
+                    </div>
+                    <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow">
+                        <h4 class="font-bold text-[var(--primary)] mb-3">Is there an admission entrance test?</h4>
+                        <p class="text-[14px] text-[var(--text-muted)] leading-relaxed">For Grade 1 upwards, there is a basic entrance assessment to understand the child's academic foundation in English, Mathematics, and Hindi.</p>
+                    </div>
+                    <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow">
+                        <h4 class="font-bold text-[var(--primary)] mb-3">Do you provide school transport?</h4>
+                        <p class="text-[14px] text-[var(--text-muted)] leading-relaxed">Yes, we have a safe and secure fleet of school buses covering major areas in and around Sikandrabad.</p>
+                    </div>
+                    <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow">
+                        <h4 class="font-bold text-[var(--primary)] mb-3">Can we visit the school for a physical tour?</h4>
+                        <p class="text-[14px] text-[var(--text-muted)] leading-relaxed">Absolutely! We encourage parents to visit our campus between 9:00 AM and 2:00 PM on working days. Please book a tour through the website or call us.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-24 px-6">
+            <div class="max-w-5xl mx-auto bg-[var(--primary)] rounded-[4rem] p-12 md:p-20 text-center space-y-8 relative overflow-hidden">
+                <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+                    Still have questions about <br> the <span class="text-[var(--accent)]">Admission Process?</span>
+                </h2>
+                <p class="text-blue-100 text-[18px] opacity-80 max-w-2xl mx-auto">
+                    Our counselors are here to help you navigate through the process and find the best path for your child.
+                </p>
+                <div class="flex flex-wrap justify-center gap-6 pt-4">
+                    <a href="https://draft-e5c1a025-3ed4-4ce0-8188-4d92f0ca64b4.preview.superdesign.dev" id="cta-contact-us" class="bg-[var(--accent)] text-[var(--primary)] px-12 py-6 rounded-2xl btn-text hover:bg-yellow-400 transition-all">
+                        Contact Counselor
+                    </a>
+                    <a href="tel:+919999999999" id="cta-call-us" class="bg-white/10 text-white border border-white/20 px-12 py-6 rounded-2xl btn-text hover:bg-white/20 transition-all">
+                        Call Support
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shared Footer Component -->
+        <!-- component: Footer (a09ad959-168a-4091-a2ee-1dc9421719be) -->
+<div v-scope="{ ...{&quot;logoHref&quot;:&quot;https://p.superdesign.dev/draft/df9b310f-7e17-4f36-9de0-398b5f89964f&quot;,&quot;facebookHref&quot;:&quot;#facebook&quot;,&quot;twitterHref&quot;:&quot;#twitter&quot;,&quot;instagramHref&quot;:&quot;#instagram&quot;,&quot;aboutHref&quot;:&quot;https://draft-3961b69f-2daf-4be7-9495-9d6610824838.preview.superdesign.dev&quot;,&quot;academicHref&quot;:&quot;#academic&quot;,&quot;admissionHref&quot;:&quot;https://draft-5c836c35-67f5-4e32-bd8b-4dc34cb3d2e4.preview.superdesign.dev&quot;,&quot;galleryHref&quot;:&quot;#gallery&quot;,&quot;portalHref&quot;:&quot;#portal&quot;,&quot;parentHref&quot;:&quot;#parent&quot;,&quot;newsHref&quot;:&quot;#news&quot;,&quot;careersHref&quot;:&quot;#careers&quot;,&quot;privacyHref&quot;:&quot;#privacy&quot;,&quot;termsHref&quot;:&quot;#terms&quot;,&quot;currentYear&quot;:2024}, $emit() {} }">
+<footer class="bg-white border-t border-gray-100 pt-20 pb-10 px-6"><div class="max-w-7xl mx-auto"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"><div class="space-y-6"><a :href="logoHref" class="inline-block"><img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg" alt="JPIS Logo" class="h-16 w-auto"></a><p class="text-[#676767] text-[14px] leading-relaxed">J.P. International School is a premier educational institution committed to providing excellence in learning and holistic development.</p><div class="flex gap-4"><a :href="facebookHref" id="social-fb" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:facebook"></iconify-icon></a><a :href="twitterHref" id="social-tw" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:twitter"></iconify-icon></a><a :href="instagramHref" id="social-ig" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:instagram"></iconify-icon></a></div></div><div><h4 class="text-[18px] font-bold mb-8">Quick Links</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li><a :href="aboutHref" id="footer-about" class="hover:text-[#01254c] transition-colors">About Us</a></li><li><a :href="academicHref" id="footer-academic" class="hover:text-[#01254c] transition-colors">Academic Calendar</a></li><li><a :href="admissionHref" id="footer-admission" class="hover:text-[#01254c] transition-colors">Admission Process</a></li><li><a :href="galleryHref" id="footer-gallery" class="hover:text-[#01254c] transition-colors">Photo Gallery</a></li></ul></div><div><h4 class="text-[18px] font-bold mb-8">Resources</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li><a :href="portalHref" id="footer-portal" class="hover:text-[#01254c] transition-colors">Student Portal</a></li><li><a :href="parentHref" id="footer-parent" class="hover:text-[#01254c] transition-colors">Parent Handbook</a></li><li><a :href="newsHref" id="footer-news" class="hover:text-[#01254c] transition-colors">School News</a></li><li><a :href="careersHref" id="footer-careers" class="hover:text-[#01254c] transition-colors">Careers</a></li></ul></div><div><h4 class="text-[18px] font-bold mb-8">Contact Us</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li class="flex gap-3"><iconify-icon icon="lucide:map-pin" class="text-[#fdc236] shrink-0"></iconify-icon><span>Sikandrabad, Distt. Bulandshahr (U.P), India</span></li><li class="flex gap-3"><iconify-icon icon="lucide:phone" class="text-[#fdc236] shrink-0"></iconify-icon><span>+91 999 999 9999</span></li><li class="flex gap-3"><iconify-icon icon="lucide:mail" class="text-[#fdc236] shrink-0"></iconify-icon><span>info@jpinternationalschool.in</span></li></ul></div></div><div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4"><p class="text-xs text-[#676767]">© {{ currentYear }} J.P. International School. All rights reserved.</p><div class="flex gap-8 text-xs text-[#676767]"><a :href="privacyHref" id="footer-privacy" class="hover:text-[#01254c]">Privacy Policy</a><a :href="termsHref" id="footer-terms" class="hover:text-[#01254c]">Terms of Service</a></div></div></div></footer>
+</div>
+<!-- /component: Footer (a09ad959-168a-4091-a2ee-1dc9421719be) -->
+    </div>
+
+    <script>
+        // Animation Observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+        // Form logic placeholder
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Registration successfully submitted! Our admission team will contact you shortly.');
+        });
+    </script>
+</body>
+</html>
