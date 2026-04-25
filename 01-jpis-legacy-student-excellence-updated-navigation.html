@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPIS Legacy - Excellence Achieved</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800&f[]=satoshi@500&display=swap');
+
+        :root {
+            --primary: #01254c;
+            --accent: #fdc236;
+            --text-primary: #242424;
+            --text-muted: #676767;
+            --error: #a2261f;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-primary);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cabinet-font {
+            font-family: 'CabinetGrotesk', sans-serif;
+        }
+
+        .card-shadow {
+            box-shadow: 0 20px 50px -15px rgba(1, 37, 76, 0.1);
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .floating { animation: float 6s ease-in-out infinite; }
+
+        .gold-glow {
+            filter: drop-shadow(0 0 10px rgba(253, 194, 54, 0.4));
+        }
+
+        .mesh-bg {
+            background: radial-gradient(at 0% 0%, hsla(210, 97%, 15%, 0.05) 0, transparent 50%),
+                        radial-gradient(at 100% 100%, hsla(43, 98%, 60%, 0.08) 0, transparent 50%);
+        }
+
+        .topper-overlay {
+            background: linear-gradient(0deg, rgba(1, 37, 76, 0.95) 0%, rgba(1, 37, 76, 0) 60%);
+        }
+
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+  <style>sd-component { display: block; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+</head>
+<body class="bg-white">
+    <div class="min-h-screen relative flex flex-col">
+        <!-- Navigation Bar -->
+        <!-- component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
+<div v-scope="{ ...{&quot;activeItem&quot;:&quot;legacy&quot;,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;loginHref&quot;:&quot;#login&quot;}, $emit() {} }">
+<nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a :href="logoHref" class="flex items-center gap-3">
+            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg" alt="JPIS Logo" class="h-14 w-auto object-contain">
+        </a>
+        
+        <div class="hidden md:flex items-center gap-8">
+            <a :href="homeHref" :class="activeItem === 'home' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Home
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'home' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="aboutHref" :class="activeItem === 'about' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                About
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'about' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="teamHref" :class="activeItem === 'team' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                About Team
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'team' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="legacyHref" :class="activeItem === 'legacy' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                JPIS Legacy
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'legacy' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="programsHref" :class="activeItem === 'programs' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Programs
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'programs' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="admissionsHref" :class="activeItem === 'admissions' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Admissions
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'admissions' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="contactHref" :class="activeItem === 'contact' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Contact
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a :href="loginHref" class="text-sm font-bold text-[#01254c]">Login</a>
+            <a :href="applyHref" class="bg-[#01254c] text-white px-8 py-3 rounded-full text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
+        </div>
+    </div>
+</nav>
+</div>
+<!-- /component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
+
+        <main class="flex-1 pt-20 mesh-bg">
+            <!-- Hero Section -->
+            <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 bg-[#01254c] z-0 overflow-hidden">
+                    <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/871e21f8-ecb9-4fd3-99ee-7c1df7240c64.jpg" alt="Legacy BG" class="w-full h-full object-cover opacity-20 scale-105 blur-sm">
+                </div>
+                <div class="relative z-10 text-center max-w-5xl px-6">
+                    <div class="inline-flex items-center gap-2 bg-[#fdc236]/20 backdrop-blur-md px-5 py-2 rounded-full mb-8 border border-[#fdc236]/30">
+                        <iconify-icon icon="lucide:trophy" class="text-[#fdc236] text-xl"></iconify-icon>
+                        <span class="text-[#fdc236] font-bold text-xs uppercase tracking-[0.2em]">Hall of Fame</span>
+                    </div>
+                    <h1 class="text-6xl md:text-8xl font-bold text-white tracking-tight mb-8 leading-tight">
+                        JPIS Legacy: <br>
+                        <span class="text-[#fdc236]">Excellence Achieved</span>
+                    </h1>
+                    <p class="text-blue-100/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                        Celebrating the brilliant minds who have consistently pushed boundaries and defined academic greatness at J.P. International School.
+                    </p>
+                    <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
+                        <a href="#toppers-gallery" class="bg-[#fdc236] text-[#01254c] px-10 py-5 rounded-full font-bold text-lg hover:shadow-[0_0_30px_rgba(253,194,54,0.3)] transition-all active:scale-95">Browse Toppers</a>
+                        <a href="#success-stories" class="text-white border border-white/30 px-10 py-5 rounded-full font-bold text-lg hover:bg-white/10 transition-all">Success Stories</a>
+                    </div>
+                </div>
+
+                <!-- Floating Decorative Elements -->
+                <div class="absolute bottom-10 left-10 text-white/10 cabinet-font text-9xl font-black select-none">LEGACY</div>
+            </section>
+
+            <!-- Achievement Statistics -->
+            <section class="py-24 max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="reveal-up p-10 bg-white rounded-[3rem] card-shadow border border-gray-50 text-center">
+                        <div class="text-5xl font-black text-[#01254c] mb-2">500+</div>
+                        <div class="text-xs font-bold text-[#fdc236] uppercase tracking-widest">Toppers Produced</div>
+                        <p class="text-xs text-gray-400 mt-4">Over the last decade in Board Exams</p>
+                    </div>
+                    <div class="reveal-up p-10 bg-white rounded-[3rem] card-shadow border border-gray-50 text-center" style="transition-delay: 100ms;">
+                        <div class="text-5xl font-black text-[#01254c] mb-2">12</div>
+                        <div class="text-xs font-bold text-[#fdc236] uppercase tracking-widest">State Rankers</div>
+                        <p class="text-xs text-gray-400 mt-4">Achieving excellence at the state level</p>
+                    </div>
+                    <div class="reveal-up p-10 bg-white rounded-[3rem] card-shadow border border-gray-50 text-center" style="transition-delay: 200ms;">
+                        <div class="text-5xl font-black text-[#01254c] mb-2">98.8%</div>
+                        <div class="text-xs font-bold text-[#fdc236] uppercase tracking-widest">Highest Score</div>
+                        <p class="text-xs text-gray-400 mt-4">Recorded in Senior Secondary Boards</p>
+                    </div>
+                    <div class="reveal-up p-10 bg-white rounded-[3rem] card-shadow border border-gray-50 text-center" style="transition-delay: 300ms;">
+                        <div class="text-5xl font-black text-[#01254c] mb-2">₹2Cr+</div>
+                        <div class="text-xs font-bold text-[#fdc236] uppercase tracking-widest">Scholarships Won</div>
+                        <p class="text-xs text-gray-400 mt-4">Accumulated alumni grants worldwide</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Individual Board Rank Holders Section -->
+            <section class="py-24 bg-[#01254c] rounded-[5rem] mx-6 mb-24 text-white overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-1/2 h-full opacity-10">
+                   <iconify-icon icon="lucide:star" class="text-[400px] absolute -top-20 -right-20"></iconify-icon>
+                </div>
+                
+                <div class="max-w-7xl mx-auto px-10 relative z-10">
+                    <div class="flex flex-col lg:flex-row justify-between items-end gap-8 mb-20">
+                        <div class="max-w-2xl">
+                            <h2 class="text-4xl md:text-5xl font-bold mb-6">Board Rank Holders <br> <span class="text-[#fdc236]">Batch of 2023</span></h2>
+                            <p class="text-blue-100/60">Honoring the top scorers who have set new benchmarks for academic brilliance.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <button class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#fdc236] hover:text-[#01254c] transition-all">
+                                <iconify-icon icon="lucide:chevron-left" width="24"></iconify-icon>
+                            </button>
+                            <button class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#fdc236] hover:text-[#01254c] transition-all">
+                                <iconify-icon icon="lucide:chevron-right" width="24"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                        <!-- Rank 1 -->
+                        <div class="reveal-up bg-white/5 backdrop-blur-md rounded-[3.5rem] p-12 border border-white/10 hover:border-[#fdc236]/50 transition-all group">
+                            <div class="relative mb-10">
+                                <div class="absolute -top-6 -left-6 w-16 h-16 bg-[#fdc236] rounded-2xl flex items-center justify-center text-[#01254c] font-black text-2xl z-20 shadow-lg">01</div>
+                                <div class="w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 border-4 border-white/10">
+                                    <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/dea77762-fee0-47be-a2b2-6281863e113c.jpg" alt="Topper 1" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Ishani Vats</h3>
+                            <div class="flex items-center gap-2 mb-6">
+                                <span class="text-[#fdc236] font-black text-3xl">98.8%</span>
+                                <span class="text-xs text-white/50 uppercase tracking-widest font-bold">Science Stream</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-2 text-sm text-white/70">
+                                    <iconify-icon icon="lucide:award" class="text-[#fdc236]"></iconify-icon>
+                                    <span>Distinction in 5 Subjects</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-white/70">
+                                    <iconify-icon icon="lucide:map-pin" class="text-[#fdc236]"></iconify-icon>
+                                    <span>Sikandrabad Region Topper</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rank 2 -->
+                        <div class="reveal-up bg-white/5 backdrop-blur-md rounded-[3.5rem] p-12 border border-white/10 hover:border-[#fdc236]/50 transition-all group" style="transition-delay: 150ms;">
+                            <div class="relative mb-10">
+                                <div class="absolute -top-6 -left-6 w-16 h-16 bg-slate-300 rounded-2xl flex items-center justify-center text-[#01254c] font-black text-2xl z-20 shadow-lg">02</div>
+                                <div class="w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 border-4 border-white/10">
+                                    <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/6cd42c5c-6978-455f-931f-18ec38cc4433.jpg" alt="Topper 2" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Aryan Raj</h3>
+                            <div class="flex items-center gap-2 mb-6">
+                                <span class="text-[#fdc236] font-black text-3xl">97.4%</span>
+                                <span class="text-xs text-white/50 uppercase tracking-widest font-bold">Commerce Stream</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-2 text-sm text-white/70">
+                                    <iconify-icon icon="lucide:award" class="text-[#fdc236]"></iconify-icon>
+                                    <span>100/100 in Accountancy</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-white/70">
+                                    <iconify-icon icon="lucide:users" class="text-[#fdc236]"></iconify-icon>
+                                    <span>Head Boy (2022-23)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rank 3 -->
+                        <div class="reveal-up bg-white/5 backdrop-blur-md rounded-[3.5rem] p-12 border border-white/10 hover:border-[#fdc236]/50 transition-all group" style="transition-delay: 300ms;">
+                            <div class="relative mb-10">
+                                <div class="absolute -top-6 -left-6 w-16 h-16 bg-amber-700 rounded-2xl flex items-center justify-center text-white font-black text-2xl z-20 shadow-lg">03</div>
+                                <div class="w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 border-4 border-white/10">
+                                    <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/af2cb1b6-435d-4142-bff2-72b5c4a4592d.jpg" alt="Topper 3" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Sneha Kapur</h3>
+                            <div class="flex items-center gap-2 mb-6">
+                                <span class="text-[#fdc236] font-black text-3xl">96.2%</span>
+                                <span class="text-xs text-white/50 uppercase tracking-widest font-bold">Humanities Stream</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-2 text-sm text-white/70">
+                                    <iconify-icon icon="lucide:award" class="text-[#fdc236]"></iconify-icon>
+                                    <span>Best Orator Award</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-white/70">
+                                    <iconify-icon icon="lucide:book-open" class="text-[#fdc236]"></iconify-icon>
+                                    <span>National Level Debater</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Group Celebration Photos -->
+            <section class="py-24 max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-black text-[#01254c] mb-4">Triumph in Unity</h2>
+                    <p class="text-[#676767]">Moments of collective glory and shared victory.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="reveal-up relative h-[500px] rounded-[4rem] overflow-hidden card-shadow group">
+                        <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/6cd42c5c-6978-455f-931f-18ec38cc4433.jpg" alt="Group 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                        <div class="absolute inset-0 topper-overlay p-12 flex flex-col justify-end">
+                            <span class="bg-[#fdc236] text-[#01254c] text-xs font-bold px-4 py-2 rounded-full w-fit mb-4">Class of 2023 Celebration</span>
+                            <h3 class="text-white text-3xl font-bold">The Stars of Today, Leaders of Tomorrow</h3>
+                        </div>
+                    </div>
+                    <div class="reveal-up relative h-[500px] rounded-[4rem] overflow-hidden card-shadow group" style="transition-delay: 200ms;">
+                        <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/871e21f8-ecb9-4fd3-99ee-7c1df7240c64.jpg" alt="Group 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                        <div class="absolute inset-0 topper-overlay p-12 flex flex-col justify-end">
+                            <span class="bg-[#fdc236] text-[#01254c] text-xs font-bold px-4 py-2 rounded-full w-fit mb-4">Sports & Co-curricular Excellence</span>
+                            <h3 class="text-white text-3xl font-bold">Achieving Harmony in Body and Mind</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Toppers Gallery Grid -->
+            <section id="toppers-gallery" class="py-24 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+                        <div class="reveal-up">
+                            <h2 class="text-4xl font-black text-[#01254c]">Gallery of Achievers</h2>
+                            <p class="text-[#676767] mt-2">Every face here tells a story of grit and perseverance.</p>
+                        </div>
+                        <div class="flex items-center gap-2 reveal-up">
+                            <span class="text-sm font-bold text-[#01254c]">Filter by Year:</span>
+                            <select class="bg-white border border-gray-200 rounded-xl px-4 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#fdc236]">
+                                <option>2023</option>
+                                <option>2022</option>
+                                <option>2021</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                        <!-- Achievement Card 1 -->
+                        <div class="reveal-up bg-white rounded-3xl p-5 card-shadow group relative overflow-hidden">
+                            <div class="aspect-square rounded-2xl overflow-hidden mb-4">
+                                <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/dea77762-fee0-47be-a2b2-6281863e113c.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                            </div>
+                            <h4 class="text-sm font-bold text-[#01254c]">Varun Mehra</h4>
+                            <p class="text-[10px] text-[#fdc236] font-bold uppercase tracking-wider">95.2% | Science</p>
+                            <div class="absolute inset-0 bg-[#01254c]/95 flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <p class="text-white text-xs mb-3">Rank 4 in District. Currently studying at BITS Pilani.</p>
+                                <iconify-icon icon="lucide:external-link" class="text-[#fdc236]"></iconify-icon>
+                            </div>
+                        </div>
+                        <!-- Add more gallery items as needed... -->
+                        <div class="reveal-up bg-white rounded-3xl p-5 card-shadow group relative overflow-hidden">
+                            <div class="aspect-square rounded-2xl overflow-hidden mb-4">
+                                <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/6cd42c5c-6978-455f-931f-18ec38cc4433.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                            </div>
+                            <h4 class="text-sm font-bold text-[#01254c]">Diya Sharma</h4>
+                            <p class="text-[10px] text-[#fdc236] font-bold uppercase tracking-wider">94.8% | Commerce</p>
+                        </div>
+                        <div class="reveal-up bg-white rounded-3xl p-5 card-shadow group relative overflow-hidden">
+                            <div class="aspect-square rounded-2xl overflow-hidden mb-4">
+                                <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/823e9ae7-9e61-4bad-a585-2c85a3bbe7d3.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                            </div>
+                            <h4 class="text-sm font-bold text-[#01254c]">Rahul Verma</h4>
+                            <p class="text-[10px] text-[#fdc236] font-bold uppercase tracking-wider">94.1% | Science</p>
+                        </div>
+                        <div class="reveal-up bg-white rounded-3xl p-5 card-shadow group relative overflow-hidden">
+                            <div class="aspect-square rounded-2xl overflow-hidden mb-4">
+                                <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/fa832acf-26b4-447b-8e80-6c3fddb51d04.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                            </div>
+                            <h4 class="text-sm font-bold text-[#01254c]">Kritika Jha</h4>
+                            <p class="text-[10px] text-[#fdc236] font-bold uppercase tracking-wider">93.6% | Humanities</p>
+                        </div>
+                        <div class="reveal-up bg-white rounded-3xl p-5 card-shadow group relative overflow-hidden">
+                            <div class="aspect-square rounded-2xl overflow-hidden mb-4">
+                                <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/af2cb1b6-435d-4142-bff2-72b5c4a4592d.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                            </div>
+                            <h4 class="text-sm font-bold text-[#01254c]">Zaid Khan</h4>
+                            <p class="text-[10px] text-[#fdc236] font-bold uppercase tracking-wider">93.0% | Science</p>
+                        </div>
+                        <div class="reveal-up bg-white rounded-3xl p-5 card-shadow group relative overflow-hidden">
+                            <div class="aspect-square rounded-2xl overflow-hidden mb-4">
+                                <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/d4b60a14-a064-4729-ba4f-93f2e0454476.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                            </div>
+                            <h4 class="text-sm font-bold text-[#01254c]">Preeti Rai</h4>
+                            <p class="text-[10px] text-[#fdc236] font-bold uppercase tracking-wider">92.7% | Commerce</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Alumni Success & College Admissions -->
+            <section class="py-24 max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div class="reveal-up">
+                        <h2 class="text-4xl font-black text-[#01254c] mb-6">Beyond School: <br> Our Alumni Footprint</h2>
+                        <p class="text-[#676767] leading-relaxed mb-10">
+                            Our students don't just graduate; they go on to lead. From top engineering institutes to the world's most prestigious medical colleges, the JPIS legacy spans the globe.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-white border border-gray-100 p-6 rounded-3xl card-shadow">
+                                <iconify-icon icon="lucide:building-2" class="text-[#fdc236] text-3xl mb-4"></iconify-icon>
+                                <h4 class="font-bold">Top IITs</h4>
+                                <p class="text-xs text-[#676767]">Over 45 alumni currently studying in various IITs across India.</p>
+                            </div>
+                            <div class="bg-white border border-gray-100 p-6 rounded-3xl card-shadow">
+                                <iconify-icon icon="lucide:stethoscope" class="text-[#fdc236] text-3xl mb-4"></iconify-icon>
+                                <h4 class="font-bold">AIIMS & Medical</h4>
+                                <p class="text-xs text-[#676767]">28 alumni pursuing MBBS in top government medical colleges.</p>
+                            </div>
+                            <div class="bg-white border border-gray-100 p-6 rounded-3xl card-shadow">
+                                <iconify-icon icon="lucide:landmark" class="text-[#fdc236] text-3xl mb-4"></iconify-icon>
+                                <h4 class="font-bold">Delhi University</h4>
+                                <p class="text-xs text-[#676767]">Preferred choice for our Commerce and Humanities scholars.</p>
+                            </div>
+                            <div class="bg-white border border-gray-100 p-6 rounded-3xl card-shadow">
+                                <iconify-icon icon="lucide:plane" class="text-[#fdc236] text-3xl mb-4"></iconify-icon>
+                                <h4 class="font-bold">Global Ivy Leagues</h4>
+                                <p class="text-xs text-[#676767]">A growing number of students placed in US and UK universities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reveal-up bg-[#f8fafc] rounded-[4rem] p-12">
+                        <h3 class="text-2xl font-bold text-[#01254c] mb-8">Where our Alumni Study</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="px-6 py-3 bg-white border border-gray-200 rounded-full text-xs font-bold text-[#01254c] shadow-sm">IIT DELHI</span>
+                            <span class="px-6 py-3 bg-white border border-gray-200 rounded-full text-xs font-bold text-[#01254c] shadow-sm">AIIMS NEW DELHI</span>
+                            <span class="px-6 py-3 bg-white border border-gray-200 rounded-full text-xs font-bold text-[#01254c] shadow-sm">BITS PILANI</span>
+                            <span class="px-6 py-3 bg-white border border-gray-200 rounded-full text-xs font-bold text-[#01254c] shadow-sm">SRCC DU</span>
+                            <span class="px-6 py-3 bg-white border border-gray-200 rounded-full text-xs font-bold text-[#01254c] shadow-sm">NIT KURUKSHETRA</span>
+                            <span class="px-6 py-3 bg-white border border-gray-200 rounded-full text-xs font-bold text-[#01254c] shadow-sm">ST. STEPHENS</span>
+                            <span class="px-6 py-3 bg-white border border-gray-200 rounded-full text-xs font-bold text-[#01254c] shadow-sm">NSUT DELHI</span>
+                            <span class="px-6 py-3 bg-white border border-gray-200 rounded-full text-xs font-bold text-[#01254c] shadow-sm">VMMC MEDICAL</span>
+                            <span class="px-6 py-3 bg-white border border-gray-200 rounded-full text-xs font-bold text-[#01254c] shadow-sm">IIT BOMBAY</span>
+                            <span class="px-6 py-3 bg-white border border-gray-200 rounded-full text-xs font-bold text-[#01254c] shadow-sm">LSR COLLEGE</span>
+                        </div>
+                        
+                        <div class="mt-16 bg-white p-10 rounded-[2.5rem] card-shadow border-l-8 border-[#fdc236]">
+                            <iconify-icon icon="lucide:quote" class="text-4xl text-[#fdc236] opacity-30 mb-4"></iconify-icon>
+                            <p class="italic text-[#01254c] font-medium leading-relaxed">
+                                "The analytical skills and discipline I learned at J.P. International School were the cornerstone of my success at IIT. JPIS doesn't just teach you; it prepares you for life."
+                            </p>
+                            <div class="flex items-center gap-4 mt-8">
+                                <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/DEA77762-FEE0-47BE-A2B2-6281863E113C.jpg" class="w-12 h-12 rounded-full object-cover">
+                                <div>
+                                    <p class="font-black text-[#01254c] text-sm">Vikram Aditya</p>
+                                    <p class="text-[10px] text-[#676767] uppercase font-bold tracking-widest">IIT Delhi Alumnus | Class of 2019</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final CTA Section -->
+            <section class="py-24 px-6">
+                <div class="max-w-5xl mx-auto bg-[#fdc236] rounded-[4rem] p-12 md:p-24 text-center relative overflow-hidden">
+                    <h2 class="text-4xl md:text-6xl font-black text-[#01254c] leading-tight mb-8">
+                        Write Your Name <br> In Our History
+                    </h2>
+                    <p class="text-[#01254c]/70 text-lg md:text-xl max-w-2xl mx-auto mb-12">
+                        Are you ready to be part of a legacy of achievers? Join JPIS and let us help you reach your maximum potential.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <a href="https://p.superdesign.dev/draft/5c836c35-67f5-4e32-bd8b-4dc34cb3d2e4" class="bg-[#01254c] text-white px-12 py-6 rounded-full font-bold text-xl hover:shadow-2xl transition-all active:scale-95">Apply for Admission</a>
+                        <a href="https://p.superdesign.dev/draft/e5c1a025-3ed4-4ce0-8188-4d92f0ca64b4" class="bg-white text-[#01254c] px-12 py-6 rounded-full font-bold text-xl hover:shadow-2xl transition-all">Contact Counselor</a>
+                    </div>
+                    
+                    <!-- Decor -->
+                    <div class="absolute top-0 left-0 w-32 h-32 bg-[#01254c] opacity-5 rounded-full -ml-16 -mt-16"></div>
+                    <div class="absolute bottom-0 right-0 w-48 h-48 bg-[#01254c] opacity-5 rounded-full -mr-24 -mb-24"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <!-- component: Footer (a09ad959-168a-4091-a2ee-1dc9421719be) -->
+<div v-scope="{ ...{&quot;logoHref&quot;:&quot;https://p.superdesign.dev/draft/df9b310f-7e17-4f36-9de0-398b5f89964f&quot;,&quot;facebookHref&quot;:&quot;#facebook&quot;,&quot;twitterHref&quot;:&quot;#twitter&quot;,&quot;instagramHref&quot;:&quot;#instagram&quot;,&quot;aboutHref&quot;:&quot;https://p.superdesign.dev/draft/3961b69f-2daf-4be7-9495-9d6610824838&quot;,&quot;academicHref&quot;:&quot;#academic&quot;,&quot;admissionHref&quot;:&quot;https://p.superdesign.dev/draft/5c836c35-67f5-4e32-bd8b-4dc34cb3d2e4&quot;,&quot;galleryHref&quot;:&quot;#gallery&quot;,&quot;portalHref&quot;:&quot;#portal&quot;,&quot;parentHref&quot;:&quot;#parent&quot;,&quot;newsHref&quot;:&quot;#news&quot;,&quot;careersHref&quot;:&quot;#careers&quot;,&quot;privacyHref&quot;:&quot;#privacy&quot;,&quot;termsHref&quot;:&quot;#terms&quot;,&quot;currentYear&quot;:2024}, $emit() {} }">
+<footer class="bg-white border-t border-gray-100 pt-20 pb-10 px-6"><div class="max-w-7xl mx-auto"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"><div class="space-y-6"><a :href="logoHref" class="inline-block"><img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg" alt="JPIS Logo" class="h-16 w-auto"></a><p class="text-[#676767] text-[14px] leading-relaxed">J.P. International School is a premier educational institution committed to providing excellence in learning and holistic development.</p><div class="flex gap-4"><a :href="facebookHref" id="social-fb" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:facebook"></iconify-icon></a><a :href="twitterHref" id="social-tw" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:twitter"></iconify-icon></a><a :href="instagramHref" id="social-ig" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:instagram"></iconify-icon></a></div></div><div><h4 class="text-[18px] font-bold mb-8">Quick Links</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li><a :href="aboutHref" id="footer-about" class="hover:text-[#01254c] transition-colors">About Us</a></li><li><a :href="academicHref" id="footer-academic" class="hover:text-[#01254c] transition-colors">Academic Calendar</a></li><li><a :href="admissionHref" id="footer-admission" class="hover:text-[#01254c] transition-colors">Admission Process</a></li><li><a :href="galleryHref" id="footer-gallery" class="hover:text-[#01254c] transition-colors">Photo Gallery</a></li></ul></div><div><h4 class="text-[18px] font-bold mb-8">Resources</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li><a :href="portalHref" id="footer-portal" class="hover:text-[#01254c] transition-colors">Student Portal</a></li><li><a :href="parentHref" id="footer-parent" class="hover:text-[#01254c] transition-colors">Parent Handbook</a></li><li><a :href="newsHref" id="footer-news" class="hover:text-[#01254c] transition-colors">School News</a></li><li><a :href="careersHref" id="footer-careers" class="hover:text-[#01254c] transition-colors">Careers</a></li></ul></div><div><h4 class="text-[18px] font-bold mb-8">Contact Us</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li class="flex gap-3"><iconify-icon icon="lucide:map-pin" class="text-[#fdc236] shrink-0"></iconify-icon><span>Sikandrabad, Distt. Bulandshahr (U.P), India</span></li><li class="flex gap-3"><iconify-icon icon="lucide:phone" class="text-[#fdc236] shrink-0"></iconify-icon><span>+91 999 999 9999</span></li><li class="flex gap-3"><iconify-icon icon="lucide:mail" class="text-[#fdc236] shrink-0"></iconify-icon><span>info@jpinternationalschool.in</span></li></ul></div></div><div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4"><p class="text-xs text-[#676767]">© {{ currentYear }} J.P. International School. All rights reserved.</p><div class="flex gap-8 text-xs text-[#676767]"><a :href="privacyHref" id="footer-privacy" class="hover:text-[#01254c]">Privacy Policy</a><a :href="termsHref" id="footer-terms" class="hover:text-[#01254c]">Terms of Service</a></div></div></div></footer>
+</div>
+<!-- /component: Footer (a09ad959-168a-4091-a2ee-1dc9421719be) -->
+    </div>
+
+    <script>
+        // Intersection Observer for reveal animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
