@@ -553,19 +553,15 @@
                 addCandidate(new URL('/api/health', sameOriginRoot).toString(), new URL('/api/chat', sameOriginRoot).toString(), 'site backend');
             }
 
-            if (this.isLocalPreview()) {
-                addCandidate('http://127.0.0.1:8000/api/health', 'http://127.0.0.1:8000/api/chat', 'local JPIS server');
-                addCandidate('http://localhost:8000/api/health', 'http://localhost:8000/api/chat', 'local JPIS server');
-            }
+            addCandidate('http://127.0.0.1:3000/api/health', 'http://127.0.0.1:3000/api/chat', 'local Node server');
+            addCandidate('http://localhost:3000/api/health', 'http://localhost:3000/api/chat', 'local Node server');
+            addCandidate('http://127.0.0.1:8000/api/health', 'http://127.0.0.1:8000/api/chat', 'local Python server');
+            addCandidate('http://localhost:8000/api/health', 'http://localhost:8000/api/chat', 'local Python server');
 
             return candidates;
         },
         getConnectionHelp() {
-            if (this.isLocalPreview()) {
-                return 'Start the app with `npm start` or `node server.js`, then open the site from that server and make sure `OPENAI_API_KEY` is configured.';
-            }
-
-            return 'Check that the `/api/chat` backend is deployed and that `OPENAI_API_KEY` is set on the server.';
+            return 'Either configure `OPENAI_API_KEY` on the deployed backend, or start `npm start` locally so the chatbot can fall back to your local server.';
         },
         setServiceStatus(status, message) {
             this.serviceStatus = status;
