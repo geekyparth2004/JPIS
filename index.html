@@ -528,15 +528,41 @@
         loading: false,
         serviceStatus: 'checking',
         statusMessage: 'Checking ChatGPT connection...',
-        chatEndpoint: window.location.protocol === 'file:' ? 'http://127.0.0.1:8000/api/chat' : '/api/chat',
-        healthEndpoint: window.location.protocol === 'file:' ? 'http://127.0.0.1:8000/api/health' : '/api/chat',
+        chatEndpoint: '',
+        healthEndpoint: '',
+        backendLabel: '',
         question: '',
         messages: [
             { sender: 'assistant', text: 'Hello parents, how may I help you? I answer using ChatGPT when the school assistant service is connected.' }
         ],
+        isLocalPreview() {
+            return window.location.protocol === 'file:' || ['127.0.0.1', 'localhost'].includes(window.location.hostname);
+        },
+        buildEndpointCandidates() {
+            const candidates = [];
+            const seen = new Set();
+            const addCandidate = (health, chat, label) => {
+                const key = health + '|' + chat;
+                if (seen.has(key)) return;
+                seen.add(key);
+                candidates.push({ health, chat, label });
+            };
+
+            if (window.location.protocol !== 'file:') {
+                const sameOriginRoot = window.location.origin;
+                addCandidate(new URL('/api/health', sameOriginRoot).toString(), new URL('/api/chat', sameOriginRoot).toString(), 'site backend');
+            }
+
+            if (this.isLocalPreview()) {
+                addCandidate('http://127.0.0.1:8000/api/health', 'http://127.0.0.1:8000/api/chat', 'local JPIS server');
+                addCandidate('http://localhost:8000/api/health', 'http://localhost:8000/api/chat', 'local JPIS server');
+            }
+
+            return candidates;
+        },
         getConnectionHelp() {
-            if (window.location.protocol === 'file:') {
-                return 'Start `python server.py` from the project folder and make sure `.env` contains `OPENAI_API_KEY`.';
+            if (this.isLocalPreview()) {
+                return 'Start the app with `npm start` or `node server.js`, then open the site from that server and make sure `OPENAI_API_KEY` is configured.';
             }
 
             return 'Check that the `/api/chat` backend is deployed and that `OPENAI_API_KEY` is set on the server.';
@@ -547,28 +573,41 @@
         },
         async checkAssistantAvailability() {
             this.setServiceStatus('checking', 'Checking ChatGPT connection...');
+            const candidates = this.buildEndpointCandidates();
+            const errors = [];
 
-            try {
-                const response = await fetch(this.healthEndpoint, {
+            for (const candidate of candidates) {
+                try {
+                    const response = await fetch(candidate.health, {
                     method: 'GET',
                     cache: 'no-store'
                 });
 
-                const data = await this.readAssistantResponse(response);
+                    const data = await this.readAssistantResponse(response);
 
-                if (!response.ok) {
-                    throw new Error(data.error || 'The assistant health check failed.');
+                    if (!response.ok) {
+                        throw new Error(data.error || 'The assistant health check failed.');
+                    }
+
+                    if (!data.configured) {
+                        throw new Error(candidate.label + ' is reachable, but OpenAI is not configured there yet.');
+                    }
+
+                    this.healthEndpoint = candidate.health;
+                    this.chatEndpoint = candidate.chat;
+                    this.backendLabel = candidate.label;
+                    this.setServiceStatus('online', 'Powered by ChatGPT via ' + candidate.label + '.');
+                    return;
+                } catch (err) {
+                    const reason = err instanceof Error ? err.message : 'Unable to reach the assistant service.';
+                    errors.push(candidate.label + ': ' + reason);
                 }
-
-                if (!data.configured) {
-                    throw new Error('OpenAI is not configured yet. ' + this.getConnectionHelp());
-                }
-
-                this.setServiceStatus('online', 'Powered by ChatGPT');
-            } catch (err) {
-                const reason = err instanceof Error ? err.message : 'Unable to reach the assistant service.';
-                this.setServiceStatus('offline', reason);
             }
+
+            this.backendLabel = '';
+            this.chatEndpoint = '';
+            this.healthEndpoint = '';
+            this.setServiceStatus('offline', errors[0] || this.getConnectionHelp());
         },
         async toggleChat() {
             this.isOpen = !this.isOpen;
@@ -621,7 +660,7 @@
                     throw new Error(data.error || 'Unable to connect to the assistant right now.');
                 }
 
-                this.setServiceStatus('online', 'Powered by ChatGPT');
+                this.setServiceStatus('online', 'Powered by ChatGPT via ' + (this.backendLabel || 'the connected backend') + '.');
                 this.messages.push({
                     sender: 'assistant',
                     text: data.reply || 'I am here to help with admissions, academics, and campus information.'

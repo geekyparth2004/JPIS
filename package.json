@@ -1,0 +1,13 @@
+{
+  "name": "jpis-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "JPIS website with ChatGPT-backed assistant",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
