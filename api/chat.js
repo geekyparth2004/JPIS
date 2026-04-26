@@ -1,3 +1,7 @@
+const { loadServerConfig, isApiKeyConfigured } = require("../config");
+
+loadServerConfig();
+
 const SCHOOL_CONTEXT = `
 You are the parent-support AI assistant for J.P. International School.
 Answer in a warm, clear, concise way.
@@ -31,14 +35,6 @@ function buildInput(history, message) {
   });
 
   return items;
-}
-
-function isApiKeyConfigured(apiKey) {
-  return Boolean(
-    apiKey &&
-    apiKey.startsWith("sk-") &&
-    !apiKey.includes("replace_with_your_new_openai_api_key")
-  );
 }
 
 function extractReplyText(data) {

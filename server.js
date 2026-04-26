@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const { loadServerConfig, isApiKeyConfigured, RUNTIME_CONFIG_FILE } = require("./config");
 
 const HOST = process.env.HOST || "0.0.0.0";
 const PORT = Number(process.env.PORT || 3000);
@@ -14,38 +15,7 @@ If exact information is not available, say that politely and ask the parent to c
 Do not invent fee amounts, policies, dates, or legal claims.
 Keep answers short and practical.
 `.trim();
-
-function loadEnvFile() {
-  const envPath = path.join(BASE_DIR, ".env");
-  if (!fs.existsSync(envPath)) {
-    return;
-  }
-
-  const lines = fs.readFileSync(envPath, "utf8").split(/\r?\n/);
-  for (const rawLine of lines) {
-    const line = rawLine.trim();
-    if (!line || line.startsWith("#") || !line.includes("=")) {
-      continue;
-    }
-
-    const [key, ...rest] = line.split("=");
-    const value = rest.join("=").trim().replace(/^['"]|['"]$/g, "");
-    const envKey = key.trim();
-    if (envKey && !process.env[envKey]) {
-      process.env[envKey] = value;
-    }
-  }
-}
-
-loadEnvFile();
-
-function isApiKeyConfigured(apiKey) {
-  return Boolean(
-    apiKey &&
-    apiKey.startsWith("sk-") &&
-    !apiKey.includes("replace_with_your_new_openai_api_key")
-  );
-}
+loadServerConfig();
 
 function buildInput(history, message) {
   const items = [
@@ -123,6 +93,24 @@ function getContentType(filePath) {
 function serveFile(req, res, relativePath) {
   const targetPath = path.resolve(BASE_DIR, relativePath);
   if (!targetPath.startsWith(BASE_DIR)) {
+    sendJson(res, 403, { error: "Forbidden" });
+    return;
+  }
+
+  const blockedFiles = new Set([
+    ".env",
+    ".env.local",
+    ".env.development",
+    ".env.example",
+    "config.js",
+    "server.js",
+    "server.py",
+    RUNTIME_CONFIG_FILE,
+    "runtime-config.json",
+    "runtime-config.example.json"
+  ]);
+  const baseName = path.basename(targetPath);
+  if (blockedFiles.has(baseName)) {
     sendJson(res, 403, { error: "Forbidden" });
     return;
   }
