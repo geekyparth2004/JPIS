@@ -18,6 +18,10 @@
             --error: #a2261f;
         }
 
+        [v-cloak] {
+            display: none;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             color: var(--text-primary);
@@ -58,9 +62,9 @@
     <div class="min-h-screen bg-white relative">
         <!-- Navigation bar -->
         <!-- component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
-<div v-scope="{ ...{&quot;activeItem&quot;:&quot;about&quot;,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;}, $emit() {} }">
+<div v-scope="{ ...{&quot;activeItem&quot;:&quot;about&quot;,&quot;mobileMenuOpen&quot;:false,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;}, $emit() {} }">
 <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
         <a :href="logoHref" class="flex items-center gap-3">
             <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg" alt="JPIS Logo" class="h-14 w-auto object-contain">
         </a>
@@ -96,8 +100,29 @@
             </a>
         </div>
 
-        <div class="flex items-center gap-4">
-            <a :href="applyHref" class="bg-[#01254c] text-white px-8 py-3 rounded-full text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
+        <div class="flex items-center gap-3">
+            <a :href="applyHref" class="hidden sm:inline-flex bg-[#01254c] text-white px-6 py-3 rounded-full text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
+            <button
+                type="button"
+                class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-gray-200 text-[#01254c] hover:bg-gray-50 transition-colors"
+                @click="mobileMenuOpen = !mobileMenuOpen"
+                :aria-expanded="mobileMenuOpen ? 'true' : 'false'"
+                aria-label="Toggle navigation menu"
+            >
+                <iconify-icon :icon="mobileMenuOpen ? 'lucide:x' : 'lucide:menu'" width="22"></iconify-icon>
+            </button>
+        </div>
+    </div>
+    <div v-cloak v-show="mobileMenuOpen" class="md:hidden border-t border-gray-100 bg-white/95">
+        <div class="px-6 py-4 flex flex-col gap-2">
+            <a :href="homeHref" @click="mobileMenuOpen = false" :class="activeItem === 'home' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Home</a>
+            <a :href="aboutHref" @click="mobileMenuOpen = false" :class="activeItem === 'about' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">About</a>
+            <a :href="teamHref" @click="mobileMenuOpen = false" :class="activeItem === 'team' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">About Team</a>
+            <a :href="legacyHref" @click="mobileMenuOpen = false" :class="activeItem === 'legacy' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">JPIS Legacy</a>
+            <a :href="programsHref" @click="mobileMenuOpen = false" :class="activeItem === 'programs' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Programs</a>
+            <a :href="admissionsHref" @click="mobileMenuOpen = false" :class="activeItem === 'admissions' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Admissions</a>
+            <a :href="contactHref" @click="mobileMenuOpen = false" :class="activeItem === 'contact' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Contact</a>
+            <a :href="applyHref" @click="mobileMenuOpen = false" class="mt-2 inline-flex items-center justify-center bg-[#01254c] text-white px-6 py-3 rounded-2xl text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
         </div>
     </div>
 </nav>
