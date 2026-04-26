@@ -78,7 +78,17 @@
         .card-shadow {
             box-shadow: 0 10px 40px -10px rgba(1, 37, 76, 0.1);
         }
-    </style>
+
+        @media (max-width: 767px) {
+            .btn-text {
+                font-size: 16px;
+                letter-spacing: 0.02em;
+            }
+            .hero-shape {
+                border-radius: 2rem;
+            }
+        }
+</style>
   <style>sd-component { display: block; }</style>
   <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
 </head>
@@ -137,35 +147,35 @@
 <!-- /component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
 
         <!-- Hero Section -->
-        <section class="pt-32 pb-16 px-6">
+        <section class="pt-24 pb-8 px-6 md:pt-32 md:pb-16">
             <div class="max-w-7xl mx-auto">
-                <div class="hero-shape p-8 md:p-16 flex flex-col lg:flex-row items-center gap-12 relative overflow-hidden">
-                    <div class="flex-1 z-10 space-y-8">
+                <div class="hero-shape p-6 md:p-16 flex flex-col lg:flex-row items-center gap-8 md:gap-12 relative overflow-hidden">
+                    <div class="flex-1 z-10 space-y-6 md:space-y-8">
                         <div class="inline-flex items-center gap-2 bg-white/80 border border-blue-100 px-4 py-2 rounded-full">
                             <span class="flex h-2 w-2 rounded-full bg-[var(--accent)]"></span>
                             <p class="text-xs font-bold uppercase tracking-widest text-[var(--primary)]">Nurturing Future Leaders</p>
                         </div>
-                        <h1 class="text-5xl lg:text-7xl font-bold leading-tight text-[var(--primary)] tracking-tight">
+                        <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[var(--primary)] tracking-tight">
                             Empowering <span class="text-[var(--accent)]">Young Minds</span><br>to Shape Tomorrow
                         </h1>
-                        <p class="text-[18px] text-[var(--text-muted)] max-w-xl leading-relaxed">
+                        <p class="text-base md:text-[18px] text-[var(--text-muted)] max-w-xl leading-relaxed">
                             J.P. International School provides a holistic educational environment that fosters creativity, critical thinking, and character building in students from Kindergarten to Higher Secondary.
                         </p>
-                        <div class="flex flex-wrap gap-6 pt-4">
-                            <button id="hero-cta-demo" class="bg-[var(--primary)] text-white px-10 py-5 rounded-2xl btn-text hover:bg-opacity-90 hover:shadow-xl transition-all active:scale-95">
+                        <div class="flex flex-wrap gap-4 md:gap-6 pt-2 md:pt-4">
+                            <button id="hero-cta-demo" class="bg-[var(--primary)] text-white px-6 py-4 md:px-10 md:py-5 rounded-2xl btn-text hover:bg-opacity-90 hover:shadow-xl transition-all active:scale-95">
                                 Discover JPIS
                             </button>
-                            <button id="hero-cta-pricing" class="bg-white text-[var(--primary)] border-2 border-[var(--primary)] px-10 py-5 rounded-2xl btn-text hover:bg-gray-50 transition-all active:scale-95">
+                            <button id="hero-cta-pricing" class="bg-white text-[var(--primary)] border-2 border-[var(--primary)] px-6 py-4 md:px-10 md:py-5 rounded-2xl btn-text hover:bg-gray-50 transition-all active:scale-95">
                                 View Brochure
                             </button>
                         </div>
                     </div>
-                    
+
                     <div class="flex-1 relative z-10">
                         <div class="floating relative">
                             <div class="absolute -top-6 -right-6 w-32 h-32 bg-[var(--accent)] rounded-3xl -z-10 rotate-12 opacity-40"></div>
                             <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/5b06d0db-0968-4e80-8b26-2db6500f515a.png" alt="School Building" class="rounded-[3rem] shadow-2xl w-full border-8 border-white object-cover">
-                            <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-3xl shadow-xl border border-gray-100 animate-bounce">
+                            <div class="hidden md:block absolute -bottom-8 -left-8 bg-white p-6 rounded-3xl shadow-xl border border-gray-100 animate-bounce">
                                 <div class="flex items-center gap-4">
                                     <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
                                         <iconify-icon icon="lucide:check-circle-2" width="28"></iconify-icon>
@@ -212,9 +222,9 @@
         </section>
 
         <!-- Why Choose JPIS / Features -->
-        <section class="py-24 bg-[#f8fafc] px-6">
+        <section class="py-12 md:py-24 bg-[#f8fafc] px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-20 space-y-4">
+                <div class="text-center mb-12 md:mb-20 space-y-4">
                     <h2 class="text-[27px] font-bold text-[var(--primary)]">Why J.P. International School?</h2>
                     <p class="text-[var(--text-muted)] text-[14px] max-w-2xl mx-auto uppercase tracking-widest font-bold">
                         Crafting educational experiences that last a lifetime
@@ -223,7 +233,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Feature 1 -->
-                    <div class="bg-white p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 hover:-translate-y-3 transition-all duration-500 group">
+                    <div class="bg-white p-6 md:p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 hover:-translate-y-3 transition-all duration-500 group">
                         <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[var(--primary)] group-hover:text-white transition-colors">
                             <iconify-icon icon="lucide:timer" width="32"></iconify-icon>
                         </div>
@@ -234,7 +244,7 @@
                     </div>
 
                     <!-- Feature 2 -->
-                    <div class="bg-white p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 hover:-translate-y-3 transition-all duration-500 group">
+                    <div class="bg-white p-6 md:p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 hover:-translate-y-3 transition-all duration-500 group">
                         <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[var(--accent)] group-hover:text-white transition-colors">
                             <iconify-icon icon="lucide:layers" width="32"></iconify-icon>
                         </div>
@@ -245,7 +255,7 @@
                     </div>
 
                     <!-- Feature 3 -->
-                    <div class="bg-white p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 hover:-translate-y-3 transition-all duration-500 group">
+                    <div class="bg-white p-6 md:p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 hover:-translate-y-3 transition-all duration-500 group">
                         <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[var(--error)] group-hover:text-white transition-colors">
                             <iconify-icon icon="lucide:sparkles" width="32"></iconify-icon>
                         </div>
@@ -256,7 +266,7 @@
                     </div>
 
                     <!-- Feature 4 -->
-                    <div class="bg-white p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 hover:-translate-y-3 transition-all duration-500 group">
+                    <div class="bg-white p-6 md:p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 hover:-translate-y-3 transition-all duration-500 group">
                         <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                             <iconify-icon icon="lucide:graduation-cap" width="32"></iconify-icon>
                         </div>
@@ -270,9 +280,9 @@
         </section>
 
         <!-- Leaders Messages Section -->
-        <section class="py-24 px-6 overflow-hidden">
+        <section class="py-12 md:py-24 px-6 overflow-hidden">
             <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                     <!-- Director -->
                     <div class="reveal-up group relative">
                         <div class="absolute -inset-2 bg-gradient-to-r from-red-600 to-red-400 rounded-[3rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
@@ -283,7 +293,7 @@
                                     <h3 class="text-2xl font-bold text-white">Message from Director</h3>
                                 </div>
                             </div>
-                            <div class="p-10 space-y-4">
+                            <div class="p-6 md:p-10 space-y-4">
                                 <p class="italic text-[18px] text-[var(--primary)] font-medium leading-relaxed">
                                     "Our vision is to build a community of lifelong learners who are prepared for the challenges of the future."
                                 </p>
@@ -307,7 +317,7 @@
                                     <h3 class="text-2xl font-bold text-white">Principal's Desk</h3>
                                 </div>
                             </div>
-                            <div class="p-10 space-y-4">
+                            <div class="p-6 md:p-10 space-y-4">
                                 <p class="italic text-[18px] text-[var(--primary)] font-medium leading-relaxed">
                                     "Education is the most powerful weapon which you can use to change the world."
                                 </p>
@@ -325,10 +335,10 @@
         </section>
 
         <!-- Testimonials -->
-        <section class="py-24 px-6 bg-[var(--primary)] text-white relative">
-            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+        <section class="py-12 md:py-24 px-6 bg-[var(--primary)] text-white relative">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 md:gap-16">
                 <div class="lg:w-1/3 space-y-6">
-                    <h2 class="text-4xl lg:text-5xl font-bold leading-tight">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                         Our Community <br> Speaks for <span class="text-[var(--accent)]">Themselves</span>
                     </h2>
                     <p class="text-blue-100/70 text-[18px]">
@@ -340,7 +350,7 @@
                 </div>
 
                 <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white/10 backdrop-blur-sm p-10 rounded-[3rem] border border-white/10 hover:bg-white/15 transition-all">
+                    <div class="bg-white/10 backdrop-blur-sm p-6 md:p-10 rounded-[3rem] border border-white/10 hover:bg-white/15 transition-all">
                         <div class="flex gap-1 text-[var(--accent)] mb-6">
                             <iconify-icon icon="material-symbols:star" width="20"></iconify-icon>
                             <iconify-icon icon="material-symbols:star" width="20"></iconify-icon>
@@ -360,7 +370,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white/10 backdrop-blur-sm p-10 rounded-[3rem] border border-white/10 hover:bg-white/15 transition-all">
+                    <div class="bg-white/10 backdrop-blur-sm p-6 md:p-10 rounded-[3rem] border border-white/10 hover:bg-white/15 transition-all">
                         <div class="flex gap-1 text-[var(--accent)] mb-6">
                             <iconify-icon icon="material-symbols:star" width="20"></iconify-icon>
                             <iconify-icon icon="material-symbols:star" width="20"></iconify-icon>
@@ -389,19 +399,19 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="py-24 px-6">
-            <div class="max-w-5xl mx-auto bg-[var(--accent)] rounded-[4rem] p-12 md:p-20 text-center space-y-8 relative overflow-hidden">
-                <h2 class="text-4xl md:text-6xl font-bold text-[var(--primary)] leading-tight">
+        <section class="py-12 md:py-24 px-6">
+            <div class="max-w-5xl mx-auto bg-[var(--accent)] rounded-[2rem] md:rounded-[4rem] p-8 md:p-20 text-center space-y-6 md:space-y-8 relative overflow-hidden">
+                <h2 class="text-3xl md:text-6xl font-bold text-[var(--primary)] leading-tight">
                     Ready to Give Your Child <br> the Best Education?
                 </h2>
-                <p class="text-[var(--primary)] text-[20px] opacity-80 max-w-2xl mx-auto">
+                <p class="text-[var(--primary)] text-base md:text-[20px] opacity-80 max-w-2xl mx-auto">
                     Admissions are now open for the academic year 2024-25. Book a school tour today and experience the difference.
                 </p>
-                <div class="flex flex-wrap justify-center gap-6 pt-4">
-                    <button id="cta-apply-final" class="bg-[var(--primary)] text-white px-12 py-6 rounded-2xl btn-text hover:shadow-2xl transition-all">
+                <div class="flex flex-wrap justify-center gap-4 md:gap-6 pt-2 md:pt-4">
+                    <button id="cta-apply-final" class="bg-[var(--primary)] text-white px-8 py-4 md:px-12 md:py-6 rounded-2xl btn-text hover:shadow-2xl transition-all">
                         Apply For Admission
                     </button>
-                    <button id="cta-visit-final" class="bg-white text-[var(--primary)] px-12 py-6 rounded-2xl btn-text hover:shadow-2xl transition-all">
+                    <button id="cta-visit-final" class="bg-white text-[var(--primary)] px-8 py-4 md:px-12 md:py-6 rounded-2xl btn-text hover:shadow-2xl transition-all">
                         Visit Campus
                     </button>
                 </div>

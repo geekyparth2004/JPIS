@@ -76,7 +76,17 @@
             border-color: var(--primary);
             box-shadow: 0 0 0 4px rgba(1, 37, 76, 0.1);
         }
-    </style>
+
+        @media (max-width: 767px) {
+            .btn-text {
+                font-size: 16px;
+                letter-spacing: 0.02em;
+            }
+            .hero-shape {
+                border-radius: 2rem;
+            }
+        }
+</style>
   <style>sd-component { display: block; }</style>
   <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
 </head>
@@ -131,22 +141,22 @@
 <!-- /component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
 
         <!-- Hero Section -->
-        <section class="pt-32 pb-16 px-6">
+        <section class="pt-24 pb-8 px-6 md:pt-32 md:pb-16">
             <div class="max-w-7xl mx-auto">
-                <div class="hero-shape p-8 md:p-16 flex flex-col items-center text-center gap-8 relative overflow-hidden">
-                    <div class="z-10 space-y-6">
+                <div class="hero-shape p-6 md:p-16 flex flex-col items-center text-center gap-6 md:gap-8 relative overflow-hidden">
+                    <div class="z-10 space-y-4 md:space-y-6">
                         <div class="inline-flex items-center gap-2 bg-white/80 border border-blue-100 px-4 py-2 rounded-full">
                             <iconify-icon icon="lucide:graduation-cap" class="text-[var(--primary)]"></iconify-icon>
                             <p class="text-xs font-bold uppercase tracking-widest text-[var(--primary)]">Academic Year 2024-25</p>
                         </div>
-                        <h1 class="text-5xl lg:text-7xl font-bold leading-tight text-[var(--primary)] tracking-tight">
+                        <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[var(--primary)] tracking-tight">
                             Start Your <span class="text-[var(--accent)]">Journey</span> at JPIS
                         </h1>
-                        <p class="text-[18px] text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
+                        <p class="text-base md:text-[18px] text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
                             Join a community dedicated to excellence. Our admission process is designed to be simple, transparent, and student-focused.
                         </p>
-                        <div class="flex justify-center pt-4">
-                            <a href="#enrollment-form" id="hero-apply-now" class="bg-[var(--primary)] text-white px-12 py-5 rounded-2xl btn-text hover:bg-opacity-90 hover:shadow-xl transition-all active:scale-95 inline-block">
+                        <div class="flex justify-center pt-2 md:pt-4">
+                            <a href="#enrollment-form" id="hero-apply-now" class="bg-[var(--primary)] text-white px-8 py-4 md:px-12 md:py-5 rounded-2xl btn-text hover:bg-opacity-90 hover:shadow-xl transition-all active:scale-95 inline-block">
                                 Apply For Admission
                             </a>
                         </div>
@@ -161,14 +171,14 @@
         </section>
 
         <!-- Application Process Timeline -->
-        <section class="py-24 px-6">
+        <section class="py-12 md:py-24 px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-20">
-                    <h2 class="text-[27px] font-bold text-[var(--primary)]">Application Process</h2>
+                <div class="text-center mb-10 md:mb-20">
+                    <h2 class="text-2xl md:text-[27px] font-bold text-[var(--primary)]">Application Process</h2>
                     <p class="text-[var(--text-muted)] text-[14px] uppercase tracking-widest font-bold mt-2">Your path to joining the JPIS family</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
                     <!-- Step 1 -->
                     <div class="text-center space-y-4 group reveal-up">
                         <div class="w-16 h-16 bg-blue-50 text-[var(--primary)] rounded-full flex items-center justify-center mx-auto group-hover:bg-[var(--accent)] group-hover:text-[var(--primary)] transition-colors relative z-10">
@@ -222,16 +232,16 @@
         </section>
 
         <!-- Requirements Section -->
-        <section class="py-24 bg-[#f8fafc] px-6">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <section class="py-12 md:py-24 bg-[#f8fafc] px-6">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
                 <!-- Eligibility -->
-                <div class="space-y-12">
+                <div class="space-y-8 md:space-y-12">
                     <div>
-                        <h2 class="text-[27px] font-bold text-[var(--primary)] mb-2">Eligibility Criteria</h2>
+                        <h2 class="text-2xl md:text-[27px] font-bold text-[var(--primary)] mb-2">Eligibility Criteria</h2>
                         <p class="text-[var(--text-muted)]">Age requirements as on 31st March of the session year</p>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                         <div class="bg-white p-6 rounded-3xl card-shadow border border-gray-100 reveal-up">
                             <div class="text-[var(--accent)] text-2xl font-bold mb-1">3+ Years</div>
                             <h4 class="font-bold text-[var(--primary)]">Nursery</h4>
@@ -256,9 +266,9 @@
                 </div>
 
                 <!-- Documents -->
-                <div class="space-y-8">
-                    <h2 class="text-[27px] font-bold text-[var(--primary)]">Required Documents</h2>
-                    <div class="bg-white rounded-[3rem] p-10 card-shadow border border-gray-100 reveal-up">
+                <div class="space-y-6 md:space-y-8">
+                    <h2 class="text-2xl md:text-[27px] font-bold text-[var(--primary)]">Required Documents</h2>
+                    <div class="bg-white rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 card-shadow border border-gray-100 reveal-up">
                         <ul class="space-y-6">
                             <li class="flex items-start gap-4">
                                 <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
@@ -312,14 +322,14 @@
         </section>
 
         <!-- Enrollment Form -->
-        <section id="enrollment-form" class="py-24 px-6">
-            <div class="max-w-4xl mx-auto bg-white rounded-[4rem] border border-gray-100 card-shadow p-8 md:p-16">
-                <div class="text-center mb-12 space-y-4">
-                    <h2 class="text-4xl font-bold text-[var(--primary)]">Online Registration Form</h2>
+        <section id="enrollment-form" class="py-12 md:py-24 px-6">
+            <div class="max-w-4xl mx-auto bg-white rounded-[2.5rem] md:rounded-[4rem] border border-gray-100 card-shadow p-6 md:p-16">
+                <div class="text-center mb-8 md:mb-12 space-y-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary)]">Online Registration Form</h2>
                     <p class="text-[var(--text-muted)]">Please fill in the details below to initiate the admission process.</p>
                 </div>
 
-                <form class="space-y-12">
+                <form class="space-y-8 md:space-y-12">
                     <!-- Section: Student Information -->
                     <div class="space-y-6">
                         <h3 class="text-xl font-bold text-[var(--primary)] flex items-center gap-2">
@@ -409,7 +419,7 @@
                             <input type="checkbox" class="mt-1 w-5 h-5 accent-[var(--primary)] rounded">
                             <span class="text-sm text-[var(--text-muted)] group-hover:text-[var(--primary)] transition-colors">I hereby declare that the information provided is true to the best of my knowledge. I agree to abide by the school's rules and admission policies.</span>
                         </label>
-                        <button type="submit" id="submit-admission-form" class="w-full mt-10 bg-[var(--primary)] text-white p-6 rounded-2xl font-bold text-xl uppercase tracking-widest hover:bg-opacity-90 hover:shadow-2xl transition-all active:scale-95">
+                        <button type="submit" id="submit-admission-form" class="w-full mt-8 md:mt-10 bg-[var(--primary)] text-white p-5 md:p-6 rounded-2xl font-bold text-base md:text-xl uppercase tracking-widest hover:bg-opacity-90 hover:shadow-2xl transition-all active:scale-95">
                             Submit Registration
                         </button>
                     </div>
@@ -418,10 +428,10 @@
         </section>
 
         <!-- FAQ Section -->
-        <section class="py-24 bg-[#f8fafc] px-6">
+        <section class="py-12 md:py-24 bg-[#f8fafc] px-6">
             <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-[27px] font-bold text-[var(--primary)]">Frequently Asked Questions</h2>
+                <div class="text-center mb-10 md:mb-16">
+                    <h2 class="text-2xl md:text-[27px] font-bold text-[var(--primary)]">Frequently Asked Questions</h2>
                     <p class="text-[var(--text-muted)] mt-2">Got questions? We have answers.</p>
                 </div>
 
@@ -447,19 +457,19 @@
         </section>
 
         <!-- CTA -->
-        <section class="py-24 px-6">
-            <div class="max-w-5xl mx-auto bg-[var(--primary)] rounded-[4rem] p-12 md:p-20 text-center space-y-8 relative overflow-hidden">
-                <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+        <section class="py-12 md:py-24 px-6">
+            <div class="max-w-5xl mx-auto bg-[var(--primary)] rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-20 text-center space-y-6 md:space-y-8 relative overflow-hidden">
+                <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">
                     Still have questions about <br> the <span class="text-[var(--accent)]">Admission Process?</span>
                 </h2>
-                <p class="text-blue-100 text-[18px] opacity-80 max-w-2xl mx-auto">
+                <p class="text-blue-100 text-base md:text-[18px] opacity-80 max-w-2xl mx-auto">
                     Our counselors are here to help you navigate through the process and find the best path for your child.
                 </p>
-                <div class="flex flex-wrap justify-center gap-6 pt-4">
-                    <a href="https://draft-e5c1a025-3ed4-4ce0-8188-4d92f0ca64b4.preview.superdesign.dev" id="cta-contact-us" class="bg-[var(--accent)] text-[var(--primary)] px-12 py-6 rounded-2xl btn-text hover:bg-yellow-400 transition-all">
+                <div class="flex flex-wrap justify-center gap-4 md:gap-6 pt-2 md:pt-4">
+                    <a href="https://draft-e5c1a025-3ed4-4ce0-8188-4d92f0ca64b4.preview.superdesign.dev" id="cta-contact-us" class="bg-[var(--accent)] text-[var(--primary)] px-8 py-4 md:px-12 md:py-6 rounded-2xl btn-text hover:bg-yellow-400 transition-all">
                         Contact Counselor
                     </a>
-                    <a href="tel:+919999999999" id="cta-call-us" class="bg-white/10 text-white border border-white/20 px-12 py-6 rounded-2xl btn-text hover:bg-white/20 transition-all">
+                    <a href="tel:+919999999999" id="cta-call-us" class="bg-white/10 text-white border border-white/20 px-8 py-4 md:px-12 md:py-6 rounded-2xl btn-text hover:bg-white/20 transition-all">
                         Call Support
                     </a>
                 </div>

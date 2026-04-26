@@ -72,7 +72,17 @@
         .stagger-delay-2 { transition-delay: 0.2s; }
         .stagger-delay-3 { transition-delay: 0.3s; }
         .stagger-delay-4 { transition-delay: 0.4s; }
-    </style>
+
+        @media (max-width: 767px) {
+            .btn-text {
+                font-size: 16px;
+                letter-spacing: 0.02em;
+            }
+            .hero-shape {
+                border-radius: 2rem;
+            }
+        }
+</style>
   <style>sd-component { display: block; }</style>
   <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
 </head>
@@ -131,18 +141,18 @@
 <!-- /component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
 
         <!-- Hero Section -->
-        <section class="pt-32 pb-16 px-6">
+        <section class="pt-24 pb-8 px-6 md:pt-32 md:pb-16">
             <div class="max-w-7xl mx-auto">
-                <div class="hero-shape p-8 md:p-16 text-center relative overflow-hidden">
-                    <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+                <div class="hero-shape p-6 md:p-16 text-center relative overflow-hidden">
+                    <div class="relative z-10 max-w-3xl mx-auto space-y-4 md:space-y-6">
                         <div class="inline-flex items-center gap-2 bg-white/80 border border-blue-100 px-4 py-2 rounded-full">
                             <span class="flex h-2 w-2 rounded-full bg-[var(--accent)]"></span>
                             <p class="text-xs font-bold uppercase tracking-widest text-[var(--primary)]">Academic Excellence</p>
                         </div>
-                        <h1 class="text-5xl lg:text-7xl font-bold leading-tight text-[var(--primary)] tracking-tight">
+                        <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-[var(--primary)] tracking-tight">
                             Our <span class="text-[var(--accent)]">Academic</span> Programs
                         </h1>
-                        <p class="text-[18px] text-[var(--text-muted)] leading-relaxed">
+                        <p class="text-base md:text-[18px] text-[var(--text-muted)] leading-relaxed">
                             A holistic journey of discovery and growth from foundational years to secondary mastery, designed to cultivate global leaders and innovative thinkers.
                         </p>
                     </div>
@@ -159,7 +169,7 @@
         </section>
 
         <!-- Academic Structure Overview -->
-        <section class="py-20 px-6">
+        <section class="py-10 md:py-20 px-6">
             <div class="max-w-7xl mx-auto">
                 <div class="flex flex-wrap justify-center items-center gap-4 md:gap-8">
                     <div class="flex flex-col items-center gap-3 w-32 md:w-40">
@@ -194,20 +204,20 @@
         </section>
 
         <!-- Detailed Program Cards -->
-        <section class="py-24 bg-[#f8fafc] px-6">
+        <section class="py-12 md:py-24 bg-[#f8fafc] px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                     
                     <!-- Kindergarten -->
-                    <div class="bg-white rounded-[3rem] p-10 card-shadow reveal-up stagger-delay-1 program-card group">
-                        <div class="flex justify-between items-start mb-8">
+                    <div class="bg-white rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 card-shadow reveal-up stagger-delay-1 program-card group">
+                        <div class="flex justify-between items-start mb-6 md:mb-8">
                             <div class="program-icon transition-transform duration-500 w-16 h-16 bg-yellow-50 rounded-3xl flex items-center justify-center text-[var(--accent)]">
                                 <iconify-icon icon="lucide:palette" width="32"></iconify-icon>
                             </div>
                             <span class="bg-blue-50 text-[var(--primary)] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Ages 3-5</span>
                         </div>
-                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4">Kindergarten (Pre-School)</h3>
-                        <p class="text-[var(--text-muted)] mb-8 leading-relaxed">
+                        <h3 class="text-2xl md:text-3xl font-bold text-[var(--primary)] mb-4">Kindergarten (Pre-School)</h3>
+                        <p class="text-[var(--text-muted)] mb-6 md:mb-8 leading-relaxed">
                             Focusing on the 'Play-Way' method, we emphasize social development, fine motor skills, and creative exploration in a safe, vibrant environment.
                         </p>
                         <div class="space-y-6">
@@ -232,15 +242,15 @@
                     </div>
 
                     <!-- Primary School -->
-                    <div class="bg-white rounded-[3rem] p-10 card-shadow reveal-up stagger-delay-2 program-card group">
-                        <div class="flex justify-between items-start mb-8">
+                    <div class="bg-white rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 card-shadow reveal-up stagger-delay-2 program-card group">
+                        <div class="flex justify-between items-start mb-6 md:mb-8">
                             <div class="program-icon transition-transform duration-500 w-16 h-16 bg-blue-50 rounded-3xl flex items-center justify-center text-[var(--primary)]">
                                 <iconify-icon icon="lucide:book-open" width="32"></iconify-icon>
                             </div>
                             <span class="bg-blue-50 text-[var(--primary)] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Grades I - V</span>
                         </div>
-                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4">Primary School</h3>
-                        <p class="text-[var(--text-muted)] mb-8 leading-relaxed">
+                        <h3 class="text-2xl md:text-3xl font-bold text-[var(--primary)] mb-4">Primary School</h3>
+                        <p class="text-[var(--text-muted)] mb-6 md:mb-8 leading-relaxed">
                             Laying a strong foundation in core subjects while nurturing curiosity and basic logic. We use enquiry-based learning to keep students engaged.
                         </p>
                         <div class="space-y-6">
@@ -265,15 +275,15 @@
                     </div>
 
                     <!-- Middle School -->
-                    <div class="bg-white rounded-[3rem] p-10 card-shadow reveal-up stagger-delay-3 program-card group">
-                        <div class="flex justify-between items-start mb-8">
+                    <div class="bg-white rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 card-shadow reveal-up stagger-delay-3 program-card group">
+                        <div class="flex justify-between items-start mb-6 md:mb-8">
                             <div class="program-icon transition-transform duration-500 w-16 h-16 bg-red-50 rounded-3xl flex items-center justify-center text-[var(--error)]">
                                 <iconify-icon icon="lucide:microscope" width="32"></iconify-icon>
                             </div>
                             <span class="bg-blue-50 text-[var(--primary)] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Grades VI - VIII</span>
                         </div>
-                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4">Middle School</h3>
-                        <p class="text-[var(--text-muted)] mb-8 leading-relaxed">
+                        <h3 class="text-2xl md:text-3xl font-bold text-[var(--primary)] mb-4">Middle School</h3>
+                        <p class="text-[var(--text-muted)] mb-6 md:mb-8 leading-relaxed">
                             Transitioning towards specialized knowledge. Students are encouraged to explore their interests in science, technology, and humanities through projects.
                         </p>
                         <div class="space-y-6">
@@ -298,15 +308,15 @@
                     </div>
 
                     <!-- Secondary School -->
-                    <div class="bg-white rounded-[3rem] p-10 card-shadow reveal-up stagger-delay-4 program-card group">
-                        <div class="flex justify-between items-start mb-8">
+                    <div class="bg-white rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 card-shadow reveal-up stagger-delay-4 program-card group">
+                        <div class="flex justify-between items-start mb-6 md:mb-8">
                             <div class="program-icon transition-transform duration-500 w-16 h-16 bg-emerald-50 rounded-3xl flex items-center justify-center text-emerald-600">
                                 <iconify-icon icon="lucide:award" width="32"></iconify-icon>
                             </div>
                             <span class="bg-blue-50 text-[var(--primary)] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Grades IX - XII</span>
                         </div>
-                        <h3 class="text-3xl font-bold text-[var(--primary)] mb-4">Secondary & Senior Secondary</h3>
-                        <p class="text-[var(--text-muted)] mb-8 leading-relaxed">
+                        <h3 class="text-2xl md:text-3xl font-bold text-[var(--primary)] mb-4">Secondary & Senior Secondary</h3>
+                        <p class="text-[var(--text-muted)] mb-6 md:mb-8 leading-relaxed">
                             Rigorous preparation for board examinations and higher education. We offer multiple streams in Senior Secondary to align with career goals.
                         </p>
                         <div class="space-y-6">
@@ -335,18 +345,18 @@
         </section>
 
         <!-- Academic Excellence / Methodology -->
-        <section class="py-24 px-6">
+        <section class="py-12 md:py-24 px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col lg:flex-row items-center gap-16">
-                    <div class="flex-1 space-y-8">
+                <div class="flex flex-col lg:flex-row items-center gap-10 md:gap-16">
+                    <div class="flex-1 space-y-6 md:space-y-8">
                         <div class="space-y-4">
-                            <h2 class="text-4xl font-bold text-[var(--primary)]">Teaching Methodology</h2>
-                            <p class="text-[var(--text-muted)] text-[18px] leading-relaxed">
+                            <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary)]">Teaching Methodology</h2>
+                            <p class="text-[var(--text-muted)] text-base md:text-[18px] leading-relaxed">
                                 Our "Beyond Classroom" approach integrates academic concepts with real-world applications. We focus on four key pillars of excellence.
                             </p>
                         </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                             <div class="flex gap-4">
                                 <div class="shrink-0 w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-[var(--primary)]">
                                     <iconify-icon icon="lucide:users"></iconify-icon>
@@ -374,7 +384,7 @@
 
                     <div class="flex-1">
                         <div class="relative">
-                            <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/823e9ae7-9e61-4bad-a585-2c85a3bbe7d3.png" alt="Teacher in Classroom" class="rounded-[3rem] shadow-2xl relative z-10 w-full">
+                            <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/823e9ae7-9e61-4bad-a585-2c85a3bbe7d3.png" alt="Teacher in Classroom" class="rounded-[2rem] md:rounded-[3rem] shadow-2xl relative z-10 w-full">
                             <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-[var(--accent)]/10 rounded-full blur-[80px]"></div>
                         </div>
                     </div>
@@ -383,33 +393,33 @@
         </section>
 
         <!-- Facilities Grid -->
-        <section class="py-24 bg-[#f8fafc] px-6">
+        <section class="py-12 md:py-24 bg-[#f8fafc] px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16 space-y-4">
-                    <h2 class="text-3xl font-bold text-[var(--primary)]">Facilities & Resources</h2>
+                <div class="text-center mb-10 md:mb-16 space-y-4">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[var(--primary)]">Facilities & Resources</h2>
                     <p class="text-[var(--text-muted)] max-w-xl mx-auto">Equipping our students with modern infrastructure to support their diverse learning needs.</p>
                 </div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="bg-white p-8 rounded-[2rem] text-center border border-blue-50 card-shadow hover:-translate-y-2 transition-all">
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                    <div class="bg-white p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] text-center border border-blue-50 card-shadow hover:-translate-y-2 transition-all">
                         <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-[var(--primary)]">
                             <iconify-icon icon="lucide:wifi" width="24"></iconify-icon>
                         </div>
                         <p class="font-bold text-[var(--primary)]">Smart Classrooms</p>
                     </div>
-                    <div class="bg-white p-8 rounded-[2rem] text-center border border-blue-50 card-shadow hover:-translate-y-2 transition-all">
+                    <div class="bg-white p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] text-center border border-blue-50 card-shadow hover:-translate-y-2 transition-all">
                         <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-[var(--error)]">
                             <iconify-icon icon="lucide:flask-conical" width="24"></iconify-icon>
                         </div>
                         <p class="font-bold text-[var(--primary)]">Science Labs</p>
                     </div>
-                    <div class="bg-white p-8 rounded-[2rem] text-center border border-blue-50 card-shadow hover:-translate-y-2 transition-all">
+                    <div class="bg-white p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] text-center border border-blue-50 card-shadow hover:-translate-y-2 transition-all">
                         <div class="w-12 h-12 bg-yellow-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-[var(--accent)]">
                             <iconify-icon icon="lucide:library" width="24"></iconify-icon>
                         </div>
                         <p class="font-bold text-[var(--primary)]">Digital Library</p>
                     </div>
-                    <div class="bg-white p-8 rounded-[2rem] text-center border border-blue-50 card-shadow hover:-translate-y-2 transition-all">
+                    <div class="bg-white p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] text-center border border-blue-50 card-shadow hover:-translate-y-2 transition-all">
                         <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-emerald-600">
                             <iconify-icon icon="lucide:dribbble" width="24"></iconify-icon>
                         </div>
@@ -420,19 +430,19 @@
         </section>
 
         <!-- Final CTA -->
-        <section class="py-24 px-6">
-            <div class="max-w-5xl mx-auto bg-[var(--accent)] rounded-[4rem] p-12 md:p-20 text-center space-y-8 relative overflow-hidden">
-                <h2 class="text-4xl md:text-6xl font-bold text-[var(--primary)] leading-tight">
+        <section class="py-12 md:py-24 px-6">
+            <div class="max-w-5xl mx-auto bg-[var(--accent)] rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-20 text-center space-y-6 md:space-y-8 relative overflow-hidden">
+                <h2 class="text-3xl md:text-6xl font-bold text-[var(--primary)] leading-tight">
                     Shape Your Child's Future <br> with J.P. International
                 </h2>
-                <p class="text-[var(--primary)] text-[20px] opacity-80 max-w-2xl mx-auto">
+                <p class="text-[var(--primary)] text-base md:text-[20px] opacity-80 max-w-2xl mx-auto">
                     Explore our campus and meet our educators to understand how we can help your child excel.
                 </p>
-                <div class="flex flex-wrap justify-center gap-6 pt-4">
-                    <a id="final-cta-apply" href="https://p.superdesign.dev/draft/5c836c35-67f5-4e32-bd8b-4dc34cb3d2e4" class="bg-[var(--primary)] text-white px-12 py-6 rounded-2xl btn-text hover:shadow-2xl transition-all">
+                <div class="flex flex-wrap justify-center gap-4 md:gap-6 pt-2 md:pt-4">
+                    <a id="final-cta-apply" href="https://p.superdesign.dev/draft/5c836c35-67f5-4e32-bd8b-4dc34cb3d2e4" class="bg-[var(--primary)] text-white px-8 py-4 md:px-12 md:py-6 rounded-2xl btn-text hover:shadow-2xl transition-all">
                         Apply Now
                     </a>
-                    <a id="final-cta-contact" href="https://p.superdesign.dev/draft/e5c1a025-3ed4-4ce0-8188-4d92f0ca64b4" class="bg-white text-[var(--primary)] px-12 py-6 rounded-2xl btn-text hover:shadow-2xl transition-all">
+                    <a id="final-cta-contact" href="https://p.superdesign.dev/draft/e5c1a025-3ed4-4ce0-8188-4d92f0ca64b4" class="bg-white text-[var(--primary)] px-8 py-4 md:px-12 md:py-6 rounded-2xl btn-text hover:shadow-2xl transition-all">
                         Contact Us
                     </a>
                 </div>

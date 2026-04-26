@@ -67,7 +67,13 @@
             outline: none;
             border-color: var(--accent);
         }
-    </style>
+
+        @media (max-width: 767px) {
+            .hero-shape {
+                border-radius: 2rem;
+            }
+        }
+</style>
   <style>sd-component { display: block; }</style>
   <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
 </head>
@@ -126,15 +132,15 @@
 <!-- /component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
 
         <!-- Header Section -->
-        <section class="pt-32 pb-12 px-6">
+        <section class="pt-24 pb-8 px-6 md:pt-32 md:pb-12">
             <div class="max-w-7xl mx-auto">
-                <div class="hero-shape p-12 md:p-20 text-center space-y-6 reveal-up active">
+                <div class="hero-shape p-8 md:p-20 text-center space-y-4 md:space-y-6 reveal-up active">
                     <div class="inline-flex items-center gap-2 bg-white/80 border border-blue-100 px-4 py-2 rounded-full mx-auto">
                         <span class="flex h-2 w-2 rounded-full bg-[var(--accent)]"></span>
                         <p class="text-xs font-bold uppercase tracking-widest text-[var(--primary)]">Contact Information</p>
                     </div>
-                    <h1 class="text-4xl md:text-6xl font-bold text-[var(--primary)]">Get in <span class="text-[var(--accent)]">Touch</span></h1>
-                    <p class="text-lg text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
+                    <h1 class="text-3xl md:text-6xl font-bold text-[var(--primary)]">Get in <span class="text-[var(--accent)]">Touch</span></h1>
+                    <p class="text-base md:text-lg text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
                         Have questions about admissions, our curriculum, or campus facilities? We are here to help you every step of the way.
                     </p>
                 </div>
@@ -142,12 +148,12 @@
         </section>
 
         <!-- Contact Info & Form -->
-        <section class="py-16 px-6">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <section class="py-10 md:py-16 px-6">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
                 <!-- Left: Info Cards -->
-                <div class="space-y-8 reveal-up active">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-white p-8 rounded-[2.5rem] card-shadow border border-gray-50 group hover:-translate-y-2 transition-transform duration-300">
+                <div class="space-y-6 md:space-y-8 reveal-up active">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 group hover:-translate-y-2 transition-transform duration-300">
                             <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-white transition-colors">
                                 <iconify-icon icon="lucide:map-pin" width="28"></iconify-icon>
                             </div>
@@ -155,7 +161,7 @@
                             <p class="text-sm text-[var(--text-muted)] leading-relaxed">Sikandrabad, Distt. Bulandshahr (U.P), India - 203205</p>
                         </div>
 
-                        <div class="bg-white p-8 rounded-[2.5rem] card-shadow border border-gray-50 group hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 group hover:-translate-y-2 transition-transform duration-300">
                             <div class="w-14 h-14 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6 text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-[var(--primary)] transition-colors">
                                 <iconify-icon icon="lucide:phone-call" width="28"></iconify-icon>
                             </div>
@@ -164,7 +170,7 @@
                             <p class="text-sm text-[var(--text-muted)]">+91 888 888 8888</p>
                         </div>
 
-                        <div class="bg-white p-8 rounded-[2.5rem] card-shadow border border-gray-50 group hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 group hover:-translate-y-2 transition-transform duration-300">
                             <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 text-[var(--error)] group-hover:bg-[var(--error)] group-hover:text-white transition-colors">
                                 <iconify-icon icon="lucide:mail" width="28"></iconify-icon>
                             </div>
@@ -173,7 +179,7 @@
                             <p class="text-sm text-[var(--text-muted)]">admissions@jpis.in</p>
                         </div>
 
-                        <div class="bg-white p-8 rounded-[2.5rem] card-shadow border border-gray-50 group hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 group hover:-translate-y-2 transition-transform duration-300">
                             <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                                 <iconify-icon icon="lucide:clock" width="28"></iconify-icon>
                             </div>
@@ -184,7 +190,7 @@
                     </div>
                     
                     <!-- Map Placeholder -->
-                    <div class="relative rounded-[3rem] overflow-hidden card-shadow border-8 border-white h-72 reveal-up">
+                    <div class="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden card-shadow border-8 border-white h-64 md:h-72 reveal-up">
                         <div class="absolute inset-0 bg-gray-200 flex items-center justify-center">
                             <div class="text-center">
                                 <iconify-icon icon="lucide:map" class="text-5xl text-gray-400 mb-2"></iconify-icon>
@@ -197,10 +203,10 @@
                 </div>
 
                 <!-- Right: Form -->
-                <div class="bg-white p-10 md:p-12 rounded-[3.5rem] card-shadow border border-gray-50 reveal-up active">
-                    <h2 class="text-2xl font-bold text-[var(--primary)] mb-8">Send us a Message</h2>
+                <div class="bg-white p-6 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] card-shadow border border-gray-50 reveal-up active">
+                    <h2 class="text-2xl font-bold text-[var(--primary)] mb-6 md:mb-8">Send us a Message</h2>
                     <form class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div class="space-y-2">
                                 <label for="contact-name" class="text-xs font-bold uppercase text-[var(--text-muted)] tracking-wider">Full Name</label>
                                 <input type="text" id="contact-name" placeholder="John Doe" class="w-full py-3 bg-transparent form-input text-sm">
@@ -210,7 +216,7 @@
                                 <input type="email" id="contact-email" placeholder="john@example.com" class="w-full py-3 bg-transparent form-input text-sm">
                             </div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div class="space-y-2">
                                 <label for="contact-phone" class="text-xs font-bold uppercase text-[var(--text-muted)] tracking-wider">Phone Number</label>
                                 <input type="tel" id="contact-phone" placeholder="+91 00000 00000" class="w-full py-3 bg-transparent form-input text-sm">
@@ -229,7 +235,7 @@
                             <label for="contact-message" class="text-xs font-bold uppercase text-[var(--text-muted)] tracking-wider">Your Message</label>
                             <textarea id="contact-message" rows="4" placeholder="How can we help you?" class="w-full py-3 bg-transparent form-input text-sm resize-none"></textarea>
                         </div>
-                        <button type="submit" id="contact-submit-btn" class="w-full bg-[var(--primary)] text-white py-5 rounded-2xl font-bold text-lg hover:shadow-xl hover:bg-opacity-95 transition-all active:scale-95 flex items-center justify-center gap-2">
+                        <button type="submit" id="contact-submit-btn" class="w-full bg-[var(--primary)] text-white py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg hover:shadow-xl hover:bg-opacity-95 transition-all active:scale-95 flex items-center justify-center gap-2">
                             Submit Inquiry
                             <iconify-icon icon="lucide:send" width="20"></iconify-icon>
                         </button>
@@ -239,10 +245,10 @@
         </section>
 
         <!-- FAQ Section -->
-        <section class="py-24 bg-[#f8fafc] px-6">
+        <section class="py-12 md:py-24 bg-[#f8fafc] px-6">
             <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-16 space-y-4 reveal-up">
-                    <h2 class="text-3xl font-bold text-[var(--primary)]">Frequently Asked Questions</h2>
+                <div class="text-center mb-10 md:mb-16 space-y-4 reveal-up">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[var(--primary)]">Frequently Asked Questions</h2>
                     <p class="text-[var(--text-muted)]">Quick answers to common inquiries about JP International School.</p>
                 </div>
 
@@ -321,14 +327,14 @@
         </section>
 
         <!-- Final CTA -->
-        <section class="py-20 px-6">
-            <div class="max-w-5xl mx-auto bg-[var(--primary)] rounded-[4rem] p-12 md:p-16 text-center space-y-6 relative overflow-hidden reveal-up">
-                <h2 class="text-3xl md:text-5xl font-bold text-white">Join Our Educational Community</h2>
-                <p class="text-blue-100/70 text-lg max-w-xl mx-auto">
+        <section class="py-10 md:py-20 px-6">
+            <div class="max-w-5xl mx-auto bg-[var(--primary)] rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-16 text-center space-y-4 md:space-y-6 relative overflow-hidden reveal-up">
+                <h2 class="text-2xl md:text-5xl font-bold text-white">Join Our Educational Community</h2>
+                <p class="text-blue-100/70 text-base md:text-lg max-w-xl mx-auto">
                     Invest in your child's future with a school that values academic excellence and personal growth.
                 </p>
-                <div class="flex justify-center pt-4">
-                    <a href="https://p.superdesign.dev/draft/5c836c35-67f5-4e32-bd8b-4dc34cb3d2e4" id="cta-apply-btn" class="bg-[var(--accent)] text-[var(--primary)] px-12 py-5 rounded-2xl font-bold text-xl hover:shadow-2xl transition-all active:scale-95">Start Your Application</a>
+                <div class="flex justify-center pt-2 md:pt-4">
+                    <a href="https://p.superdesign.dev/draft/5c836c35-67f5-4e32-bd8b-4dc34cb3d2e4" id="cta-apply-btn" class="bg-[var(--accent)] text-[var(--primary)] px-8 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-base md:text-xl hover:shadow-2xl transition-all active:scale-95">Start Your Application</a>
                 </div>
                 <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full"></div>
             </div>
