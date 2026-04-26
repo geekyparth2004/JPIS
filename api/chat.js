@@ -10,7 +10,7 @@ Keep answers short and practical.
 function buildInput(history, message) {
   const items = [
     {
-      role: "system",
+      role: "developer",
       content: [{ type: "input_text", text: SCHOOL_CONTEXT.trim() }]
     }
   ];
@@ -33,14 +33,49 @@ function buildInput(history, message) {
   return items;
 }
 
+function isApiKeyConfigured(apiKey) {
+  return Boolean(
+    apiKey &&
+    apiKey.startsWith("sk-") &&
+    !apiKey.includes("replace_with_your_new_openai_api_key")
+  );
+}
+
+function extractReplyText(data) {
+  if (typeof data?.output_text === "string" && data.output_text.trim()) {
+    return data.output_text.trim();
+  }
+
+  const outputItems = Array.isArray(data?.output) ? data.output : [];
+  for (const item of outputItems) {
+    const contents = Array.isArray(item?.content) ? item.content : [];
+    for (const content of contents) {
+      if (typeof content?.text === "string" && content.text.trim()) {
+        return content.text.trim();
+      }
+    }
+  }
+
+  return "";
+}
+
 module.exports = async (req, res) => {
-  if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed" });
+  const apiKey = (process.env.OPENAI_API_KEY || "").trim();
+
+  if (req.method === "GET") {
+    res.status(200).json({
+      ok: true,
+      configured: isApiKeyConfigured(apiKey)
+    });
     return;
   }
 
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) {
+  if (req.method !== "POST") {
+    res.status(405).json({ error: "Method not allowed." });
+    return;
+  }
+
+  if (!isApiKeyConfigured(apiKey)) {
     res.status(500).json({ error: "Missing OPENAI_API_KEY on the server." });
     return;
   }
@@ -64,7 +99,7 @@ module.exports = async (req, res) => {
       })
     });
 
-    const data = await response.json();
+    const data = await response.json().catch(() => ({}));
 
     if (!response.ok) {
       res.status(response.status).json({
@@ -74,7 +109,7 @@ module.exports = async (req, res) => {
     }
 
     res.status(200).json({
-      reply: data.output_text || "I am here to help with school-related questions."
+      reply: extractReplyText(data) || "I am here to help with school-related questions."
     });
   } catch (error) {
     res.status(500).json({

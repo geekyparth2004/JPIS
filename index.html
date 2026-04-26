@@ -526,46 +526,66 @@
     <div class="chatbot-shell" v-scope="{
         isOpen: false,
         loading: false,
+        serviceStatus: 'checking',
+        statusMessage: 'Checking ChatGPT connection...',
         chatEndpoint: window.location.protocol === 'file:' ? 'http://127.0.0.1:8000/api/chat' : '/api/chat',
+        healthEndpoint: window.location.protocol === 'file:' ? 'http://127.0.0.1:8000/api/health' : '/api/chat',
         question: '',
         messages: [
-            { sender: 'assistant', text: 'Hello parents, how may I help you?' }
+            { sender: 'assistant', text: 'Hello parents, how may I help you? I answer using ChatGPT when the school assistant service is connected.' }
         ],
-        getLocalReply(question) {
-            const text = question.toLowerCase();
-
-            if (text.includes('nursery') || text.includes('admission') || text.includes('admissions')) {
-                return 'Yes, parents can ask about nursery admission here. Please share the child\'s class interest, and our admissions team can guide you on eligibility, documents, and the admission process.';
+        getConnectionHelp() {
+            if (window.location.protocol === 'file:') {
+                return 'Start `python server.py` from the project folder and make sure `.env` contains `OPENAI_API_KEY`.';
             }
 
-            if (text.includes('fee') || text.includes('fees')) {
-                return 'For fee details, please contact the school office directly so you receive the latest and most accurate information.';
-            }
+            return 'Check that the `/api/chat` backend is deployed and that `OPENAI_API_KEY` is set on the server.';
+        },
+        setServiceStatus(status, message) {
+            this.serviceStatus = status;
+            this.statusMessage = message;
+        },
+        async checkAssistantAvailability() {
+            this.setServiceStatus('checking', 'Checking ChatGPT connection...');
 
-            if (text.includes('class') || text.includes('academics') || text.includes('curriculum')) {
-                return 'We can help with information about classes, academics, and learning support. Please type the class or topic you want to know about.';
-            }
+            try {
+                const response = await fetch(this.healthEndpoint, {
+                    method: 'GET',
+                    cache: 'no-store'
+                });
 
-            if (text.includes('visit') || text.includes('tour') || text.includes('campus')) {
-                return 'Parents can ask for a campus visit or school tour. Please contact the school office to confirm available timings.';
-            }
+                const data = await this.readAssistantResponse(response);
 
-            if (text.includes('contact') || text.includes('phone') || text.includes('email')) {
-                return 'Please use the Contact page to reach the school office for direct help with admissions and parent queries.';
-            }
+                if (!response.ok) {
+                    throw new Error(data.error || 'The assistant health check failed.');
+                }
 
-            return 'Thank you for your question. I can help with admissions, nursery classes, fees, academics, and campus visits. Please share a little more detail so I can guide you better.';
+                if (!data.configured) {
+                    throw new Error('OpenAI is not configured yet. ' + this.getConnectionHelp());
+                }
+
+                this.setServiceStatus('online', 'Powered by ChatGPT');
+            } catch (err) {
+                const reason = err instanceof Error ? err.message : 'Unable to reach the assistant service.';
+                this.setServiceStatus('offline', reason);
+            }
+        },
+        async toggleChat() {
+            this.isOpen = !this.isOpen;
+            if (this.isOpen) {
+                await this.checkAssistantAvailability();
+            }
         },
         async readAssistantResponse(response) {
             const rawText = await response.text();
             if (!rawText) {
-                throw new Error('The assistant service did not return a response.');
+                return {};
             }
 
             try {
                 return JSON.parse(rawText);
             } catch (parseError) {
-                throw new Error('The assistant service returned an invalid response.');
+                throw new Error(rawText);
             }
         },
         async sendMessage() {
@@ -576,6 +596,14 @@
             this.loading = true;
 
             try {
+                if (this.serviceStatus !== 'online') {
+                    await this.checkAssistantAvailability();
+                }
+
+                if (this.serviceStatus !== 'online') {
+                    throw new Error(this.statusMessage);
+                }
+
                 const response = await fetch(this.chatEndpoint, {
                     method: 'POST',
                     headers: {
@@ -593,14 +621,17 @@
                     throw new Error(data.error || 'Unable to connect to the assistant right now.');
                 }
 
+                this.setServiceStatus('online', 'Powered by ChatGPT');
                 this.messages.push({
                     sender: 'assistant',
                     text: data.reply || 'I am here to help with admissions, academics, and campus information.'
                 });
             } catch (err) {
+                const reason = err instanceof Error ? err.message : 'Unable to connect to ChatGPT right now.';
+                this.setServiceStatus('offline', reason);
                 this.messages.push({
                     sender: 'assistant',
-                    text: this.getLocalReply(value)
+                    text: 'I could not reach the ChatGPT-backed assistant right now. ' + reason
                 });
             } finally {
                 this.loading = false;
@@ -615,7 +646,7 @@
                     </div>
                     <div>
                         <p class="font-bold text-base">AI Assistant</p>
-                        <p class="text-xs text-blue-100">Online for parent support</p>
+                        <p class="text-xs text-blue-100" v-text="serviceStatus === 'online' ? 'Powered by ChatGPT' : serviceStatus === 'checking' ? 'Checking connection...' : 'ChatGPT unavailable'"></p>
                     </div>
                 </div>
             </div>
@@ -649,8 +680,9 @@
                 <div class="chatbot-status" v-if="loading">
                     AI assistant is writing a reply...
                 </div>
+                <div class="chatbot-status" v-if="!loading" v-text="statusMessage"></div>
                 <div class="text-xs text-[var(--text-muted)]">
-                    Parents can type a question and get AI help about the school.
+                    Parents can type a question and get school help backed by ChatGPT when the service is online.
                 </div>
             </div>
         </div>
@@ -658,7 +690,7 @@
         <button
             type="button"
             class="chatbot-trigger flex items-center justify-center transition-transform duration-200 hover:scale-105 active:scale-95"
-            @click="isOpen = !isOpen"
+            @click="toggleChat"
             :aria-expanded="isOpen ? 'true' : 'false'"
             aria-label="Open AI assistant"
         >

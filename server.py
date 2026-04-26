@@ -36,6 +36,9 @@ def load_env_file():
             os.environ[key] = value
 
 
+load_env_file()
+
+
 def build_input(history, message):
     items = [
         {
@@ -68,8 +71,41 @@ def build_input(history, message):
     return items
 
 
+def is_api_key_configured(api_key):
+    return bool(
+        api_key
+        and api_key.startswith("sk-")
+        and "replace_with_your_new_openai_api_key" not in api_key
+    )
+
+
+def extract_reply_text(data):
+    output_text = str(data.get("output_text", "")).strip()
+    if output_text:
+        return output_text
+
+    output_items = data.get("output", [])
+    if not isinstance(output_items, list):
+        return ""
+
+    for item in output_items:
+        if not isinstance(item, dict):
+            continue
+        contents = item.get("content", [])
+        if not isinstance(contents, list):
+            continue
+        for content in contents:
+            if not isinstance(content, dict):
+                continue
+            text = str(content.get("text", "")).strip()
+            if text:
+                return text
+
+    return ""
+
+
 class ChatHandler(BaseHTTPRequestHandler):
-    server_version = "JPISChatServer/1.0"
+    server_version = "JPISChatServer/1.1"
 
     def do_OPTIONS(self):
         self.send_response(204)
@@ -81,6 +117,17 @@ class ChatHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/":
             self.serve_file("index.html")
+            return
+
+        if self.path == "/api/health":
+            api_key = os.environ.get("OPENAI_API_KEY", "").strip()
+            self.send_json(
+                200,
+                {
+                    "ok": True,
+                    "configured": is_api_key_configured(api_key),
+                },
+            )
             return
 
         path = self.path.lstrip("/")
@@ -108,7 +155,7 @@ class ChatHandler(BaseHTTPRequestHandler):
             return
 
         api_key = os.environ.get("OPENAI_API_KEY", "").strip()
-        if not api_key:
+        if not is_api_key_configured(api_key):
             self.send_json(500, {"error": "Missing OPENAI_API_KEY in .env."})
             return
 
@@ -147,7 +194,7 @@ class ChatHandler(BaseHTTPRequestHandler):
         self.send_json(
             200,
             {
-                "reply": data.get("output_text")
+                "reply": extract_reply_text(data)
                 or "I am here to help with school-related questions."
             },
         )
@@ -179,7 +226,6 @@ class ChatHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    load_env_file()
     server = ThreadingHTTPServer((HOST, PORT), ChatHandler)
     print(f"JPIS server running at http://{HOST}:{PORT}")
     try:
