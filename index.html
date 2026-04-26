@@ -561,6 +561,10 @@
             return candidates;
         },
         getConnectionHelp() {
+            if (window.location.hostname.endsWith('vercel.app')) {
+                return 'This Vercel deployment needs the `OPENAI_API_KEY` environment variable in Project Settings, then a redeploy.';
+            }
+
             return 'Either configure `OPENAI_API_KEY` on the deployed backend, or start `npm start` locally so the chatbot can fall back to your local server.';
         },
         setServiceStatus(status, message) {
