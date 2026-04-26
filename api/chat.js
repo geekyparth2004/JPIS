@@ -1,0 +1,84 @@
+const SCHOOL_CONTEXT = `
+You are the parent-support AI assistant for J.P. International School.
+Answer in a warm, clear, concise way.
+Focus on helping parents with admissions, academics, facilities, fees, timings, contact details, and campus visits.
+If exact information is not available, say that politely and ask the parent to contact the school office.
+Do not invent fee amounts, policies, dates, or legal claims.
+Keep answers short and practical.
+`;
+
+function buildInput(history, message) {
+  const items = [
+    {
+      role: "system",
+      content: [{ type: "input_text", text: SCHOOL_CONTEXT.trim() }]
+    }
+  ];
+
+  const recentHistory = Array.isArray(history) ? history.slice(-8) : [];
+
+  for (const entry of recentHistory) {
+    if (!entry || !entry.text || !entry.sender) continue;
+    items.push({
+      role: entry.sender === "user" ? "user" : "assistant",
+      content: [{ type: "input_text", text: String(entry.text) }]
+    });
+  }
+
+  items.push({
+    role: "user",
+    content: [{ type: "input_text", text: String(message || "") }]
+  });
+
+  return items;
+}
+
+module.exports = async (req, res) => {
+  if (req.method !== "POST") {
+    res.status(405).json({ error: "Method not allowed" });
+    return;
+  }
+
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    res.status(500).json({ error: "Missing OPENAI_API_KEY on the server." });
+    return;
+  }
+
+  const { message, history } = req.body || {};
+  if (!message || !String(message).trim()) {
+    res.status(400).json({ error: "Message is required." });
+    return;
+  }
+
+  try {
+    const response = await fetch("https://api.openai.com/v1/responses", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: "gpt-4.1-mini",
+        input: buildInput(history, message)
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      res.status(response.status).json({
+        error: data.error?.message || "OpenAI request failed."
+      });
+      return;
+    }
+
+    res.status(200).json({
+      reply: data.output_text || "I am here to help with school-related questions."
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server error while contacting OpenAI."
+    });
+  }
+};

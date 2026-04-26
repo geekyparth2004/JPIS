@@ -83,6 +83,75 @@
             box-shadow: 0 10px 40px -10px rgba(1, 37, 76, 0.1);
         }
 
+        .chatbot-shell {
+            position: fixed;
+            right: 1.25rem;
+            bottom: 1.25rem;
+            z-index: 60;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.85rem;
+        }
+
+        .chatbot-panel {
+            width: min(22rem, calc(100vw - 2rem));
+            background: #ffffff;
+            border: 1px solid rgba(1, 37, 76, 0.12);
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 55px rgba(1, 37, 76, 0.18);
+            overflow: hidden;
+        }
+
+        .chatbot-messages {
+            max-height: 18rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .chatbot-bubble {
+            max-width: 85%;
+            border-radius: 1.25rem 1.25rem 1.25rem 0.35rem;
+            background: #eef5ff;
+            color: var(--primary);
+        }
+
+        .chatbot-bubble-user {
+            max-width: 85%;
+            margin-left: auto;
+            border-radius: 1.25rem 1.25rem 0.35rem 1.25rem;
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .chatbot-input {
+            border: 1px solid rgba(1, 37, 76, 0.14);
+            border-radius: 9999px;
+            color: var(--primary);
+        }
+
+        .chatbot-input:focus {
+            outline: none;
+            border-color: rgba(1, 37, 76, 0.45);
+            box-shadow: 0 0 0 3px rgba(1, 37, 76, 0.08);
+        }
+
+        .chatbot-status {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .chatbot-trigger {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, var(--primary), #0a4b8d);
+            color: #ffffff;
+            box-shadow: 0 16px 30px rgba(1, 37, 76, 0.28);
+        }
+
         @media (max-width: 767px) {
             .btn-text {
                 font-size: 16px;
@@ -90,6 +159,10 @@
             }
             .hero-shape {
                 border-radius: 2rem;
+            }
+            .chatbot-shell {
+                right: 1rem;
+                bottom: 1rem;
             }
         }
 </style>
@@ -448,6 +521,149 @@
 
         <!-- Footer -->
         <sd-component componentId='a09ad959-168a-4091-a2ee-1dc9421719be' name='Footer'></sd-component>
+    </div>
+
+    <div class="chatbot-shell" v-scope="{
+        isOpen: false,
+        loading: false,
+        chatEndpoint: window.location.protocol === 'file:' ? 'http://127.0.0.1:8000/api/chat' : '/api/chat',
+        question: '',
+        messages: [
+            { sender: 'assistant', text: 'Hello parents, how may I help you?' }
+        ],
+        getLocalReply(question) {
+            const text = question.toLowerCase();
+
+            if (text.includes('nursery') || text.includes('admission') || text.includes('admissions')) {
+                return 'Yes, parents can ask about nursery admission here. Please share the child\'s class interest, and our admissions team can guide you on eligibility, documents, and the admission process.';
+            }
+
+            if (text.includes('fee') || text.includes('fees')) {
+                return 'For fee details, please contact the school office directly so you receive the latest and most accurate information.';
+            }
+
+            if (text.includes('class') || text.includes('academics') || text.includes('curriculum')) {
+                return 'We can help with information about classes, academics, and learning support. Please type the class or topic you want to know about.';
+            }
+
+            if (text.includes('visit') || text.includes('tour') || text.includes('campus')) {
+                return 'Parents can ask for a campus visit or school tour. Please contact the school office to confirm available timings.';
+            }
+
+            if (text.includes('contact') || text.includes('phone') || text.includes('email')) {
+                return 'Please use the Contact page to reach the school office for direct help with admissions and parent queries.';
+            }
+
+            return 'Thank you for your question. I can help with admissions, nursery classes, fees, academics, and campus visits. Please share a little more detail so I can guide you better.';
+        },
+        async readAssistantResponse(response) {
+            const rawText = await response.text();
+            if (!rawText) {
+                throw new Error('The assistant service did not return a response.');
+            }
+
+            try {
+                return JSON.parse(rawText);
+            } catch (parseError) {
+                throw new Error('The assistant service returned an invalid response.');
+            }
+        },
+        async sendMessage() {
+            const value = this.question.trim();
+            if (!value || this.loading) return;
+            this.messages.push({ sender: 'user', text: value });
+            this.question = '';
+            this.loading = true;
+
+            try {
+                const response = await fetch(this.chatEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: value,
+                        history: this.messages
+                    })
+                });
+
+                const data = await this.readAssistantResponse(response);
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Unable to connect to the assistant right now.');
+                }
+
+                this.messages.push({
+                    sender: 'assistant',
+                    text: data.reply || 'I am here to help with admissions, academics, and campus information.'
+                });
+            } catch (err) {
+                this.messages.push({
+                    sender: 'assistant',
+                    text: this.getLocalReply(value)
+                });
+            } finally {
+                this.loading = false;
+            }
+        }
+    }">
+        <div v-cloak v-show="isOpen" class="chatbot-panel">
+            <div class="bg-[var(--primary)] px-5 py-4 text-white">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-white/15 flex items-center justify-center">
+                        <iconify-icon icon="lucide:bot" width="24"></iconify-icon>
+                    </div>
+                    <div>
+                        <p class="font-bold text-base">AI Assistant</p>
+                        <p class="text-xs text-blue-100">Online for parent support</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-5 bg-white space-y-4">
+                <div class="chatbot-messages">
+                    <template v-for="(message, index) in messages" :key="index">
+                        <div
+                            class="px-4 py-3 text-sm leading-relaxed"
+                            :class="message.sender === 'assistant' ? 'chatbot-bubble' : 'chatbot-bubble-user'"
+                            v-text="message.text"
+                        ></div>
+                    </template>
+                </div>
+                <form class="flex items-center gap-2" @submit.prevent="sendMessage">
+                    <input
+                        type="text"
+                        class="chatbot-input flex-1 px-4 py-3 text-sm"
+                        placeholder="Ask about admissions, fees, or classes"
+                        v-model="question"
+                        :disabled="loading"
+                    >
+                    <button
+                        type="submit"
+                        class="w-11 h-11 rounded-full bg-[var(--accent)] text-[var(--primary)] flex items-center justify-center hover:brightness-95 transition disabled:opacity-60"
+                        aria-label="Send question"
+                        :disabled="loading"
+                    >
+                        <iconify-icon :icon="loading ? 'lucide:loader-circle' : 'lucide:send-horizontal'" width="20" :class="loading ? 'animate-spin' : ''"></iconify-icon>
+                    </button>
+                </form>
+                <div class="chatbot-status" v-if="loading">
+                    AI assistant is writing a reply...
+                </div>
+                <div class="text-xs text-[var(--text-muted)]">
+                    Parents can type a question and get AI help about the school.
+                </div>
+            </div>
+        </div>
+
+        <button
+            type="button"
+            class="chatbot-trigger flex items-center justify-center transition-transform duration-200 hover:scale-105 active:scale-95"
+            @click="isOpen = !isOpen"
+            :aria-expanded="isOpen ? 'true' : 'false'"
+            aria-label="Open AI assistant"
+        >
+            <iconify-icon :icon="isOpen ? 'lucide:x' : 'lucide:bot'" width="28"></iconify-icon>
+        </button>
     </div>
 
     <script>
