@@ -1,4 +1,9 @@
-const { loadServerConfig, isApiKeyConfigured } = require("../config");
+const {
+  getOpenAIApiKey,
+  getOpenAIAuthErrorMessage,
+  loadServerConfig,
+  isApiKeyConfigured
+} = require("../config");
 
 loadServerConfig();
 
@@ -56,7 +61,7 @@ function extractReplyText(data) {
 }
 
 module.exports = async (req, res) => {
-  const apiKey = (process.env.OPENAI_API_KEY || "").trim();
+  const apiKey = getOpenAIApiKey();
 
   if (req.method === "GET") {
     res.status(200).json({
@@ -99,7 +104,7 @@ module.exports = async (req, res) => {
 
     if (!response.ok) {
       res.status(response.status).json({
-        error: data.error?.message || "OpenAI request failed."
+        error: getOpenAIAuthErrorMessage(data.error?.message)
       });
       return;
     }

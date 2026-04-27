@@ -1,7 +1,13 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const { loadServerConfig, isApiKeyConfigured, RUNTIME_CONFIG_FILE } = require("./config");
+const {
+  getOpenAIApiKey,
+  getOpenAIAuthErrorMessage,
+  loadServerConfig,
+  isApiKeyConfigured,
+  RUNTIME_CONFIG_FILE
+} = require("./config");
 
 const HOST = process.env.HOST || "0.0.0.0";
 const PORT = Number(process.env.PORT || 3000);
@@ -132,7 +138,7 @@ function serveFile(req, res, relativePath) {
 }
 
 async function handleChat(req, res) {
-  const apiKey = (process.env.OPENAI_API_KEY || "").trim();
+  const apiKey = getOpenAIApiKey();
   if (!isApiKeyConfigured(apiKey)) {
     sendJson(res, 500, { error: "Missing OPENAI_API_KEY on the server." });
     return;
@@ -174,7 +180,7 @@ async function handleChat(req, res) {
     const data = await response.json().catch(() => ({}));
     if (!response.ok) {
       sendJson(res, response.status, {
-        error: data.error?.message || "OpenAI request failed."
+        error: getOpenAIAuthErrorMessage(data.error?.message)
       });
       return;
     }
@@ -203,7 +209,7 @@ const server = http.createServer(async (req, res) => {
   if (req.method === "GET" && url.pathname === "/api/health") {
     sendJson(res, 200, {
       ok: true,
-      configured: isApiKeyConfigured((process.env.OPENAI_API_KEY || "").trim())
+      configured: isApiKeyConfigured(getOpenAIApiKey())
     });
     return;
   }

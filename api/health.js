@@ -1,4 +1,4 @@
-const { loadServerConfig, isApiKeyConfigured } = require("../config");
+const { getOpenAIApiKey, loadServerConfig, isApiKeyConfigured } = require("../config");
 
 loadServerConfig();
 
@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const apiKey = (process.env.OPENAI_API_KEY || "").trim();
+  const apiKey = getOpenAIApiKey();
   res.status(200).json({
     ok: true,
     configured: isApiKeyConfigured(apiKey)
