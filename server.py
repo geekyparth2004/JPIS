@@ -43,7 +43,7 @@ def build_input(history, message):
     items = [
         {
             "role": "developer",
-            "content": [{"type": "input_text", "text": SCHOOL_CONTEXT}],
+            "content": SCHOOL_CONTEXT,
         }
     ]
 
@@ -58,14 +58,14 @@ def build_input(history, message):
         items.append(
             {
                 "role": sender,
-                "content": [{"type": "input_text", "text": text}],
+                "content": text,
             }
         )
 
     items.append(
         {
             "role": "user",
-            "content": [{"type": "input_text", "text": str(message).strip()}],
+            "content": str(message).strip(),
         }
     )
     return items
@@ -80,27 +80,13 @@ def is_api_key_configured(api_key):
 
 
 def extract_reply_text(data):
-    output_text = str(data.get("output_text", "")).strip()
-    if output_text:
-        return output_text
-
-    output_items = data.get("output", [])
-    if not isinstance(output_items, list):
-        return ""
-
-    for item in output_items:
-        if not isinstance(item, dict):
-            continue
-        contents = item.get("content", [])
-        if not isinstance(contents, list):
-            continue
-        for content in contents:
-            if not isinstance(content, dict):
-                continue
-            text = str(content.get("text", "")).strip()
-            if text:
-                return text
-
+    choices = data.get("choices", [])
+    if isinstance(choices, list) and len(choices) > 0:
+        message = choices[0].get("message", {})
+        if isinstance(message, dict):
+            content = message.get("content", "")
+            if content:
+                return str(content).strip()
     return ""
 
 
@@ -160,12 +146,12 @@ class ChatHandler(BaseHTTPRequestHandler):
             return
 
         request_body = {
-            "model": "gpt-4.1-mini",
-            "input": build_input(history, message),
+            "model": "gpt-4o-mini",
+            "messages": build_input(history, message),
         }
 
         req = request.Request(
-            "https://api.openai.com/v1/responses",
+            "https://api.openai.com/v1/chat/completions",
             data=json.dumps(request_body).encode("utf-8"),
             headers={
                 "Content-Type": "application/json",

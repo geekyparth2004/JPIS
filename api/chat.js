@@ -20,7 +20,7 @@ function buildInput(history, message) {
   const items = [
     {
       role: "developer",
-      content: [{ type: "input_text", text: SCHOOL_CONTEXT.trim() }]
+      content: SCHOOL_CONTEXT.trim()
     }
   ];
 
@@ -30,33 +30,22 @@ function buildInput(history, message) {
     if (!entry || !entry.text || !entry.sender) continue;
     items.push({
       role: entry.sender === "user" ? "user" : "assistant",
-      content: [{ type: "input_text", text: String(entry.text) }]
+      content: String(entry.text)
     });
   }
 
   items.push({
     role: "user",
-    content: [{ type: "input_text", text: String(message || "") }]
+    content: String(message || "")
   });
 
   return items;
 }
 
 function extractReplyText(data) {
-  if (typeof data?.output_text === "string" && data.output_text.trim()) {
-    return data.output_text.trim();
+  if (data?.choices?.[0]?.message?.content) {
+    return data.choices[0].message.content.trim();
   }
-
-  const outputItems = Array.isArray(data?.output) ? data.output : [];
-  for (const item of outputItems) {
-    const contents = Array.isArray(item?.content) ? item.content : [];
-    for (const content of contents) {
-      if (typeof content?.text === "string" && content.text.trim()) {
-        return content.text.trim();
-      }
-    }
-  }
-
   return "";
 }
 
@@ -88,15 +77,15 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const response = await fetch("https://api.openai.com/v1/responses", {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: "gpt-4.1-mini",
-        input: buildInput(history, message)
+        model: "gpt-4o-mini",
+        messages: buildInput(history, message)
       })
     });
 
