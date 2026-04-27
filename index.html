@@ -527,13 +527,13 @@
         isOpen: false,
         loading: false,
         serviceStatus: 'checking',
-        statusMessage: 'Checking ChatGPT connection...',
+        statusMessage: 'Checking connection...',
         chatEndpoint: '',
         healthEndpoint: '',
         backendLabel: '',
         question: '',
         messages: [
-            { sender: 'assistant', text: 'Hello parents, how may I help you? I answer using ChatGPT when the school assistant service is connected.' }
+            { sender: 'assistant', text: 'Hello parents, how may I help you? I am here to assist you with any questions.' }
         ],
         isLocalPreview() {
             return window.location.protocol === 'file:' || ['127.0.0.1', 'localhost'].includes(window.location.hostname);
@@ -596,7 +596,7 @@
                     this.healthEndpoint = candidate.health;
                     this.chatEndpoint = candidate.chat;
                     this.backendLabel = candidate.label;
-                    this.setServiceStatus('online', 'Powered by ChatGPT via ' + candidate.label + '.');
+                    this.setServiceStatus('online', 'Connected to ' + candidate.label + '.');
                     return;
                 } catch (err) {
                     const reason = err instanceof Error ? err.message : 'Unable to reach the assistant service.';
@@ -651,6 +651,9 @@
                     body: JSON.stringify({
                         message: value,
                         history: this.messages
+                    body: JSON.stringify({
+                        message: value,
+                        history: this.messages
                     })
                 });
 
@@ -660,17 +663,17 @@
                     throw new Error(data.error || 'Unable to connect to the assistant right now.');
                 }
 
-                this.setServiceStatus('online', 'Powered by ChatGPT via ' + (this.backendLabel || 'the connected backend') + '.');
+                this.setServiceStatus('online', 'Connected to ' + (this.backendLabel || 'the backend') + '.');
                 this.messages.push({
                     sender: 'assistant',
                     text: data.reply || 'I am here to help with admissions, academics, and campus information.'
                 });
             } catch (err) {
-                const reason = err instanceof Error ? err.message : 'Unable to connect to ChatGPT right now.';
+                const reason = err instanceof Error ? err.message : 'Unable to connect to the assistant right now.';
                 this.setServiceStatus('offline', reason);
                 this.messages.push({
                     sender: 'assistant',
-                    text: 'I could not reach the ChatGPT-backed assistant right now. ' + reason
+                    text: 'I could not reach the assistant right now. ' + reason
                 });
             } finally {
                 this.loading = false;
@@ -685,7 +688,7 @@
                     </div>
                     <div>
                         <p class="font-bold text-base">AI Assistant</p>
-                        <p class="text-xs text-blue-100" v-text="serviceStatus === 'online' ? 'Powered by ChatGPT' : serviceStatus === 'checking' ? 'Checking connection...' : 'ChatGPT unavailable'"></p>
+                        <p class="text-xs text-blue-100" v-text="serviceStatus === 'online' ? 'Online' : serviceStatus === 'checking' ? 'Checking connection...' : 'Assistant unavailable'"></p>
                     </div>
                 </div>
             </div>
@@ -720,9 +723,6 @@
                     AI assistant is writing a reply...
                 </div>
                 <div class="chatbot-status" v-if="!loading" v-text="statusMessage"></div>
-                <div class="text-xs text-[var(--text-muted)]">
-                    Parents can type a question and get school help backed by ChatGPT when the service is online.
-                </div>
             </div>
         </div>
 
