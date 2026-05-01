@@ -378,29 +378,54 @@
         </section>
 
         <!-- Leaders Messages Section -->
-        <section class="py-12 md:py-24 px-6 overflow-hidden">
+        <section class="py-12 md:py-24 px-6 overflow-hidden" v-scope="{ chairmanExpanded: false, principalExpanded: false }">
             <div class="max-w-7xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                     <!-- Chairman -->
                     <div class="reveal-up group relative">
                         <div class="absolute -inset-2 bg-gradient-to-r from-red-600 to-red-400 rounded-[3rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
                         <div class="relative bg-white rounded-[3rem] overflow-hidden border border-gray-100 card-shadow">
-                            <div class="h-64 overflow-hidden relative">
-                                <img src="./assets/chairman.jpg" alt="Chairman Message" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
-                                    <h3 class="text-2xl font-bold text-white">Message from Chairman</h3>
+                            <div class="h-80 md:h-[28rem] overflow-hidden relative bg-gradient-to-b from-red-50 to-white flex items-center justify-center">
+                                <img src="./assets/chairman.jpg" alt="Chairman Message" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
+                                    <h3 class="text-2xl font-bold text-white">Chairman's Message</h3>
                                 </div>
                             </div>
                             <div class="p-6 md:p-10 space-y-4">
                                 <p class="italic text-[18px] text-[var(--primary)] font-medium leading-relaxed">
-                                    "Our vision is to build a community of lifelong learners who are prepared for the challenges of the future."
+                                    Dear parents
                                 </p>
-                                <p class="text-[14px] text-[var(--text-muted)]">
-                                    Mr. R.K. Sharma believes in providing an educational framework that empowers every student to realize their full potential.
-                                </p>
-                                <a href="#" id="director-link" class="inline-flex items-center gap-2 text-[var(--primary)] font-bold hover:gap-4 transition-all">
-                                    Read More <iconify-icon icon="lucide:arrow-right"></iconify-icon>
-                                </a>
+                                <div class="space-y-4 text-[14px] text-[var(--text-muted)] leading-7">
+                                    <p>
+                                        Our vision is simple yet powerful: every child deserves an education that is <span class="font-semibold italic text-[var(--primary)]">inclusive, holistic, and future-ready</span>.
+                                    </p>
+                                    <div v-cloak v-show="chairmanExpanded" class="space-y-4">
+                                        <p>We are developing our school around four pillars:</p>
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li><span class="font-semibold text-[var(--primary)]">Inclusive Education</span> - A place where every learner, regardless of background or ability, feels seen, supported, and celebrated.</li>
+                                            <li><span class="font-semibold text-[var(--primary)]">Holistic Development</span> - Beyond marks, we nurture intellect, health, creativity, and emotional strength.</li>
+                                            <li><span class="font-semibold text-[var(--primary)]">Skill &amp; Vocational Education</span> - From AI to Information technology, we equip students with real-world skills that build confidence and livelihoods.</li>
+                                            <li><span class="font-semibold text-[var(--primary)]">Strong Value System</span> - Knowledge without character is incomplete. Integrity, respect, and service remain at the heart of everything we teach.</li>
+                                        </ul>
+                                        <p>
+                                            As Chairman, my commitment is to create a campus where tradition meets innovation, and where your child grows into a capable, compassionate citizen. Thank you for being part of our journey.
+                                        </p>
+                                        <div class="pt-2 text-[var(--primary)]">
+                                            <p class="font-semibold">Advocate Amit Chaudhary</p>
+                                            <p>Chairman</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    type="button"
+                                    id="director-link"
+                                    class="inline-flex items-center gap-2 text-[var(--primary)] font-bold hover:gap-4 transition-all"
+                                    @click="chairmanExpanded = !chairmanExpanded"
+                                    :aria-expanded="chairmanExpanded ? 'true' : 'false'"
+                                >
+                                    <span v-text="chairmanExpanded ? 'Read Less' : 'Read More'"></span>
+                                    <iconify-icon :icon="chairmanExpanded ? 'lucide:chevron-up' : 'lucide:arrow-right'"></iconify-icon>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -409,22 +434,49 @@
                     <div class="reveal-up group relative">
                         <div class="absolute -inset-2 bg-gradient-to-r from-green-600 to-green-400 rounded-[3rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
                         <div class="relative bg-white rounded-[3rem] overflow-hidden border border-gray-100 card-shadow">
-                            <div class="h-64 overflow-hidden relative">
-                                <img src="./assets/principal.jpg" alt="Principal Message" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
-                                    <h3 class="text-2xl font-bold text-white">Principal's Desk</h3>
+                            <div class="h-80 md:h-[28rem] overflow-hidden relative bg-gradient-to-b from-green-50 to-white flex items-center justify-center">
+                                <img src="./assets/principal.jpg" alt="Principal Message" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
+                                    <h3 class="text-2xl font-bold text-white">Principal's Message</h3>
                                 </div>
                             </div>
                             <div class="p-6 md:p-10 space-y-4">
                                 <p class="italic text-[18px] text-[var(--primary)] font-medium leading-relaxed">
-                                    "Education is the most powerful weapon which you can use to change the world."
+                                    Dear parents and well wishers
                                 </p>
-                                <p class="text-[14px] text-[var(--text-muted)]">
-                                    Our Principal focuses on academic rigor coupled with emotional intelligence to develop well-rounded global citizens.
-                                </p>
-                                <a href="#" id="principal-link" class="inline-flex items-center gap-2 text-[var(--primary)] font-bold hover:gap-4 transition-all">
-                                    Read More <iconify-icon icon="lucide:arrow-right"></iconify-icon>
-                                </a>
+                                <div class="space-y-4 text-[14px] text-[var(--text-muted)] leading-7">
+                                    <p>
+                                        J P International school was founded under the aegis of GL Educational Society on 15 April 2010 with the vision to provide an inclusive, holistic and value based education to children.
+                                    </p>
+                                    <p>
+                                        At JPIS every child is special. We always strive to provide a cohesive environment in the school be it morning assembly, sports activities, yoga classes, karate classes, and year-round events which are managed and organised by the students under the supervision of teachers, and we make sure that every child finds a space to express, compete, and grow.
+                                    </p>
+                                    <div v-cloak v-show="principalExpanded" class="space-y-4">
+                                        <p><span class="font-semibold text-[var(--primary)]">Academic Excellence:</span> Our students secured outstanding results in the recent Board Examinations, with a 100% pass rate and many scoring above 90%. This success reflects their hard work, your support at home, and our teachers' dedication in the classroom.</p>
+                                        <p><span class="font-semibold text-[var(--primary)]">Sports, Arts &amp; Expression:</span> From the cricket field to the stage, our children are exploring their talents. With regular coaching in athletics, football, and yoga, plus thriving clubs for music, art, and drama, we ensure every child finds a space to express, compete, and grow.</p>
+                                        <p><span class="font-semibold text-[var(--primary)]">Values That Last:</span> While we celebrate awards and ranks, our greatest achievement is seeing students who are disciplined, empathetic, and responsible. Morning assemblies, shram daan, plantation drive, and greater emphasis on value education are woven into daily life so that success is always paired with character.</p>
+                                        <p>
+                                            Thank you for trusting us with your child's most formative years. Together, we are not just chasing results, we are raising capable, creative, and compassionate individuals.
+                                        </p>
+                                        <p class="italic text-[var(--primary)]">"Educating minds, nurturing hearts."</p>
+                                        <div class="pt-2 text-[var(--primary)]">
+                                            <p class="font-semibold">Best regards</p>
+                                            <p class="font-semibold">Parul Singh</p>
+                                            <p>Principal</p>
+                                            <p>M.Com, M.A.Edu. B.Ed., PGDM</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    type="button"
+                                    id="principal-link"
+                                    class="inline-flex items-center gap-2 text-[var(--primary)] font-bold hover:gap-4 transition-all"
+                                    @click="principalExpanded = !principalExpanded"
+                                    :aria-expanded="principalExpanded ? 'true' : 'false'"
+                                >
+                                    <span v-text="principalExpanded ? 'Read Less' : 'Read More'"></span>
+                                    <iconify-icon :icon="principalExpanded ? 'lucide:chevron-up' : 'lucide:arrow-right'"></iconify-icon>
+                                </button>
                             </div>
                         </div>
                     </div>
