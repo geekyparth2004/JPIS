@@ -6,6 +6,7 @@
     <title>J.P. International School - Excellence in Education</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -152,6 +153,89 @@
             box-shadow: 0 16px 30px rgba(1, 37, 76, 0.28);
         }
 
+        .newsletter-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 70;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(1, 37, 76, 0.5);
+            backdrop-filter: blur(8px);
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .newsletter-modal-backdrop.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .newsletter-modal {
+            width: min(92vw, 54rem);
+            max-height: min(85vh, 46rem);
+            overflow: hidden;
+            border-radius: 2rem;
+            background: #ffffff;
+            box-shadow: 0 24px 70px rgba(1, 37, 76, 0.24);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsletter-preview {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 17rem;
+            height: min(42vh, 23rem);
+            padding: 1rem;
+            background: linear-gradient(180deg, #f8fbff 0%, #edf4fb 100%);
+        }
+
+        .newsletter-preview-frame {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(1, 37, 76, 0.08);
+            background: #ffffff;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .newsletter-preview canvas {
+            display: block;
+            max-width: none;
+            max-height: none;
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px -12px rgba(1, 37, 76, 0.18);
+            background: #ffffff;
+        }
+
+        .newsletter-preview-status {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-close {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(1, 37, 76, 0.12);
+            color: var(--primary);
+            background: #ffffff;
+        }
+
         @media (max-width: 767px) {
             .btn-text {
                 font-size: 16px;
@@ -164,6 +248,20 @@
                 right: 1rem;
                 bottom: 1rem;
             }
+
+            .newsletter-modal {
+                border-radius: 1.5rem;
+            }
+
+            .newsletter-preview {
+                min-height: 13rem;
+                height: 16rem;
+                padding: 0.75rem;
+            }
+
+            .newsletter-preview-frame {
+                padding: 0.4rem;
+            }
         }
 </style>
   <style>sd-component { display: block; }</style>
@@ -171,6 +269,39 @@
 </head>
 <body>
     <div class="min-h-screen bg-white relative">
+        <div id="newsletter-modal" class="newsletter-modal-backdrop hidden" aria-hidden="true">
+            <div class="newsletter-modal">
+                <div class="flex items-start justify-between gap-4 px-5 py-5 md:px-7 md:py-6 border-b border-gray-100">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-[0.3em] text-[var(--accent)]">April Newsletter</p>
+                        <h2 class="text-2xl md:text-3xl font-bold text-[var(--primary)] mt-2">April Newsletter</h2>
+                    </div>
+                    <button id="newsletter-close" type="button" class="newsletter-close inline-flex items-center justify-center shrink-0 hover:bg-gray-50 transition-colors" aria-label="Close newsletter popup">
+                        <iconify-icon icon="lucide:x" width="20"></iconify-icon>
+                    </button>
+                </div>
+                <div class="p-4 md:p-6 bg-slate-50 flex-1 min-h-0">
+                    <div class="newsletter-preview rounded-[1.5rem] card-shadow" aria-label="April Newsletter first page preview">
+                        <div id="newsletter-preview-frame" class="newsletter-preview-frame">
+                            <canvas id="newsletter-preview-canvas" class="hidden"></canvas>
+                            <div id="newsletter-preview-status" class="newsletter-preview-status">Loading the April newsletter preview...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end px-5 py-5 md:px-7 md:py-6 border-t border-gray-100 bg-white">
+                    <div class="flex flex-wrap gap-3">
+                        <a
+                            href="assets/Newsletter/APRIL%20NEWSLETTER%20JPIS.pdf"
+                            download="JPIS-April-Newsletter.pdf"
+                            class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[var(--primary)] text-white font-semibold hover:brightness-95 transition-colors"
+                        >
+                            Download PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Navigation bar -->
         <!-- component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
 <div v-scope="{ ...{&quot;activeItem&quot;:&quot;home&quot;,&quot;mobileMenuOpen&quot;:false,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;}, $emit() {} }">
@@ -831,6 +962,99 @@
     </div>
 
     <script>
+        const newsletterPdfUrl = 'assets/Newsletter/APRIL%20NEWSLETTER%20JPIS.pdf';
+        const newsletterModal = document.getElementById('newsletter-modal');
+        const newsletterCloseButton = document.getElementById('newsletter-close');
+        const newsletterPreviewCanvas = document.getElementById('newsletter-preview-canvas');
+        const newsletterPreviewStatus = document.getElementById('newsletter-preview-status');
+        const newsletterPreviewFrame = document.getElementById('newsletter-preview-frame');
+        let newsletterTimerId;
+        let newsletterPreviewPromise;
+
+        const renderNewsletterPreview = async () => {
+            if (newsletterPreviewPromise) {
+                return newsletterPreviewPromise;
+            }
+
+            newsletterPreviewPromise = (async () => {
+                if (!window.pdfjsLib || !newsletterPreviewCanvas || !newsletterPreviewStatus) {
+                    if (newsletterPreviewStatus) {
+                        newsletterPreviewStatus.textContent = 'Preview unavailable here. Use Read Newsletter or Download PDF.';
+                    }
+                    return;
+                }
+
+                try {
+                    window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                    const pdf = await window.pdfjsLib.getDocument(newsletterPdfUrl).promise;
+                    const page = await pdf.getPage(1);
+                    const unscaledViewport = page.getViewport({ scale: 1 });
+                    const hostWidth = Math.max((newsletterPreviewFrame?.clientWidth || 640) - 16, 260);
+                    const scale = (hostWidth / unscaledViewport.width) * 1.08;
+                    const viewport = page.getViewport({ scale });
+                    const pixelRatio = window.devicePixelRatio || 1;
+                    const context = newsletterPreviewCanvas.getContext('2d');
+
+                    newsletterPreviewCanvas.width = Math.floor(viewport.width * pixelRatio);
+                    newsletterPreviewCanvas.height = Math.floor(viewport.height * pixelRatio);
+                    newsletterPreviewCanvas.style.width = viewport.width + 'px';
+                    newsletterPreviewCanvas.style.height = viewport.height + 'px';
+
+                    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+                    await page.render({
+                        canvasContext: context,
+                        viewport
+                    }).promise;
+
+                    newsletterPreviewCanvas.classList.remove('hidden');
+                    newsletterPreviewStatus.classList.add('hidden');
+                } catch (error) {
+                    newsletterPreviewStatus.textContent = 'Preview unavailable here. Use Read Newsletter or Download PDF.';
+                }
+            })();
+
+            return newsletterPreviewPromise;
+        };
+
+        const hideNewsletterModal = () => {
+            if (!newsletterModal || newsletterModal.classList.contains('hidden')) {
+                return;
+            }
+
+            newsletterModal.classList.add('hidden');
+            newsletterModal.setAttribute('aria-hidden', 'true');
+
+            if (newsletterTimerId) {
+                window.clearTimeout(newsletterTimerId);
+                newsletterTimerId = undefined;
+            }
+        };
+
+        const showNewsletterModal = () => {
+            if (!newsletterModal) {
+                return;
+            }
+
+            newsletterModal.classList.remove('hidden');
+            newsletterModal.setAttribute('aria-hidden', 'false');
+            renderNewsletterPreview();
+            newsletterTimerId = window.setTimeout(hideNewsletterModal, 10000);
+        };
+
+        if (newsletterCloseButton) {
+            newsletterCloseButton.addEventListener('click', hideNewsletterModal);
+        }
+
+        if (newsletterModal) {
+            newsletterModal.addEventListener('click', (event) => {
+                if (event.target === newsletterModal) {
+                    hideNewsletterModal();
+                }
+            });
+        }
+
+        window.addEventListener('load', showNewsletterModal, { once: true });
+
         // Intersection Observer for reveal animations
         const observerOptions = {
             threshold: 0.1
