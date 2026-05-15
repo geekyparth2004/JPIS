@@ -354,7 +354,7 @@
                     <p class="text-[var(--text-muted)]">Please fill in the details below to initiate the admission process.</p>
                 </div>
 
-                <form class="space-y-8 md:space-y-12">
+                <form id="admission-form" class="space-y-8 md:space-y-12">
                     <!-- Section: Student Information -->
                     <div class="space-y-6">
                         <h3 class="text-xl font-bold text-[var(--primary)] flex items-center gap-2">
@@ -363,33 +363,33 @@
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Full Name of Student</label>
-                                <input type="text" placeholder="Enter student name" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                                <label for="student-name" class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Full Name of Student</label>
+                                <input id="student-name" name="studentName" type="text" placeholder="Enter student name" autocomplete="name" required class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
                             </div>
                             <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Date of Birth</label>
-                                <input type="date" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                                <label for="date-of-birth" class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Date of Birth</label>
+                                <input id="date-of-birth" name="dateOfBirth" type="date" required class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
                             </div>
                             <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Grade Applying For</label>
-                                <select class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
-                                    <option>Select Grade</option>
-                                    <option>Nursery</option>
-                                    <option>LKG</option>
-                                    <option>UKG</option>
-                                    <option>Grade 1 - 5</option>
-                                    <option>Grade 6 - 10</option>
-                                    <option>Grade 11 - 12</option>
+                                <label for="grade-applying-for" class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Grade Applying For</label>
+                                <select id="grade-applying-for" name="gradeApplyingFor" required class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                                    <option value="">Select Grade</option>
+                                    <option value="Nursery">Nursery</option>
+                                    <option value="LKG">LKG</option>
+                                    <option value="UKG">UKG</option>
+                                    <option value="Grade 1 - 5">Grade 1 - 5</option>
+                                    <option value="Grade 6 - 10">Grade 6 - 10</option>
+                                    <option value="Grade 11 - 12">Grade 11 - 12</option>
                                 </select>
                             </div>
                             <div class="space-y-2">
                                 <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Gender</label>
                                 <div class="flex gap-6 mt-3">
                                     <label class="flex items-center gap-2 cursor-pointer">
-                                        <input type="radio" name="gender" class="w-5 h-5 accent-[var(--primary)]"> <span>Male</span>
+                                        <input type="radio" name="gender" value="Male" required class="w-5 h-5 accent-[var(--primary)]"> <span>Male</span>
                                     </label>
                                     <label class="flex items-center gap-2 cursor-pointer">
-                                        <input type="radio" name="gender" class="w-5 h-5 accent-[var(--primary)]"> <span>Female</span>
+                                        <input type="radio" name="gender" value="Female" class="w-5 h-5 accent-[var(--primary)]"> <span>Female</span>
                                     </label>
                                 </div>
                             </div>
@@ -404,20 +404,20 @@
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Father's Name</label>
-                                <input type="text" placeholder="Full Name" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                                <label for="father-name" class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Father's Name</label>
+                                <input id="father-name" name="fatherName" type="text" placeholder="Full Name" autocomplete="name" required class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
                             </div>
                             <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Mother's Name</label>
-                                <input type="text" placeholder="Full Name" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                                <label for="mother-name" class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Mother's Name</label>
+                                <input id="mother-name" name="motherName" type="text" placeholder="Full Name" autocomplete="name" required class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
                             </div>
                             <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Contact Number</label>
-                                <input type="tel" placeholder="+91" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                                <label for="contact-number" class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Contact Number</label>
+                                <input id="contact-number" name="contactNumber" type="tel" placeholder="+91" autocomplete="tel" inputmode="tel" required class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
                             </div>
                             <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Email Address</label>
-                                <input type="email" placeholder="example@mail.com" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                                <label for="email-address" class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Email Address</label>
+                                <input id="email-address" name="emailAddress" type="email" placeholder="example@mail.com" autocomplete="email" required class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
                             </div>
                         </div>
                     </div>
@@ -429,21 +429,22 @@
                             Previous Schooling
                         </h3>
                         <div class="space-y-2">
-                            <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Last School Attended</label>
-                            <input type="text" placeholder="School name and location" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
+                            <label for="last-school-attended" class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Last School Attended</label>
+                            <input id="last-school-attended" name="lastSchoolAttended" type="text" placeholder="School name and location" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all">
                         </div>
                         <div class="space-y-2">
-                            <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Special Needs / Medical Conditions (If any)</label>
-                            <textarea rows="3" placeholder="Please describe any special requirements" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all"></textarea>
+                            <label for="medical-conditions" class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Special Needs / Medical Conditions (If any)</label>
+                            <textarea id="medical-conditions" name="medicalConditions" rows="3" placeholder="Please describe any special requirements" class="w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 input-focus transition-all"></textarea>
                         </div>
                     </div>
 
                     <!-- Agreement and Submit -->
                     <div class="pt-6 border-t border-gray-100">
-                        <label class="flex items-start gap-3 cursor-pointer group">
-                            <input type="checkbox" class="mt-1 w-5 h-5 accent-[var(--primary)] rounded">
+                        <label for="declaration-accepted" class="flex items-start gap-3 cursor-pointer group">
+                            <input id="declaration-accepted" name="declarationAccepted" value="yes" type="checkbox" required class="mt-1 w-5 h-5 accent-[var(--primary)] rounded">
                             <span class="text-sm text-[var(--text-muted)] group-hover:text-[var(--primary)] transition-colors">I hereby declare that the information provided is true to the best of my knowledge. I agree to abide by the school's rules and admission policies.</span>
                         </label>
+                        <div id="admission-form-status" class="hidden mt-6 rounded-2xl px-4 py-3 text-sm font-medium"></div>
                         <button type="submit" id="submit-admission-form" class="w-full mt-8 md:mt-10 bg-[var(--primary)] text-white p-5 md:p-6 rounded-2xl font-bold text-base md:text-xl uppercase tracking-widest hover:bg-opacity-90 hover:shadow-2xl transition-all active:scale-95">
                             Submit Registration
                         </button>
@@ -525,11 +526,133 @@
 
         document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
 
-        // Form logic placeholder
-        document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Registration successfully submitted! Our admission team will contact you shortly.');
-        });
+        const admissionForm = document.getElementById('admission-form');
+        const admissionFormStatus = document.getElementById('admission-form-status');
+        const admissionSubmitButton = document.getElementById('submit-admission-form');
+        const admissionSubmitButtonText = admissionSubmitButton ? admissionSubmitButton.textContent.trim() : 'Submit Registration';
+
+        function setAdmissionStatus(message, isError) {
+            if (!admissionFormStatus) return;
+            admissionFormStatus.textContent = message;
+            admissionFormStatus.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'border', 'border-red-100', 'bg-green-50', 'text-green-700', 'border-green-100');
+            admissionFormStatus.classList.add('border');
+
+            if (isError) {
+                admissionFormStatus.classList.add('bg-red-50', 'text-red-700', 'border-red-100');
+                return;
+            }
+
+            admissionFormStatus.classList.add('bg-green-50', 'text-green-700', 'border-green-100');
+        }
+
+        function buildAdmissionEndpointCandidates() {
+            const candidates = [];
+            const seen = new Set();
+            const addCandidate = (endpoint) => {
+                if (seen.has(endpoint)) return;
+                seen.add(endpoint);
+                candidates.push(endpoint);
+            };
+
+            if (window.location.protocol !== 'file:') {
+                addCandidate(new URL('/api/admissions', window.location.origin).toString());
+            }
+
+            addCandidate('http://127.0.0.1:3000/api/admissions');
+            addCandidate('http://localhost:3000/api/admissions');
+            addCandidate('http://127.0.0.1:8000/api/admissions');
+            addCandidate('http://localhost:8000/api/admissions');
+
+            return candidates;
+        }
+
+        async function readAdmissionResponse(response) {
+            const rawText = await response.text();
+            if (!rawText) {
+                return {};
+            }
+
+            try {
+                return JSON.parse(rawText);
+            } catch (error) {
+                return { error: rawText };
+            }
+        }
+
+        async function submitAdmission(payload) {
+            const endpoints = buildAdmissionEndpointCandidates();
+            let lastError = 'Unable to reach the admission server right now.';
+
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const data = await readAdmissionResponse(response);
+                    if (!response.ok) {
+                        const details = Array.isArray(data.details) && data.details.length > 0 ? ' ' + data.details[0] : '';
+                        throw new Error((data.error || 'Unable to submit the form.') + details);
+                    }
+
+                    return data;
+                } catch (error) {
+                    lastError = error instanceof Error ? error.message : lastError;
+                }
+            }
+
+            throw new Error(lastError);
+        }
+
+        if (admissionForm) {
+            admissionForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                if (!admissionForm.reportValidity()) {
+                    return;
+                }
+
+                const formData = new FormData(admissionForm);
+                const payload = {
+                    studentName: formData.get('studentName'),
+                    dateOfBirth: formData.get('dateOfBirth'),
+                    gradeApplyingFor: formData.get('gradeApplyingFor'),
+                    gender: formData.get('gender'),
+                    fatherName: formData.get('fatherName'),
+                    motherName: formData.get('motherName'),
+                    contactNumber: formData.get('contactNumber'),
+                    emailAddress: formData.get('emailAddress'),
+                    lastSchoolAttended: formData.get('lastSchoolAttended'),
+                    medicalConditions: formData.get('medicalConditions'),
+                    declarationAccepted: formData.get('declarationAccepted') === 'yes'
+                };
+
+                if (admissionSubmitButton) {
+                    admissionSubmitButton.disabled = true;
+                    admissionSubmitButton.textContent = 'Submitting...';
+                }
+
+                setAdmissionStatus('Submitting registration, please wait...', false);
+
+                try {
+                    await submitAdmission(payload);
+                    admissionForm.reset();
+                    setAdmissionStatus('Registration successfully submitted. Our admission team will contact you shortly.', false);
+                } catch (error) {
+                    const message = error instanceof Error ? error.message : 'Unable to submit the form right now.';
+                    setAdmissionStatus(message, true);
+                } finally {
+                    if (admissionSubmitButton) {
+                        admissionSubmitButton.disabled = false;
+                        admissionSubmitButton.textContent = admissionSubmitButtonText;
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>

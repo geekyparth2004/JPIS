@@ -6,3 +6,4 @@ node_modules/
 server.log
 server.err
 runtime-config.local.json
+data/

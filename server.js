@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const { DATA_DIR, saveAdmission } = require("./admission-store");
 const {
   getOpenAIApiKey,
   getOpenAIAuthErrorMessage,
@@ -92,6 +93,11 @@ function serveFile(req, res, relativePath) {
     return;
   }
 
+  if (targetPath === DATA_DIR || targetPath.startsWith(`${DATA_DIR}${path.sep}`)) {
+    sendJson(res, 403, { error: "Forbidden" });
+    return;
+  }
+
   const blockedFiles = new Set([
     ".env",
     ".env.local",
@@ -126,6 +132,20 @@ function serveFile(req, res, relativePath) {
   });
 }
 
+async function readJsonBody(req, res) {
+  let rawBody = "";
+  for await (const chunk of req) {
+    rawBody += chunk;
+  }
+
+  try {
+    return JSON.parse(rawBody || "{}");
+  } catch {
+    sendJson(res, 400, { error: "Invalid JSON body." });
+    return null;
+  }
+}
+
 async function handleChat(req, res) {
   const apiKey = getOpenAIApiKey();
   if (!isApiKeyConfigured(apiKey)) {
@@ -133,16 +153,8 @@ async function handleChat(req, res) {
     return;
   }
 
-  let rawBody = "";
-  for await (const chunk of req) {
-    rawBody += chunk;
-  }
-
-  let payload;
-  try {
-    payload = JSON.parse(rawBody || "{}");
-  } catch {
-    sendJson(res, 400, { error: "Invalid JSON body." });
+  const payload = await readJsonBody(req, res);
+  if (!payload) {
     return;
   }
 
@@ -182,6 +194,35 @@ async function handleChat(req, res) {
   }
 }
 
+async function handleAdmissions(req, res) {
+  const payload = await readJsonBody(req, res);
+  if (!payload) {
+    return;
+  }
+
+  try {
+    const savedRecord = await saveAdmission(payload);
+    sendJson(res, 201, {
+      ok: true,
+      admissionId: savedRecord.admissionId,
+      submittedAt: savedRecord.submittedAt,
+      message: "Registration successfully submitted."
+    });
+  } catch (error) {
+    if (error?.statusCode === 400) {
+      sendJson(res, 400, {
+        error: "Please review the admission form.",
+        details: error.details || []
+      });
+      return;
+    }
+
+    sendJson(res, 500, {
+      error: "Unable to save the admission form right now."
+    });
+  }
+}
+
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
 
@@ -205,6 +246,11 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method === "POST" && url.pathname === "/api/chat") {
     await handleChat(req, res);
+    return;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/admissions") {
+    await handleAdmissions(req, res);
     return;
   }
 
