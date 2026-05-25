@@ -19,6 +19,14 @@ def env(name: str, default: str = "") -> str:
     return os.environ.get(name, default).strip()
 
 
+def first_env(names: Iterable[str], default: str = "") -> str:
+    for name in names:
+        value = env(name)
+        if value:
+            return value
+    return default
+
+
 def sign(key: bytes, msg: str) -> bytes:
     return hmac.new(key, msg.encode("utf-8"), hashlib.sha256).digest()
 
@@ -113,28 +121,63 @@ def put_object(endpoint: str, bucket: str, key: str, access_key: str, secret_key
             raise RuntimeError(f"Upload failed for {key}: HTTP {response.status}")
 
 
+def put_object_via_api(api_base_url: str, account_id: str, bucket: str, key: str, api_token: str, content_type: str, payload: bytes) -> None:
+    object_key = quote(key, safe="/")
+    api_base = api_base_url.rstrip("/")
+    request = Request(
+        f"{api_base}/accounts/{account_id}/r2/buckets/{bucket}/objects/{object_key}",
+        data=payload,
+        method="PUT",
+        headers={
+            "Authorization": f"Bearer {api_token}",
+            "Content-Type": content_type,
+        },
+    )
+    with urlopen(request) as response:
+        if response.status not in (200, 201):
+            raise RuntimeError(f"Upload failed for {key}: HTTP {response.status}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Upload files or directories to Cloudflare R2.")
     parser.add_argument("paths", nargs="+", help="Files or directories to upload.")
     parser.add_argument("--bucket", default=env("R2_BUCKET_NAME"), help="R2 bucket name.")
     parser.add_argument("--endpoint", default=env("R2_ENDPOINT_URL"), help="R2 endpoint URL.")
+    parser.add_argument(
+        "--api-base-url",
+        default=env("CLOUDFLARE_API_BASE_URL", "https://api.cloudflare.com/client/v4"),
+        help="Cloudflare API base URL used with an API token fallback.",
+    )
     parser.add_argument("--prefix", default="", help="Optional object key prefix.")
     parser.add_argument("--public-base-url", default=env("R2_PUBLIC_BASE_URL"), help="Optional public base URL for printing.")
     args = parser.parse_args()
 
     access_key = env("R2_ACCESS_KEY_ID")
     secret_key = env("R2_SECRET_ACCESS_KEY")
-    if not access_key or not secret_key:
-        raise SystemExit("Missing R2_ACCESS_KEY_ID or R2_SECRET_ACCESS_KEY environment variables.")
-    if not args.bucket or not args.endpoint:
-        raise SystemExit("Missing --bucket/--endpoint or R2_BUCKET_NAME/R2_ENDPOINT_URL environment variables.")
+    api_token = first_env(["CLOUDFLARE_API_TOKEN", "CF_API_TOKEN"])
+    account_id = first_env(["R2_ACCOUNT_ID", "CLOUDFLARE_ACCOUNT_ID"])
 
-    path_objects = [Path(raw).resolve() for raw in args.paths]
+    use_s3_api = bool(access_key and secret_key)
+    use_cloudflare_api = bool(api_token and account_id)
+    if not use_s3_api and not use_cloudflare_api:
+        raise SystemExit(
+            "Missing upload credentials. Set either R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY or CLOUDFLARE_API_TOKEN/CLOUDFLARE_ACCOUNT_ID."
+        )
+    if not args.bucket:
+        raise SystemExit("Missing --bucket or R2_BUCKET_NAME environment variable.")
+    if use_s3_api and not args.endpoint:
+        raise SystemExit("Missing --endpoint or R2_ENDPOINT_URL environment variable for S3-compatible uploads.")
+
     upload_roots = []
-    for path_obj in path_objects:
+    for raw_path in args.paths:
+        original_input = Path(raw_path)
+        path_obj = original_input.resolve()
         if not path_obj.exists():
             raise SystemExit(f"Path not found: {path_obj}")
-        source_root = path_obj.parent if path_obj.is_file() else path_obj.parent
+        if path_obj.is_file() and not original_input.is_absolute():
+            source_root = Path.cwd().resolve()
+        else:
+            source_root = path_obj.parent
         upload_roots.append((path_obj, source_root))
 
     total = 0
@@ -144,7 +187,10 @@ def main() -> int:
             key = build_key(file_path, source_root, args.prefix)
             content_type = guess_content_type(file_path)
             payload = file_path.read_bytes()
-            put_object(args.endpoint, args.bucket, key, access_key, secret_key, content_type, payload)
+            if use_s3_api:
+                put_object(args.endpoint, args.bucket, key, access_key, secret_key, content_type, payload)
+            else:
+                put_object_via_api(args.api_base_url, account_id, args.bucket, key, api_token, content_type, payload)
             total += 1
             public_url = ""
             if args.public_base_url:
