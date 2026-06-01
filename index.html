@@ -273,26 +273,26 @@
             <div class="newsletter-modal">
                 <div class="flex items-start justify-between gap-4 px-5 py-5 md:px-7 md:py-6 border-b border-gray-100">
                     <div>
-                        <p class="text-xs font-bold uppercase tracking-[0.3em] text-[var(--accent)]">April Newsletter</p>
-                        <h2 class="text-2xl md:text-3xl font-bold text-[var(--primary)] mt-2">April Newsletter</h2>
+                        <p class="text-xs font-bold uppercase tracking-[0.3em] text-[var(--accent)]">May Newsletter</p>
+                        <h2 class="text-2xl md:text-3xl font-bold text-[var(--primary)] mt-2">May Newsletter</h2>
                     </div>
                     <button id="newsletter-close" type="button" class="newsletter-close inline-flex items-center justify-center shrink-0 hover:bg-gray-50 transition-colors" aria-label="Close newsletter popup">
                         <iconify-icon icon="lucide:x" width="20"></iconify-icon>
                     </button>
                 </div>
                 <div class="p-4 md:p-6 bg-slate-50 flex-1 min-h-0">
-                    <div class="newsletter-preview rounded-[1.5rem] card-shadow" aria-label="April Newsletter first page preview">
+                    <div class="newsletter-preview rounded-[1.5rem] card-shadow" aria-label="May Newsletter first page preview">
                         <div id="newsletter-preview-frame" class="newsletter-preview-frame">
                             <canvas id="newsletter-preview-canvas" class="hidden"></canvas>
-                            <div id="newsletter-preview-status" class="newsletter-preview-status">Loading the April newsletter preview...</div>
+                            <div id="newsletter-preview-status" class="newsletter-preview-status">Loading the May newsletter preview...</div>
                         </div>
                     </div>
                 </div>
                 <div class="flex justify-end px-5 py-5 md:px-7 md:py-6 border-t border-gray-100 bg-white">
                     <div class="flex flex-wrap gap-3">
                         <a
-                            href="assets/Newsletter/APRIL%20NEWSLETTER%20JPIS.pdf"
-                            download="JPIS-April-Newsletter.pdf"
+                            href="assets/Newsletter/MAY%20NEWSLETTER%20JPIS.pdf"
+                            download="JPIS-May-Newsletter.pdf"
                             class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[var(--primary)] text-white font-semibold hover:brightness-95 transition-colors"
                         >
                             Download PDF
@@ -894,7 +894,7 @@
     </div>
 
     <script>
-        const newsletterPdfUrl = 'assets/Newsletter/APRIL%20NEWSLETTER%20JPIS.pdf';
+        const newsletterPdfUrl = 'assets/Newsletter/MAY%20NEWSLETTER%20JPIS.pdf';
         const newsletterModal = document.getElementById('newsletter-modal');
         const newsletterCloseButton = document.getElementById('newsletter-close');
         const newsletterPreviewCanvas = document.getElementById('newsletter-preview-canvas');
@@ -967,10 +967,16 @@
                 return;
             }
 
+            // Only show when the website is loaded for the first time in the user's session
+            if (sessionStorage.getItem('newsletter_shown_may') === 'true') {
+                return;
+            }
+
             newsletterModal.classList.remove('hidden');
             newsletterModal.setAttribute('aria-hidden', 'false');
             renderNewsletterPreview();
-            newsletterTimerId = window.setTimeout(hideNewsletterModal, 10000);
+            sessionStorage.setItem('newsletter_shown_may', 'true');
+            newsletterTimerId = window.setTimeout(hideNewsletterModal, 5000);
         };
 
         if (newsletterCloseButton) {
@@ -985,7 +991,7 @@
             });
         }
 
-        window.addEventListener('load', showNewsletterModal, { once: true });
+        window.addEventListener('DOMContentLoaded', showNewsletterModal);
 
         // Intersection Observer for reveal animations
         const observerOptions = {
