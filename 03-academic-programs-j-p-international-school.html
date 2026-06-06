@@ -130,6 +130,10 @@
                 Admissions
                 <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'admissions' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
             </a>
+            <a href="04-integrated-navigation-for-admissions-page.html#fees-structure" :class="activeItem === 'fees' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Fees
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'fees' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
             <a :href="contactHref" :class="activeItem === 'contact' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
                 Contact
                 <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
@@ -157,6 +161,7 @@
             <a :href="legacyHref" @click="mobileMenuOpen = false" :class="activeItem === 'legacy' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">JPIS Legacy</a>
             <a :href="programsHref" @click="mobileMenuOpen = false" :class="activeItem === 'programs' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Programs</a>
             <a :href="admissionsHref" @click="mobileMenuOpen = false" :class="activeItem === 'admissions' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Admissions</a>
+            <a href="04-integrated-navigation-for-admissions-page.html#fees-structure" @click="mobileMenuOpen = false" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors text-[#01254c] hover:bg-gray-50 flex items-center gap-2"><iconify-icon icon="lucide:indian-rupee" width="16"></iconify-icon> Fees Structure</a>
             <a :href="contactHref" @click="mobileMenuOpen = false" :class="activeItem === 'contact' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Contact</a>
             <a :href="applyHref" @click="mobileMenuOpen = false" class="mt-2 inline-flex items-center justify-center bg-[#01254c] text-white px-6 py-3 rounded-2xl text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
         </div>

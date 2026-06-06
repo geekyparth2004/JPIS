@@ -6,6 +6,7 @@
     <title>Admissions | J.P. International School</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -130,6 +131,10 @@
                 Admissions
                 <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'admissions' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
             </a>
+            <a href="#fees-structure" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200 text-[#676767] hover:text-[#01254c]">
+                Fees
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300 w-0 group-hover:w-full"></span>
+            </a>
             <a :href="contactHref" :class="activeItem === 'contact' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
                 Contact
                 <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
@@ -157,6 +162,7 @@
             <a :href="legacyHref" @click="mobileMenuOpen = false" :class="activeItem === 'legacy' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">JPIS Legacy</a>
             <a :href="programsHref" @click="mobileMenuOpen = false" :class="activeItem === 'programs' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Programs</a>
             <a :href="admissionsHref" @click="mobileMenuOpen = false" :class="activeItem === 'admissions' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Admissions</a>
+            <a href="#fees-structure" @click="mobileMenuOpen = false" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors text-[#01254c] hover:bg-gray-50 flex items-center gap-2"><iconify-icon icon="lucide:indian-rupee" width="16"></iconify-icon> Fees Structure</a>
             <a :href="contactHref" @click="mobileMenuOpen = false" :class="activeItem === 'contact' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Contact</a>
             <a :href="applyHref" @click="mobileMenuOpen = false" class="mt-2 inline-flex items-center justify-center bg-[#01254c] text-white px-6 py-3 rounded-2xl text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
         </div>
@@ -180,9 +186,13 @@
                         <p class="text-base md:text-[18px] text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
                             Join a community dedicated to excellence. Our admission process is designed to be simple, transparent, and student-focused.
                         </p>
-                        <div class="flex justify-center pt-2 md:pt-4">
+                        <div class="flex flex-wrap justify-center gap-4 pt-2 md:pt-4">
                             <a href="#enrollment-form" id="hero-apply-now" class="bg-[var(--primary)] text-white px-8 py-4 md:px-12 md:py-5 rounded-2xl btn-text hover:bg-opacity-90 hover:shadow-xl transition-all active:scale-95 inline-block">
                                 Apply For Admission
+                            </a>
+                            <a href="#fees-structure" id="hero-view-fees" class="bg-white text-[var(--primary)] border-2 border-[var(--primary)] px-8 py-4 md:px-12 md:py-5 rounded-2xl btn-text hover:bg-gray-50 hover:shadow-xl transition-all active:scale-95 inline-flex items-center gap-2">
+                                <iconify-icon icon="lucide:indian-rupee" width="22"></iconify-icon>
+                                View Fees
                             </a>
                         </div>
                     </div>
@@ -341,6 +351,107 @@
                                 </div>
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fees Structure Section -->
+        <section id="fees-structure" class="py-12 md:py-24 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-10 md:mb-16 space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-[var(--accent)]/15 border border-[var(--accent)]/30 px-4 py-2 rounded-full mx-auto">
+                        <iconify-icon icon="lucide:indian-rupee" class="text-[var(--accent)]"></iconify-icon>
+                        <p class="text-xs font-bold uppercase tracking-widest text-[var(--primary)]">Session 2026-27</p>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary)]">Fees Structure</h2>
+                    <p class="text-[var(--text-muted)] text-base max-w-2xl mx-auto leading-relaxed">
+                        Transparent and affordable fee plans designed for quality education. Download the complete fee details below.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+                    <!-- Fee Highlights Cards -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="bg-gradient-to-br from-[var(--primary)] to-[#0a4b8d] p-8 rounded-[2.5rem] text-white space-y-6 card-shadow">
+                            <div class="w-14 h-14 bg-white/15 rounded-2xl flex items-center justify-center">
+                                <iconify-icon icon="lucide:wallet" width="28"></iconify-icon>
+                            </div>
+                            <h3 class="text-2xl font-bold">Why Our Fees?</h3>
+                            <ul class="space-y-4 text-sm text-blue-100 leading-relaxed">
+                                <li class="flex items-start gap-3">
+                                    <iconify-icon icon="lucide:check-circle-2" class="text-[var(--accent)] shrink-0 mt-0.5" width="18"></iconify-icon>
+                                    <span>Transparent fee structure with no hidden charges</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <iconify-icon icon="lucide:check-circle-2" class="text-[var(--accent)] shrink-0 mt-0.5" width="18"></iconify-icon>
+                                    <span>Flexible quarterly and annual payment options</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <iconify-icon icon="lucide:check-circle-2" class="text-[var(--accent)] shrink-0 mt-0.5" width="18"></iconify-icon>
+                                    <span>Includes smart classrooms, labs & sports facilities</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <iconify-icon icon="lucide:check-circle-2" class="text-[var(--accent)] shrink-0 mt-0.5" width="18"></iconify-icon>
+                                    <span>Sibling discount and scholarship programs available</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-[#fff8e8] p-6 rounded-3xl border border-yellow-100/80 card-shadow">
+                            <div class="flex items-center gap-3 mb-3">
+                                <iconify-icon icon="lucide:info" class="text-[var(--accent)]" width="20"></iconify-icon>
+                                <h4 class="font-bold text-[var(--primary)]">Need Assistance?</h4>
+                            </div>
+                            <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+                                For fee-related queries, please contact the accounts department at <strong class="text-[var(--primary)]">info@jpinternationalschool.in</strong> or visit the school office.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- PDF Preview & Download Card -->
+                    <div class="lg:col-span-3">
+                        <div class="bg-white rounded-[2.5rem] border border-gray-100 card-shadow overflow-hidden">
+                            <!-- PDF Preview Area -->
+                            <div class="bg-gradient-to-b from-slate-50 to-white p-4 md:p-6" style="min-height: 22rem;">
+                                <div id="fees-preview-frame" class="bg-white rounded-2xl border border-gray-100 overflow-hidden flex items-center justify-center" style="min-height: 20rem; max-height: 28rem;">
+                                    <canvas id="fees-preview-canvas" class="hidden" style="width: 100%; height: auto; display: block;"></canvas>
+                                    <div id="fees-preview-status" class="text-center text-[var(--text-muted)] text-sm p-8 space-y-3">
+                                        <iconify-icon icon="lucide:file-text" width="48" class="text-gray-300"></iconify-icon>
+                                        <p>Loading fees structure preview...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Download Actions -->
+                            <div class="px-6 py-6 md:px-8 md:py-8 border-t border-gray-100 bg-white">
+                                <div class="flex flex-col sm:flex-row items-center gap-4">
+                                    <a
+                                        href="assets/Fees%20Structure.pdf"
+                                        download="JPIS-Fees-Structure-2026-27.pdf"
+                                        id="fees-download-btn"
+                                        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[var(--primary)] text-white px-8 py-4 rounded-2xl font-bold text-base hover:shadow-xl hover:brightness-110 transition-all active:scale-95"
+                                    >
+                                        <iconify-icon icon="lucide:download" width="20"></iconify-icon>
+                                        Download Fees PDF
+                                    </a>
+                                    <a
+                                        href="assets/Fees%20Structure.pdf"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        id="fees-view-btn"
+                                        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gray-50 text-[var(--primary)] border border-gray-200 px-8 py-4 rounded-2xl font-bold text-base hover:bg-gray-100 transition-all active:scale-95"
+                                    >
+                                        <iconify-icon icon="lucide:external-link" width="20"></iconify-icon>
+                                        View Full PDF
+                                    </a>
+                                </div>
+                                <p class="text-xs text-[var(--text-muted)] mt-4 flex items-center gap-2">
+                                    <iconify-icon icon="lucide:shield-check" width="14" class="text-green-500"></iconify-icon>
+                                    Official fee structure for Academic Session 2026-27
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -653,6 +764,48 @@
                 }
             });
         }
+
+        // Fees Structure PDF Preview
+        (async function renderFeesPreview() {
+            const feesCanvas = document.getElementById('fees-preview-canvas');
+            const feesStatus = document.getElementById('fees-preview-status');
+            const feesFrame = document.getElementById('fees-preview-frame');
+
+            if (!window.pdfjsLib || !feesCanvas || !feesStatus) {
+                if (feesStatus) {
+                    feesStatus.innerHTML = '<iconify-icon icon="lucide:file-text" width="48" class="text-gray-300"></iconify-icon><p>Preview unavailable. Please download the PDF to view.</p>';
+                }
+                return;
+            }
+
+            try {
+                window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                const pdf = await window.pdfjsLib.getDocument('assets/Fees%20Structure.pdf').promise;
+                const page = await pdf.getPage(1);
+                const unscaledViewport = page.getViewport({ scale: 1 });
+                const hostWidth = Math.max((feesFrame?.clientWidth || 640) - 16, 260);
+                const scale = (hostWidth / unscaledViewport.width) * 1.08;
+                const viewport = page.getViewport({ scale });
+                const pixelRatio = window.devicePixelRatio || 1;
+                const context = feesCanvas.getContext('2d');
+
+                feesCanvas.width = Math.floor(viewport.width * pixelRatio);
+                feesCanvas.height = Math.floor(viewport.height * pixelRatio);
+                feesCanvas.style.width = viewport.width + 'px';
+                feesCanvas.style.height = viewport.height + 'px';
+
+                context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+                await page.render({
+                    canvasContext: context,
+                    viewport
+                }).promise;
+
+                feesCanvas.classList.remove('hidden');
+                feesStatus.classList.add('hidden');
+            } catch (error) {
+                feesStatus.innerHTML = '<iconify-icon icon="lucide:file-text" width="48" class="text-gray-300"></iconify-icon><p>Preview unavailable. Please download the PDF to view.</p>';
+            }
+        })();
     </script>
 </body>
 </html>
