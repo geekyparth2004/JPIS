@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - J.P. International School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #01254c;
+            --accent: #fdc236;
+            --text-primary: #242424;
+            --text-muted: #676767;
+            --error: #a2261f;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero-shape {
+            border-radius: 4rem;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0efff 100%);
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 40px -10px rgba(1, 37, 76, 0.1);
+        }
+
+        @media (max-width: 767px) {
+            .hero-shape {
+                border-radius: 2rem;
+            }
+        }
+
+        /* Gallery Styles */
+        .gallery-filter-btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: #f1f5f9;
+            color: var(--text-muted);
+        }
+        .gallery-filter-btn:hover {
+            background: #e2e8f0;
+            color: var(--primary);
+        }
+        .gallery-filter-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px -12px rgba(1, 37, 76, 0.2);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(1, 37, 76, 0.75) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-overlay span {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        .gallery-overlay .gallery-zoom {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            opacity: 0;
+            transition: all 0.3s ease 0.1s;
+        }
+        .gallery-item:hover .gallery-overlay .gallery-zoom {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .lightbox-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 80;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .lightbox-backdrop.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 1rem;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 9999px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.25);
+        }
+        .lightbox-nav.prev { left: 1.5rem; }
+        .lightbox-nav.next { right: 1.5rem; }
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            white-space: nowrap;
+        }
+        .lightbox-counter {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+    </style>
+  <style>sd-component { display: block; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+</head>
+<body>
+    <div class="min-h-screen bg-white relative">
+        <!-- Floating background accents -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#fdc23610] rounded-full blur-[100px] -z-10"></div>
+        <div class="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-[#01254c05] rounded-full blur-[80px] -z-10"></div>
+
+        <!-- Navigation Bar -->
+<div v-scope="{ ...{&quot;activeItem&quot;:&quot;gallery&quot;,&quot;mobileMenuOpen&quot;:false,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;galleryHref&quot;:&quot;06-photo-gallery.html&quot;}, $emit() {} }">
+<nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+        <a :href="logoHref" class="flex items-center gap-3">
+            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg" alt="JPIS Logo" class="h-14 w-auto object-contain">
+        </a>
+        
+        <div class="hidden md:flex items-center gap-8">
+            <a :href="homeHref" :class="activeItem === 'home' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Home
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'home' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="aboutHref" :class="activeItem === 'about' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                About
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'about' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="teamHref" :class="activeItem === 'team' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                About Team
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'team' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="legacyHref" :class="activeItem === 'legacy' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                JPIS Legacy
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'legacy' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="programsHref" :class="activeItem === 'programs' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Programs
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'programs' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="admissionsHref" :class="activeItem === 'admissions' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Admissions
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'admissions' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="galleryHref" :class="activeItem === 'gallery' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Gallery
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'gallery' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+            <a :href="contactHref" :class="activeItem === 'contact' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Contact
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            </a>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <a :href="applyHref" class="hidden sm:inline-flex bg-[#01254c] text-white px-6 py-3 rounded-full text-sm font-bold hover:shadow-lg transition-all active:scale-95 whitespace-nowrap">Apply Now</a>
+            <button
+                type="button"
+                class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-gray-200 text-[#01254c] hover:bg-gray-50 transition-colors"
+                @click="mobileMenuOpen = !mobileMenuOpen"
+                :aria-expanded="mobileMenuOpen ? 'true' : 'false'"
+                aria-label="Toggle navigation menu"
+            >
+                <iconify-icon :icon="mobileMenuOpen ? 'lucide:x' : 'lucide:menu'" width="22"></iconify-icon>
+            </button>
+        </div>
+    </div>
+    <div v-cloak v-show="mobileMenuOpen" class="md:hidden border-t border-gray-100 bg-white/95">
+        <div class="px-6 py-4 flex flex-col gap-2">
+            <a :href="homeHref" @click="mobileMenuOpen = false" :class="activeItem === 'home' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Home</a>
+            <a :href="aboutHref" @click="mobileMenuOpen = false" :class="activeItem === 'about' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">About</a>
+            <a :href="teamHref" @click="mobileMenuOpen = false" :class="activeItem === 'team' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">About Team</a>
+            <a :href="legacyHref" @click="mobileMenuOpen = false" :class="activeItem === 'legacy' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">JPIS Legacy</a>
+            <a :href="programsHref" @click="mobileMenuOpen = false" :class="activeItem === 'programs' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Programs</a>
+            <a :href="admissionsHref" @click="mobileMenuOpen = false" :class="activeItem === 'admissions' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Admissions</a>
+            <a :href="galleryHref" @click="mobileMenuOpen = false" :class="activeItem === 'gallery' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors flex items-center gap-2"><iconify-icon icon="lucide:image" width="16"></iconify-icon> Gallery</a>
+            <a :href="contactHref" @click="mobileMenuOpen = false" :class="activeItem === 'contact' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Contact</a>
+            <a :href="applyHref" @click="mobileMenuOpen = false" class="mt-2 inline-flex items-center justify-center bg-[#01254c] text-white px-6 py-3 rounded-2xl text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
+        </div>
+    </div>
+</nav>
+</div>
+
+        <section id="photo-gallery" class="py-24 md:py-32 px-6 bg-[#f8fafc]" v-scope="{
+            activeFilter: 'all',
+            lightboxOpen: false,
+            lightboxIndex: 0,
+            photos: [
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.08%20AM%20%281%29.jpeg', alt: 'Students watching a presentation in the library', category: 'learning', label: 'Library Presentation' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.08%20AM.jpeg', alt: 'Digital library session', category: 'learning', label: 'Digital Library' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.09%20AM%20%281%29.jpeg', alt: 'Lush green campus with biodiversity', category: 'campus', label: 'Green Campus' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.09%20AM.jpeg', alt: 'Students in outdoor training activity', category: 'sports', label: 'Outdoor Training' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.10%20AM%20%281%29.jpeg', alt: 'Students working on a science display', category: 'learning', label: 'Science Display' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.10%20AM%20%282%29.jpeg', alt: 'Computer lab session', category: 'learning', label: 'Computer Lab' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.10%20AM.jpeg', alt: 'Science activity discussion', category: 'learning', label: 'Science Activity' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.11%20AM%20%281%29.jpeg', alt: 'Students in computer lab', category: 'learning', label: 'Computer Learning' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.11%20AM%20%282%29.jpeg', alt: 'Sports activity on school ground', category: 'sports', label: 'Sports Ground' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.11%20AM.jpeg', alt: 'Computer lab learning', category: 'learning', label: 'Lab Session' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.12%20AM%20%281%29.jpeg', alt: 'Students racing on sports field', category: 'sports', label: 'Track Racing' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.12%20AM%20%282%29.jpeg', alt: 'Sports day event', category: 'sports', label: 'Sports Day' },
+                { src: 'https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.12%20AM.jpeg', alt: 'Track activity on school ground', category: 'sports', label: 'Athletic Track' },
+                { src: 'assets/state of art.jpeg', alt: 'State of Art Entrance', category: 'campus', label: 'State of Art Entrance' }
+            ],
+            get filteredPhotos() {
+                if (this.activeFilter === 'all') return this.photos;
+                return this.photos.filter(p => p.category === this.activeFilter);
+            },
+            openLightbox(index) {
+                this.lightboxIndex = index;
+                this.lightboxOpen = true;
+                document.body.style.overflow = 'hidden';
+            },
+            closeLightbox() {
+                this.lightboxOpen = false;
+                document.body.style.overflow = '';
+            },
+            prevPhoto() {
+                this.lightboxIndex = (this.lightboxIndex - 1 + this.filteredPhotos.length) % this.filteredPhotos.length;
+            },
+            nextPhoto() {
+                this.lightboxIndex = (this.lightboxIndex + 1) % this.filteredPhotos.length;
+            }
+        }">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-10 md:mb-16 space-y-4">
+                    <span class="text-[var(--accent)] font-bold uppercase tracking-widest text-sm">Our Campus</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--primary)] tracking-tight">Photo Gallery</h1>
+                    <p class="text-[var(--text-muted)] text-base md:text-[18px] max-w-2xl mx-auto leading-relaxed">
+                        A closer look at learning, activities, and student experiences at J.P. International School.
+                    </p>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10 md:mb-14">
+                    <button type="button" class="gallery-filter-btn" :class="{ active: activeFilter === 'all' }" @click="activeFilter = 'all'">All Photos</button>
+                    <button type="button" class="gallery-filter-btn" :class="{ active: activeFilter === 'learning' }" @click="activeFilter = 'learning'">Learning</button>
+                    <button type="button" class="gallery-filter-btn" :class="{ active: activeFilter === 'sports' }" @click="activeFilter = 'sports'">Sports</button>
+                    <button type="button" class="gallery-filter-btn" :class="{ active: activeFilter === 'campus' }" @click="activeFilter = 'campus'">Campus</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                    <template v-for="(photo, index) in filteredPhotos" :key="photo.src">
+                        <div
+                            class="gallery-item aspect-[4/3]"
+                            :class="{ 'sm:col-span-2': index === 2 || index === 8 || index === 12 }"
+                            @click="openLightbox(index)"
+                        >
+                            <img :src="photo.src" :alt="photo.alt" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="gallery-zoom">
+                                    <iconify-icon icon="lucide:maximize-2" width="20"></iconify-icon>
+                                </div>
+                                <span v-text="photo.label"></span>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Lightbox Modal -->
+            <div class="lightbox-backdrop" :class="{ open: lightboxOpen }" @click.self="closeLightbox()" @keydown.escape.window="closeLightbox()" @keydown.left.window="prevPhoto()" @keydown.right.window="nextPhoto()">
+                <template v-if="lightboxOpen && filteredPhotos[lightboxIndex]">
+                    <div class="lightbox-counter" v-text="(lightboxIndex + 1) + ' / ' + filteredPhotos.length"></div>
+                    <button type="button" class="lightbox-close" @click="closeLightbox()" aria-label="Close lightbox">
+                        <iconify-icon icon="lucide:x" width="22"></iconify-icon>
+                    </button>
+                    <button type="button" class="lightbox-nav prev" @click.stop="prevPhoto()" aria-label="Previous photo">
+                        <iconify-icon icon="lucide:chevron-left" width="26"></iconify-icon>
+                    </button>
+                    <img class="lightbox-img" :src="filteredPhotos[lightboxIndex].src" :alt="filteredPhotos[lightboxIndex].alt">
+                    <button type="button" class="lightbox-nav next" @click.stop="nextPhoto()" aria-label="Next photo">
+                        <iconify-icon icon="lucide:chevron-right" width="26"></iconify-icon>
+                    </button>
+                    <div class="lightbox-caption" v-text="filteredPhotos[lightboxIndex].label"></div>
+                </template>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div v-scope="{ ...{&quot;logoHref&quot;:&quot;index.html&quot;,&quot;facebookHref&quot;:&quot;#facebook&quot;,&quot;twitterHref&quot;:&quot;#twitter&quot;,&quot;instagramHref&quot;:&quot;#instagram&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;academicHref&quot;:&quot;#academic&quot;,&quot;admissionHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;galleryHref&quot;:&quot;06-photo-gallery.html&quot;,&quot;portalHref&quot;:&quot;#portal&quot;,&quot;parentHref&quot;:&quot;#parent&quot;,&quot;newsHref&quot;:&quot;#news&quot;,&quot;careersHref&quot;:&quot;#careers&quot;,&quot;privacyHref&quot;:&quot;#privacy&quot;,&quot;termsHref&quot;:&quot;#terms&quot;,&quot;currentYear&quot;:2024}, $emit() {} }">
+<footer class="bg-white border-t border-gray-100 pt-20 pb-10 px-6"><div class="max-w-7xl mx-auto"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"><div class="space-y-6"><a :href="logoHref" class="inline-block"><img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg" alt="JPIS Logo" class="h-16 w-auto"></a><p class="text-[#676767] text-[14px] leading-relaxed">J.P. International School is a premier educational institution committed to providing excellence in learning and holistic development.</p><div class="flex gap-4"><a :href="facebookHref" id="social-fb" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:facebook"></iconify-icon></a><a :href="twitterHref" id="social-tw" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:twitter"></iconify-icon></a><a :href="instagramHref" id="social-ig" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:instagram"></iconify-icon></a></div></div><div><h4 class="text-[18px] font-bold mb-8">Quick Links</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li><a :href="aboutHref" id="footer-about" class="hover:text-[#01254c] transition-colors">About Us</a></li><li><a :href="academicHref" id="footer-academic" class="hover:text-[#01254c] transition-colors">Academic Calendar</a></li><li><a :href="admissionHref" id="footer-admission" class="hover:text-[#01254c] transition-colors">Admission Process</a></li><li><a :href="galleryHref" id="footer-gallery" class="hover:text-[#01254c] transition-colors">Photo Gallery</a></li></ul></div><div><h4 class="text-[18px] font-bold mb-8">Resources</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li><a :href="portalHref" id="footer-portal" class="hover:text-[#01254c] transition-colors">Student Portal</a></li><li><a :href="parentHref" id="footer-parent" class="hover:text-[#01254c] transition-colors">Parent Handbook</a></li><li><a :href="newsHref" id="footer-news" class="hover:text-[#01254c] transition-colors">School News</a></li><li><a :href="careersHref" id="footer-careers" class="hover:text-[#01254c] transition-colors">Careers</a></li></ul></div><div><h4 class="text-[18px] font-bold mb-8">Contact Us</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li class="flex gap-3"><iconify-icon icon="lucide:map-pin" class="text-[#fdc236] shrink-0"></iconify-icon><span>Sikandrabad, Distt. Bulandshahr (U.P), India</span></li><li class="flex gap-3"><iconify-icon icon="lucide:phone" class="text-[#fdc236] shrink-0"></iconify-icon><span>+91 999 999 9999</span></li><li class="flex gap-3"><iconify-icon icon="lucide:mail" class="text-[#fdc236] shrink-0"></iconify-icon><span>info@jpinternationalschool.in</span></li></ul></div></div><div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4"><p class="text-xs text-[#676767]">© {{ currentYear }} J.P. International School. All rights reserved.</p><div class="flex gap-8 text-xs text-[#676767]"><a :href="privacyHref" id="footer-privacy" class="hover:text-[#01254c]">Privacy Policy</a><a :href="termsHref" id="footer-terms" class="hover:text-[#01254c]">Terms of Service</a></div></div></div></footer>
+</div>
+    </div>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

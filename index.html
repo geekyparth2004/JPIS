@@ -336,9 +336,9 @@
                 Admissions
                 <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'admissions' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
             </a>
-            <a href="04-integrated-navigation-for-admissions-page.html#fees-structure" :class="activeItem === 'fees' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
-                Fees
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'fees' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            <a href="06-photo-gallery.html" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200 text-[#676767] hover:text-[#01254c]">
+                Gallery
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300 w-0 group-hover:w-full"></span>
             </a>
             <a :href="contactHref" :class="activeItem === 'contact' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
                 Contact
@@ -367,7 +367,7 @@
             <a :href="legacyHref" @click="mobileMenuOpen = false" :class="activeItem === 'legacy' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">JPIS Legacy</a>
             <a :href="programsHref" @click="mobileMenuOpen = false" :class="activeItem === 'programs' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Programs</a>
             <a :href="admissionsHref" @click="mobileMenuOpen = false" :class="activeItem === 'admissions' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Admissions</a>
-            <a href="04-integrated-navigation-for-admissions-page.html#fees-structure" @click="mobileMenuOpen = false" :class="activeItem === 'fees' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors flex items-center gap-2"><iconify-icon icon="lucide:indian-rupee" width="16"></iconify-icon> Fees Structure</a>
+            <a href="06-photo-gallery.html" @click="mobileMenuOpen = false" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors text-[#01254c] hover:bg-gray-50 flex items-center gap-2"><iconify-icon icon="lucide:image" width="16"></iconify-icon> Gallery</a>
             <a :href="contactHref" @click="mobileMenuOpen = false" :class="activeItem === 'contact' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Contact</a>
             <a :href="applyHref" @click="mobileMenuOpen = false" class="mt-2 inline-flex items-center justify-center bg-[#01254c] text-white px-6 py-3 rounded-2xl text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
         </div>
@@ -600,32 +600,6 @@
             </div>
         </section>
 
-        <!-- Fees Structure Quick Access Banner -->
-        <section class="py-8 md:py-12 px-6">
-            <div class="max-w-7xl mx-auto">
-                <a href="04-integrated-navigation-for-admissions-page.html#fees-structure" id="fees-cta-banner" class="group block bg-gradient-to-r from-[var(--primary)] to-[#0a4b8d] rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 card-shadow hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-                        <div class="flex items-center gap-5">
-                            <div class="w-16 h-16 bg-white/15 rounded-2xl flex items-center justify-center shrink-0">
-                                <iconify-icon icon="lucide:indian-rupee" width="32" class="text-[var(--accent)]"></iconify-icon>
-                            </div>
-                            <div>
-                                <h3 class="text-xl md:text-2xl font-bold text-white">Fees Structure 2026-27</h3>
-                                <p class="text-blue-200 text-sm md:text-base mt-1">View complete fee details and download the official PDF</p>
-                            </div>
-                        </div>
-                        <div class="inline-flex items-center gap-3 bg-[var(--accent)] text-[var(--primary)] px-8 py-4 rounded-2xl font-bold text-base group-hover:shadow-lg group-hover:scale-105 transition-all active:scale-95 shrink-0">
-                            <iconify-icon icon="lucide:download" width="20"></iconify-icon>
-                            View & Download
-                        </div>
-                    </div>
-                    <div class="absolute top-0 right-0 opacity-10">
-                        <iconify-icon icon="lucide:file-text" class="text-[200px] text-white"></iconify-icon>
-                    </div>
-                </a>
-            </div>
-        </section>
-
         <!-- CTA Section -->
         <section class="py-12 md:py-24 px-6">
             <div class="max-w-5xl mx-auto bg-[var(--accent)] rounded-[2rem] md:rounded-[4rem] p-8 md:p-20 text-center space-y-6 md:space-y-8 relative overflow-hidden">
@@ -639,9 +613,9 @@
                     <a href="04-integrated-navigation-for-admissions-page.html" id="cta-apply-final" class="inline-flex items-center justify-center bg-[var(--primary)] text-white px-8 py-4 md:px-12 md:py-6 rounded-2xl btn-text hover:shadow-2xl transition-all active:scale-95 text-center">
                         Apply For Admission
                     </a>
-                    <a href="04-integrated-navigation-for-admissions-page.html#fees-structure" id="cta-fees-final" class="inline-flex items-center justify-center bg-white text-[var(--primary)] px-8 py-4 md:px-12 md:py-6 rounded-2xl btn-text hover:shadow-2xl transition-all active:scale-95 text-center gap-3">
-                        <iconify-icon icon="lucide:indian-rupee" width="24"></iconify-icon>
-                        View Fees
+                    <a href="06-photo-gallery.html" id="cta-gallery-final" class="inline-flex items-center justify-center bg-white text-[var(--primary)] px-8 py-4 md:px-12 md:py-6 rounded-2xl btn-text hover:shadow-2xl transition-all active:scale-95 text-center gap-3">
+                        <iconify-icon icon="lucide:image" width="24"></iconify-icon>
+                        View Gallery
                     </a>
                 </div>
                 <!-- Abstract Background Blobs -->

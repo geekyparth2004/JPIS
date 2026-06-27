@@ -94,9 +94,9 @@
                 Admissions
                 <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'admissions' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
             </a>
-            <a href="04-integrated-navigation-for-admissions-page.html#fees-structure" :class="activeItem === 'fees' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
-                Fees
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'fees' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+            <a href="06-photo-gallery.html" :class="activeItem === 'gallery' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Gallery
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'gallery' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
             </a>
             <a :href="contactHref" :class="activeItem === 'contact' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
                 Contact
@@ -125,7 +125,7 @@
             <a :href="legacyHref" @click="mobileMenuOpen = false" :class="activeItem === 'legacy' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">JPIS Legacy</a>
             <a :href="programsHref" @click="mobileMenuOpen = false" :class="activeItem === 'programs' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Programs</a>
             <a :href="admissionsHref" @click="mobileMenuOpen = false" :class="activeItem === 'admissions' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Admissions</a>
-            <a href="04-integrated-navigation-for-admissions-page.html#fees-structure" @click="mobileMenuOpen = false" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors text-[#01254c] hover:bg-gray-50 flex items-center gap-2"><iconify-icon icon="lucide:indian-rupee" width="16"></iconify-icon> Fees Structure</a>
+            <a href="06-photo-gallery.html" @click="mobileMenuOpen = false" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors text-[#01254c] hover:bg-gray-50 flex items-center gap-2"><iconify-icon icon="lucide:image" width="16"></iconify-icon> Gallery</a>
             <a :href="contactHref" @click="mobileMenuOpen = false" :class="activeItem === 'contact' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Contact</a>
             <a :href="applyHref" @click="mobileMenuOpen = false" class="mt-2 inline-flex items-center justify-center bg-[#01254c] text-white px-6 py-3 rounded-2xl text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
         </div>
@@ -328,100 +328,6 @@
             <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl -mr-64 -mt-64"></div>
         </section>
 
-        <!-- Campus Facilities -->
-        <section class="py-12 md:py-24 px-6">
-            <div class="max-w-7xl mx-auto">
-                <div class="mb-10 md:mb-16">
-                    <div>
-                        <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary)] mb-4">Facilities</h2>
-                        <p class="text-[var(--text-muted)]">A sprawling campus designed to inspire every facet of a student's life</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    <div class="reveal-up h-80 rounded-[2.5rem] overflow-hidden relative group">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.08%20AM.jpeg" alt="Library" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/40 flex items-end p-6 md:p-8">
-                            <h3 class="text-white text-xl font-bold">Digital Library</h3>
-                        </div>
-                    </div>
-                    <div class="reveal-up h-80 rounded-[2.5rem] overflow-hidden relative group md:col-span-2">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.12%20AM%20%282%29.jpeg" alt="Sports Ground" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/40 flex items-end p-6 md:p-8">
-                            <h3 class="text-white text-xl font-bold">Olympic Size Sports Complex</h3>
-                        </div>
-                    </div>
-                    <div class="reveal-up h-80 rounded-[2.5rem] overflow-hidden relative group">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.09%20AM%20%281%29.jpeg" alt="Lush Green Campus with Biodiversity" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/40 flex items-end p-6 md:p-8">
-                            <h3 class="text-white text-xl font-bold">Lush Green Campus with Biodiversity</h3>
-                        </div>
-                    </div>
-                    <div class="reveal-up h-80 rounded-[2.5rem] overflow-hidden relative group lg:col-span-2">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.10%20AM%20%282%29.jpeg" alt="Highly Equipped Computer and Science Labs" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/40 flex items-end p-6 md:p-8">
-                            <h3 class="text-white text-xl font-bold">Highly Equipped Computer and Science Labs</h3>
-                        </div>
-                    </div>
-                    <div class="reveal-up h-80 rounded-[2.5rem] overflow-hidden relative group">
-                        <img src="assets/state of art.jpeg" alt="State of Art Entrance" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/40 flex items-end p-6 md:p-8">
-                            <h3 class="text-white text-xl font-bold">State of Art Entrance</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Campus Life Gallery -->
-        <section class="py-12 md:py-24 px-6 bg-gray-50">
-            <div class="max-w-7xl mx-auto">
-                <div class="mb-10 md:mb-14">
-                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary)] mb-4">Campus Life in Pictures</h2>
-                    <p class="text-[var(--text-muted)] max-w-2xl">A closer look at learning, activities, and student experiences at J.P. International School.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.08%20AM%20%281%29.jpeg" alt="Students watching a presentation in the library" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.08%20AM.jpeg" alt="Digital library session" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm lg:col-span-2">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.09%20AM%20%281%29.jpeg" alt="Outdoor student activity" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.09%20AM.jpeg" alt="Students in outdoor training activity" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.10%20AM%20%281%29.jpeg" alt="Students working on a science display" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.10%20AM%20%282%29.jpeg" alt="Computer lab session" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.10%20AM.jpeg" alt="Science activity discussion" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.11%20AM%20%281%29.jpeg" alt="Students in computer lab" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm lg:col-span-2">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.11%20AM%20%282%29.jpeg" alt="Sports activity on school ground" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.11%20AM.jpeg" alt="Computer lab learning" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.12%20AM%20%281%29.jpeg" alt="Students racing on sports field" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.12%20AM%20%282%29.jpeg" alt="Sports day event" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="reveal-up aspect-[4/3] rounded-2xl overflow-hidden bg-white shadow-sm lg:col-span-2">
-                        <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/new%20potos/WhatsApp%20Image%202026-05-25%20at%2010.03.12%20AM.jpeg" alt="Track activity on school ground" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Final CTA -->
         <section class="py-12 md:py-24 px-6">
