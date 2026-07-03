@@ -245,6 +245,7 @@
             box-shadow: 0 25px 60px -15px rgba(1, 37, 76, 0.25);
             border: 8px solid white;
             aspect-ratio: 4/3;
+            background: #000;
         }
         .slideshow-slide {
             position: absolute;
@@ -252,15 +253,18 @@
             opacity: 0;
             transition: opacity 1s ease-in-out;
             z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .slideshow-slide.active {
             opacity: 1;
             z-index: 2;
         }
         .slideshow-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
         .slideshow-dots {
             position: absolute;
@@ -408,7 +412,7 @@
 <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
         <a :href="logoHref" class="flex items-center gap-3">
-            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg" alt="JPIS Logo" class="h-14 w-auto object-contain">
+            <img src="assets/JPIS_logo-removebg-preview.png" alt="JPIS Logo" class="h-14 w-auto object-contain">
         </a>
 
         <div class="hidden md:flex items-center gap-8">
@@ -502,37 +506,11 @@
                         </div>
                     </div>
 
-                    <div class="flex-1 relative z-10">
-                        <div class="relative">
-                            <div class="absolute -top-6 -right-6 w-32 h-32 bg-[var(--accent)] rounded-3xl -z-10 rotate-12 opacity-40"></div>
-                            <div class="slideshow-container" id="hero-slideshow">
-                                <div class="slideshow-slide active">
-                                    <img src="assets/slideshow/WhatsApp%20Image%202026-06-18%20at%2011.38.37.jpeg" alt="JPIS Campus View" loading="eager">
-                                </div>
-                                <div class="slideshow-slide">
-                                    <img src="assets/slideshow/WhatsApp%20Image%202026-06-18%20at%2011.39.13.jpeg" alt="JPIS School Life" loading="lazy">
-                                </div>
-                                <div class="slideshow-slide">
-                                    <img src="assets/slideshow/WhatsApp%20Image%202026-06-18%20at%2011.39.35.jpeg" alt="JPIS Activities" loading="lazy">
-                                </div>
-                                <div class="slideshow-slide">
-                                    <img src="assets/slideshow/WhatsApp%20Image%202026-06-18%20at%2011.40.36.jpeg" alt="JPIS Students" loading="lazy">
-                                </div>
-                                <div class="slideshow-slide">
-                                    <img src="assets/slideshow/WhatsApp%20Image%202026-06-18%20at%2011.40.45.jpeg" alt="JPIS Campus" loading="lazy">
-                                </div>
-                                <div class="slideshow-slide">
-                                    <img src="assets/slideshow/WhatsApp%20Image%202026-06-18%20at%2011.40.46.jpeg" alt="JPIS Facilities" loading="lazy">
-                                </div>
-                                <button type="button" class="slideshow-nav-btn prev" id="slideshow-prev" aria-label="Previous slide">
-                                    <iconify-icon icon="lucide:chevron-left" width="20"></iconify-icon>
-                                </button>
-                                <button type="button" class="slideshow-nav-btn next" id="slideshow-next" aria-label="Next slide">
-                                    <iconify-icon icon="lucide:chevron-right" width="20"></iconify-icon>
-                                </button>
-                                <div class="slideshow-dots" id="slideshow-dots"></div>
-                                <div class="slideshow-progress" id="slideshow-progress"></div>
-                            </div>
+                    <div class="flex-1 relative z-10 flex justify-center items-center p-8">
+                        <div class="relative w-full max-w-[20rem] md:max-w-md">
+                            <div class="absolute -top-10 -right-10 w-40 h-40 bg-[var(--accent)] rounded-full -z-10 opacity-20 blur-2xl"></div>
+                            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-[var(--primary)] rounded-full -z-10 opacity-10 blur-2xl"></div>
+                            <img src="assets/JPIS_logo-removebg-preview.png" alt="JPIS Logo" class="w-full h-auto object-contain drop-shadow-2xl reveal-up hover:scale-105 transition-transform duration-500">
                         </div>
                     </div>
 
@@ -560,6 +538,43 @@
                         <iconify-icon icon="lucide:users-2" class="text-3xl text-[var(--primary)]"></iconify-icon>
                         <span class="font-bold text-xl">1400+ STUDENTS</span>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Big Slideshow -->
+        <section class="py-10 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="slideshow-container" id="hero-slideshow" style="aspect-ratio: 16/9; max-height: 70vh;">
+                    <div class="slideshow-slide active">
+                        <img src="assets/slideshow/WhatsApp%20Image%202026-07-02%20at%2011.41.03.jpeg" alt="JPIS Campus View" loading="eager">
+                    </div>
+                    <div class="slideshow-slide">
+                        <img src="assets/slideshow/WhatsApp%20Image%202026-07-02%20at%2011.41.04.jpeg" alt="JPIS School Life" loading="lazy">
+                    </div>
+                    <div class="slideshow-slide">
+                        <img src="assets/slideshow/WhatsApp%20Image%202026-07-02%20at%2011.41.51%20(1).jpeg" alt="JPIS Activities" loading="lazy">
+                    </div>
+                    <div class="slideshow-slide">
+                        <img src="assets/slideshow/WhatsApp%20Image%202026-07-02%20at%2011.41.51.jpeg" alt="JPIS Students" loading="lazy">
+                    </div>
+                    <div class="slideshow-slide">
+                        <img src="assets/slideshow/WhatsApp%20Image%202026-07-02%20at%2011.41.52%20(1).jpeg" alt="JPIS Campus" loading="lazy">
+                    </div>
+                    <div class="slideshow-slide">
+                        <img src="assets/slideshow/WhatsApp%20Image%202026-07-02%20at%2011.41.52.jpeg" alt="JPIS Facilities" loading="lazy">
+                    </div>
+                    <div class="slideshow-slide">
+                        <img src="assets/slideshow/WhatsApp%20Image%202026-07-02%20at%2011.41.53.jpeg" alt="JPIS Additional Image" loading="lazy">
+                    </div>
+                    <button type="button" class="slideshow-nav-btn prev" id="slideshow-prev" aria-label="Previous slide">
+                        <iconify-icon icon="lucide:chevron-left" width="20"></iconify-icon>
+                    </button>
+                    <button type="button" class="slideshow-nav-btn next" id="slideshow-next" aria-label="Next slide">
+                        <iconify-icon icon="lucide:chevron-right" width="20"></iconify-icon>
+                    </button>
+                    <div class="slideshow-dots" id="slideshow-dots"></div>
+                    <div class="slideshow-progress" id="slideshow-progress"></div>
                 </div>
             </div>
         </section>
