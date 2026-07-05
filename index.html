@@ -687,54 +687,79 @@
             </div>
         </section>
 
-        <!-- Leaders Messages Section -->
-        <section class="py-12 md:py-24 px-6 overflow-hidden" v-scope="{ chairmanExpanded: false }">
+
+        <!-- Parent Testimonials -->
+        <section class="py-12 md:py-24 bg-white px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 max-w-4xl mx-auto gap-8 md:gap-12">
-                    <!-- Chairman -->
-                    <div class="reveal-up group relative">
-                        <div class="relative bg-white rounded-[3rem] overflow-hidden border border-gray-100 card-shadow">
-                            <div class="h-80 md:h-[28rem] overflow-hidden relative bg-gradient-to-b from-red-50 to-white flex items-center justify-center">
-                                <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/chairman.jpg" alt="Chairman Message" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
-                                    <h3 class="text-2xl font-bold text-white">Chairman's Message</h3>
-                                </div>
+                <div class="text-center mb-12 md:mb-20 space-y-4">
+                    <h2 class="text-[27px] font-bold text-[var(--primary)]">What Parents Say</h2>
+                    <p class="text-[var(--text-muted)] text-[14px] max-w-2xl mx-auto uppercase tracking-widest font-bold">
+                        Hear from our community
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-[#f8fafc] p-8 md:p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 flex flex-col justify-between hover:-translate-y-3 transition-all duration-500">
+                        <div>
+                            <div class="text-[var(--accent)] mb-6">
+                                <iconify-icon icon="lucide:quote" width="40"></iconify-icon>
                             </div>
-                            <div class="p-6 md:p-10 space-y-4">
-                                <p class="italic text-[18px] text-[var(--primary)] font-medium leading-relaxed">
-                                    Dear parents
-                                </p>
-                                <div class="space-y-4 text-[14px] text-[var(--text-muted)] leading-7">
-                                    <p>
-                                        Our vision is simple yet powerful: every child deserves an education that is <span class="font-semibold italic text-[var(--primary)]">inclusive, holistic, and future-ready</span>.
-                                    </p>
-                                    <div v-cloak v-show="chairmanExpanded" class="space-y-4">
-                                        <p>We are developing our school around four pillars:</p>
-                                        <ul class="list-disc pl-5 space-y-2">
-                                            <li><span class="font-semibold text-[var(--primary)]">Inclusive Education</span> - A place where every learner, regardless of background or ability, feels seen, supported, and celebrated.</li>
-                                            <li><span class="font-semibold text-[var(--primary)]">Holistic Development</span> - Beyond marks, we nurture intellect, health, creativity, and emotional strength.</li>
-                                            <li><span class="font-semibold text-[var(--primary)]">Skill &amp; Vocational Education</span> - From AI to Information technology, we equip students with real-world skills that build confidence and livelihoods.</li>
-                                            <li><span class="font-semibold text-[var(--primary)]">Strong Value System</span> - Knowledge without character is incomplete. Integrity, respect, and service remain at the heart of everything we teach.</li>
-                                        </ul>
-                                        <p>
-                                            As Chairman, my commitment is to create a campus where tradition meets innovation, and where your child grows into a capable, compassionate citizen. Thank you for being part of our journey.
-                                        </p>
-                                        <div class="pt-2 text-[var(--primary)]">
-                                            <p class="font-semibold">Advocate Amit Chaudhary</p>
-                                            <p>Chairman</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button
-                                    type="button"
-                                    id="director-link"
-                                    class="inline-flex items-center gap-2 text-[var(--primary)] font-bold hover:gap-4 transition-all"
-                                    @click="chairmanExpanded = !chairmanExpanded"
-                                    :aria-expanded="chairmanExpanded ? 'true' : 'false'"
-                                >
-                                    <span v-text="chairmanExpanded ? 'Read Less' : 'Read More'"></span>
-                                    <iconify-icon :icon="chairmanExpanded ? 'lucide:chevron-up' : 'lucide:arrow-right'"></iconify-icon>
-                                </button>
+                            <p class="text-[15px] md:text-base text-[var(--text-muted)] leading-relaxed italic mb-8">
+                                "We deeply appreciate the efforts of the teachers and school administration in nurturing children with patience and dedication. The school truly focuses on the overall personality development of every student."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-full bg-blue-100 overflow-hidden flex-shrink-0">
+                                <img src="assets/parent-testimonial-1.jpg" alt="Parent Photo" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-[var(--primary)]">Parent</h4>
+                                <p class="text-xs text-[var(--text-muted)]">JPIS Community</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="bg-[#f8fafc] p-8 md:p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 flex flex-col justify-between hover:-translate-y-3 transition-all duration-500">
+                        <div>
+                            <div class="text-[var(--accent)] mb-6">
+                                <iconify-icon icon="lucide:quote" width="40"></iconify-icon>
+                            </div>
+                            <p class="text-[15px] md:text-base text-[var(--text-muted)] leading-relaxed italic mb-8">
+                                "The school maintains excellent discipline while creating a warm and friendly atmosphere for students. We are grateful for the constant support, encouragement, and quality education our child receives here."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-full bg-blue-100 overflow-hidden flex-shrink-0">
+                                <img src="assets/parent-testimonial-2.jpg" alt="Anil Kumar & Sara" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-[var(--primary)]">Anil Kumar & Sara</h4>
+                                <p class="text-xs text-[var(--text-muted)]">Parents of Kritvik (Class 3 Tulip)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="bg-[#f8fafc] p-8 md:p-10 rounded-[2.5rem] card-shadow border border-blue-50/50 flex flex-col justify-between hover:-translate-y-3 transition-all duration-500">
+                        <div>
+                            <div class="text-[var(--accent)] mb-6">
+                                <iconify-icon icon="lucide:quote" width="40"></iconify-icon>
+                            </div>
+                            <div class="text-[15px] md:text-base text-[var(--text-muted)] leading-relaxed italic mb-8 space-y-4">
+                                <p>"I am extremely thankful to J. P. International School for playing a major role in shaping my child's future. My child completed schooling from this institution and is now pursuing a degree successfully. The strong academic foundation, discipline, and values imparted by the school have truly helped in achieving higher goals in life.</p>
+                                <p>The teaching faculty is highly dedicated and supportive, always encouraging students to excel not only in academics but also in extracurricular activities and personality development. The positive environment and individual attention given to students helped my child become confident, responsible, and self-motivated.</p>
+                                <p>As a parent, I am completely satisfied with the education, activities, and overall atmosphere provided by the school. I sincerely appreciate the hard work and commitment of the entire school management and teachers."</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-full bg-blue-100 overflow-hidden flex-shrink-0">
+                                <img src="assets/parent-testimonial-3.jpg" alt="Vinay Kumar Sharma" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-[var(--primary)]">Vinay Kumar Sharma</h4>
+                                <p class="text-xs text-[var(--text-muted)]">Father of Kartik Bhardwaj</p>
                             </div>
                         </div>
                     </div>
