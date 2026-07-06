@@ -99,7 +99,7 @@
     <div class="min-h-screen bg-white relative">
         <!-- Shared Navigation Component -->
         <!-- component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
-<div v-scope="{ ...{&quot;activeItem&quot;:&quot;admissions&quot;,&quot;mobileMenuOpen&quot;:false,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;}, $emit() {} }">
+<div v-scope="{ ...{&quot;activeItem&quot;:&quot;admissions&quot;,&quot;mobileMenuOpen&quot;:false,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;galleryHref&quot;:&quot;06-photo-gallery.html&quot;}, $emit() {} }">
 <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
         <a :href="logoHref" class="flex items-center gap-3">
@@ -131,9 +131,9 @@
                 Admissions
                 <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'admissions' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
             </a>
-            <a href="#fees-structure" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200 text-[#676767] hover:text-[#01254c]">
-                Fees
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300 w-0 group-hover:w-full"></span>
+            <a :href="galleryHref" :class="activeItem === 'gallery' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                Gallery
+                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'gallery' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
             </a>
             <a :href="contactHref" :class="activeItem === 'contact' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
                 Contact
@@ -162,7 +162,7 @@
             <a :href="legacyHref" @click="mobileMenuOpen = false" :class="activeItem === 'legacy' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">JPIS Legacy</a>
             <a :href="programsHref" @click="mobileMenuOpen = false" :class="activeItem === 'programs' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Programs</a>
             <a :href="admissionsHref" @click="mobileMenuOpen = false" :class="activeItem === 'admissions' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Admissions</a>
-            <a href="#fees-structure" @click="mobileMenuOpen = false" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors text-[#01254c] hover:bg-gray-50 flex items-center gap-2"><iconify-icon icon="lucide:indian-rupee" width="16"></iconify-icon> Fees Structure</a>
+            <a :href="galleryHref" @click="mobileMenuOpen = false" :class="activeItem === 'gallery' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors flex items-center gap-2"><iconify-icon icon="lucide:image" width="16"></iconify-icon> Gallery</a>
             <a :href="contactHref" @click="mobileMenuOpen = false" :class="activeItem === 'contact' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Contact</a>
             <a :href="applyHref" @click="mobileMenuOpen = false" class="mt-2 inline-flex items-center justify-center bg-[#01254c] text-white px-6 py-3 rounded-2xl text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
         </div>
@@ -190,9 +190,9 @@
                             <a href="#enrollment-form" id="hero-apply-now" class="bg-[var(--primary)] text-white px-8 py-4 md:px-12 md:py-5 rounded-2xl btn-text hover:bg-opacity-90 hover:shadow-xl transition-all active:scale-95 inline-block">
                                 Apply For Admission
                             </a>
-                            <a href="#fees-structure" id="hero-view-fees" class="bg-white text-[var(--primary)] border-2 border-[var(--primary)] px-8 py-4 md:px-12 md:py-5 rounded-2xl btn-text hover:bg-gray-50 hover:shadow-xl transition-all active:scale-95 inline-flex items-center gap-2">
-                                <iconify-icon icon="lucide:indian-rupee" width="22"></iconify-icon>
-                                View Fees
+                            <a :href="galleryHref" id="hero-view-gallery" class="bg-white text-[var(--primary)] border-2 border-[var(--primary)] px-8 py-4 md:px-12 md:py-5 rounded-2xl btn-text hover:bg-gray-50 hover:shadow-xl transition-all active:scale-95 inline-flex items-center gap-2">
+                                <iconify-icon icon="lucide:image" width="20"></iconify-icon>
+                                View Gallery
                             </a>
                             <a href="#admission-syllabus" id="hero-download-syllabus" class="bg-white text-[var(--primary)] border-2 border-[var(--accent)] px-8 py-4 md:px-12 md:py-5 rounded-2xl btn-text hover:bg-yellow-50 hover:shadow-xl transition-all active:scale-95 inline-flex items-center gap-2">
                                 <iconify-icon icon="lucide:download" width="22"></iconify-icon>
@@ -426,103 +426,7 @@
             </div>
         </section>
 
-        <!-- Fees Structure Section -->
-        <section id="fees-structure" class="py-12 md:py-24 px-6">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-10 md:mb-16 space-y-4">
-                    <div class="inline-flex items-center gap-2 bg-[var(--accent)]/15 border border-[var(--accent)]/30 px-4 py-2 rounded-full mx-auto">
-                        <iconify-icon icon="lucide:indian-rupee" class="text-[var(--accent)]"></iconify-icon>
-                        <p class="text-xs font-bold uppercase tracking-widest text-[var(--primary)]">Session 2026-27</p>
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary)]">Fees Structure</h2>
-                    <p class="text-[var(--text-muted)] text-base max-w-2xl mx-auto leading-relaxed">
-                        Transparent and affordable fee plans designed for quality education. Download the complete fee details below.
-                    </p>
-                </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-                    <!-- Fee Highlights Cards -->
-                    <div class="lg:col-span-2 space-y-6">
-                        <div class="bg-gradient-to-br from-[var(--primary)] to-[#0a4b8d] p-8 rounded-[2.5rem] text-white space-y-6 card-shadow">
-                            <div class="w-14 h-14 bg-white/15 rounded-2xl flex items-center justify-center">
-                                <iconify-icon icon="lucide:wallet" width="28"></iconify-icon>
-                            </div>
-                            <h3 class="text-2xl font-bold">Why Our Fees?</h3>
-                            <ul class="space-y-4 text-sm text-blue-100 leading-relaxed">
-                                <li class="flex items-start gap-3">
-                                    <iconify-icon icon="lucide:check-circle-2" class="text-[var(--accent)] shrink-0 mt-0.5" width="18"></iconify-icon>
-                                    <span>Transparent fee structure with no hidden charges</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <iconify-icon icon="lucide:check-circle-2" class="text-[var(--accent)] shrink-0 mt-0.5" width="18"></iconify-icon>
-                                    <span>Flexible annual, quarterly and monthly payment options</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <iconify-icon icon="lucide:check-circle-2" class="text-[var(--accent)] shrink-0 mt-0.5" width="18"></iconify-icon>
-                                    <span>Includes smart classrooms, labs & sports facilities</span>
-                                </li>
-
-                            </ul>
-                        </div>
-
-                        <div class="bg-[#fff8e8] p-6 rounded-3xl border border-yellow-100/80 card-shadow">
-                            <div class="flex items-center gap-3 mb-3">
-                                <iconify-icon icon="lucide:info" class="text-[var(--accent)]" width="20"></iconify-icon>
-                                <h4 class="font-bold text-[var(--primary)]">Need Assistance?</h4>
-                            </div>
-                            <p class="text-sm text-[var(--text-muted)] leading-relaxed">
-                                For fee-related queries, please contact the accounts department at <strong class="text-[var(--primary)]">info@jpinternationalschool.in</strong> or visit the school office.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- PDF Preview & Download Card -->
-                    <div class="lg:col-span-3">
-                        <div class="bg-white rounded-[2.5rem] border border-gray-100 card-shadow overflow-hidden">
-                            <!-- PDF Preview Area -->
-                            <div class="bg-gradient-to-b from-slate-50 to-white p-4 md:p-6" style="min-height: 22rem;">
-                                <div id="fees-preview-frame" class="bg-white rounded-2xl border border-gray-100 overflow-hidden flex items-center justify-center" style="min-height: 20rem; max-height: 28rem;">
-                                    <canvas id="fees-preview-canvas" class="hidden" style="width: 100%; height: auto; display: block;"></canvas>
-                                    <div id="fees-preview-status" class="text-center text-[var(--text-muted)] text-sm p-8 space-y-3">
-                                        <iconify-icon icon="lucide:file-text" width="48" class="text-gray-300"></iconify-icon>
-                                        <p>Loading fees structure preview...</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Download Actions -->
-                            <div class="px-6 py-6 md:px-8 md:py-8 border-t border-gray-100 bg-white">
-                                <div class="flex flex-col sm:flex-row items-center gap-4">
-                                    <a
-                                        href="assets/Fees%20Structure.pdf"
-                                        download="JPIS-Fees-Structure-2026-27.pdf"
-                                        id="fees-download-btn"
-                                        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[var(--primary)] text-white px-8 py-4 rounded-2xl font-bold text-base hover:shadow-xl hover:brightness-110 transition-all active:scale-95"
-                                    >
-                                        <iconify-icon icon="lucide:download" width="20"></iconify-icon>
-                                        Download Fees PDF
-                                    </a>
-                                    <a
-                                        href="assets/Fees%20Structure.pdf"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        id="fees-view-btn"
-                                        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gray-50 text-[var(--primary)] border border-gray-200 px-8 py-4 rounded-2xl font-bold text-base hover:bg-gray-100 transition-all active:scale-95"
-                                    >
-                                        <iconify-icon icon="lucide:external-link" width="20"></iconify-icon>
-                                        View Full PDF
-                                    </a>
-                                </div>
-                                <p class="text-xs text-[var(--text-muted)] mt-4 flex items-center gap-2">
-                                    <iconify-icon icon="lucide:shield-check" width="14" class="text-green-500"></iconify-icon>
-                                    Official fee structure for Academic Session 2026-27
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Enrollment Form -->
         <section id="enrollment-form" class="py-12 md:py-24 px-6">
@@ -662,12 +566,7 @@
 
 
 
-        <!-- Shared Footer Component -->
-        <!-- component: Footer (a09ad959-168a-4091-a2ee-1dc9421719be) -->
-<div v-scope="{ ...{&quot;logoHref&quot;:&quot;https://p.superdesign.dev/draft/df9b310f-7e17-4f36-9de0-398b5f89964f&quot;,&quot;facebookHref&quot;:&quot;#facebook&quot;,&quot;twitterHref&quot;:&quot;#twitter&quot;,&quot;instagramHref&quot;:&quot;#instagram&quot;,&quot;aboutHref&quot;:&quot;https://draft-3961b69f-2daf-4be7-9495-9d6610824838.preview.superdesign.dev&quot;,&quot;academicHref&quot;:&quot;#academic&quot;,&quot;admissionHref&quot;:&quot;https://draft-5c836c35-67f5-4e32-bd8b-4dc34cb3d2e4.preview.superdesign.dev&quot;,&quot;galleryHref&quot;:&quot;#gallery&quot;,&quot;portalHref&quot;:&quot;#portal&quot;,&quot;parentHref&quot;:&quot;#parent&quot;,&quot;newsHref&quot;:&quot;#news&quot;,&quot;careersHref&quot;:&quot;#careers&quot;,&quot;privacyHref&quot;:&quot;#privacy&quot;,&quot;termsHref&quot;:&quot;#terms&quot;,&quot;currentYear&quot;:2024}, $emit() {} }">
-<footer class="bg-white border-t border-gray-100 pt-20 pb-10 px-6"><div class="max-w-7xl mx-auto"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"><div class="space-y-6"><a :href="logoHref" class="inline-block"><img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg" alt="JPIS Logo" class="h-16 w-auto"></a><p class="text-[#676767] text-[14px] leading-relaxed">J.P. International School is a premier educational institution committed to providing excellence in learning and holistic development.</p><div class="flex gap-4"><a :href="facebookHref" id="social-fb" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:facebook"></iconify-icon></a><a :href="twitterHref" id="social-tw" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:twitter"></iconify-icon></a><a :href="instagramHref" id="social-ig" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#01254c] hover:bg-[#01254c] hover:text-white transition-all"><iconify-icon icon="mdi:instagram"></iconify-icon></a></div></div><div><h4 class="text-[18px] font-bold mb-8">Quick Links</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li><a :href="aboutHref" id="footer-about" class="hover:text-[#01254c] transition-colors">About Us</a></li><li><a :href="academicHref" id="footer-academic" class="hover:text-[#01254c] transition-colors">Academic Calendar</a></li><li><a :href="admissionHref" id="footer-admission" class="hover:text-[#01254c] transition-colors">Admission Process</a></li><li><a :href="galleryHref" id="footer-gallery" class="hover:text-[#01254c] transition-colors">Photo Gallery</a></li></ul></div><div><h4 class="text-[18px] font-bold mb-8">Resources</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li><a :href="portalHref" id="footer-portal" class="hover:text-[#01254c] transition-colors">Student Portal</a></li><li><a :href="parentHref" id="footer-parent" class="hover:text-[#01254c] transition-colors">Parent Handbook</a></li><li><a :href="newsHref" id="footer-news" class="hover:text-[#01254c] transition-colors">School News</a></li><li><a :href="careersHref" id="footer-careers" class="hover:text-[#01254c] transition-colors">Careers</a></li></ul></div><div><h4 class="text-[18px] font-bold mb-8">Contact Us</h4><ul class="space-y-4 text-[14px] text-[#676767]"><li class="flex gap-3"><iconify-icon icon="lucide:map-pin" class="text-[#fdc236] shrink-0"></iconify-icon><span>Sikandrabad, Distt. Bulandshahr (U.P), India</span></li><li class="flex gap-3"><iconify-icon icon="lucide:phone" class="text-[#fdc236] shrink-0"></iconify-icon><span>+91 999 999 9999</span></li><li class="flex gap-3"><iconify-icon icon="lucide:mail" class="text-[#fdc236] shrink-0"></iconify-icon><span>info@jpinternationalschool.in</span></li></ul></div></div><div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4"><p class="text-xs text-[#676767]">© {{ currentYear }} J.P. International School. All rights reserved.</p><div class="flex gap-8 text-xs text-[#676767]"><a :href="privacyHref" id="footer-privacy" class="hover:text-[#01254c]">Privacy Policy</a><a :href="termsHref" id="footer-terms" class="hover:text-[#01254c]">Terms of Service</a></div></div></div></footer>
-</div>
-<!-- /component: Footer (a09ad959-168a-4091-a2ee-1dc9421719be) -->
+
     </div>
 
     <script>
@@ -814,47 +713,7 @@
             });
         }
 
-        // Fees Structure PDF Preview
-        (async function renderFeesPreview() {
-            const feesCanvas = document.getElementById('fees-preview-canvas');
-            const feesStatus = document.getElementById('fees-preview-status');
-            const feesFrame = document.getElementById('fees-preview-frame');
 
-            if (!window.pdfjsLib || !feesCanvas || !feesStatus) {
-                if (feesStatus) {
-                    feesStatus.innerHTML = '<iconify-icon icon="lucide:file-text" width="48" class="text-gray-300"></iconify-icon><p>Preview unavailable. Please download the PDF to view.</p>';
-                }
-                return;
-            }
-
-            try {
-                window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-                const pdf = await window.pdfjsLib.getDocument('assets/Fees%20Structure.pdf').promise;
-                const page = await pdf.getPage(1);
-                const unscaledViewport = page.getViewport({ scale: 1 });
-                const hostWidth = Math.max((feesFrame?.clientWidth || 640) - 16, 260);
-                const scale = (hostWidth / unscaledViewport.width) * 1.08;
-                const viewport = page.getViewport({ scale });
-                const pixelRatio = window.devicePixelRatio || 1;
-                const context = feesCanvas.getContext('2d');
-
-                feesCanvas.width = Math.floor(viewport.width * pixelRatio);
-                feesCanvas.height = Math.floor(viewport.height * pixelRatio);
-                feesCanvas.style.width = viewport.width + 'px';
-                feesCanvas.style.height = viewport.height + 'px';
-
-                context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-                await page.render({
-                    canvasContext: context,
-                    viewport
-                }).promise;
-
-                feesCanvas.classList.remove('hidden');
-                feesStatus.classList.add('hidden');
-            } catch (error) {
-                feesStatus.innerHTML = '<iconify-icon icon="lucide:file-text" width="48" class="text-gray-300"></iconify-icon><p>Preview unavailable. Please download the PDF to view.</p>';
-            }
-        })();
     </script>
 </body>
 </html>
