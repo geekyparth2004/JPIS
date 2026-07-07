@@ -423,6 +423,97 @@
                         </span>
                     </a>
                 </div>
+
+                <!-- Fees Structure Content -->
+                <div class="mt-16 pt-16 border-t border-gray-200">
+                    <div class="text-center mb-10 md:mb-16 space-y-4">
+                        <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary)]">Fees Structure</h2>
+                        <p class="text-[var(--text-muted)] text-base max-w-2xl mx-auto leading-relaxed">
+                            Transparent and comprehensive fee details for the academic session 2026-27. We believe in providing quality education with clear fee policies.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12 items-start">
+                        <!-- Key Information -->
+                        <div class="lg:col-span-1 space-y-6">
+                            <div class="bg-white p-6 rounded-3xl border border-gray-100 card-shadow">
+                                <h4 class="font-bold text-[var(--primary)] mb-4 flex items-center gap-2">
+                                    <iconify-icon icon="lucide:indian-rupee" class="text-[var(--accent)]" width="20"></iconify-icon>
+                                    Fee Highlights
+                                </h4>
+                                <ul class="space-y-4 text-sm text-[var(--text-muted)]">
+                                    <li class="flex items-start gap-3">
+                                        <iconify-icon icon="lucide:check-circle-2" class="text-[var(--accent)] shrink-0 mt-0.5" width="18"></iconify-icon>
+                                        <span>Flexible quarterly and annual payment options</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <iconify-icon icon="lucide:check-circle-2" class="text-[var(--accent)] shrink-0 mt-0.5" width="18"></iconify-icon>
+                                        <span>Includes smart classrooms, labs & sports facilities</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <iconify-icon icon="lucide:check-circle-2" class="text-[var(--accent)] shrink-0 mt-0.5" width="18"></iconify-icon>
+                                        <span>Sibling discount and scholarship programs available</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-[#fff8e8] p-6 rounded-3xl border border-yellow-100/80 card-shadow">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <iconify-icon icon="lucide:info" class="text-[var(--accent)]" width="20"></iconify-icon>
+                                    <h4 class="font-bold text-[var(--primary)]">Need Assistance?</h4>
+                                </div>
+                                <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+                                    For fee-related queries, please contact the accounts department at <strong class="text-[var(--primary)]">info@jpinternationalschool.in</strong> or visit the school office.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- PDF Preview & Download Card -->
+                        <div class="lg:col-span-3">
+                            <div class="bg-white rounded-[2.5rem] border border-gray-100 card-shadow overflow-hidden">
+                                <!-- PDF Preview Area -->
+                                <div class="bg-gradient-to-b from-slate-50 to-white p-4 md:p-6" style="min-height: 22rem;">
+                                    <div id="fees-preview-frame" class="bg-white rounded-2xl border border-gray-100 overflow-hidden flex items-center justify-center" style="min-height: 20rem; max-height: 28rem;">
+                                        <canvas id="fees-preview-canvas" class="hidden" style="width: 100%; height: auto; display: block;"></canvas>
+                                        <div id="fees-preview-status" class="text-center text-[var(--text-muted)] text-sm p-8 space-y-3">
+                                            <iconify-icon icon="lucide:file-text" width="48" class="text-gray-300"></iconify-icon>
+                                            <p>Loading fees structure preview...</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Download Actions -->
+                                <div class="px-6 py-6 md:px-8 md:py-8 border-t border-gray-100 bg-white">
+                                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                                        <a
+                                            href="assets/Fees%20Structure.pdf"
+                                            download="JPIS-Fees-Structure-2026-27.pdf"
+                                            id="fees-download-btn"
+                                            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[var(--primary)] text-white px-8 py-4 rounded-2xl font-bold text-base hover:shadow-xl hover:brightness-110 transition-all active:scale-95"
+                                        >
+                                            <iconify-icon icon="lucide:download" width="20"></iconify-icon>
+                                            Download Fees PDF
+                                        </a>
+                                        <a
+                                            href="assets/Fees%20Structure.pdf"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            id="fees-view-btn"
+                                            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gray-50 text-[var(--primary)] border border-gray-200 px-8 py-4 rounded-2xl font-bold text-base hover:bg-gray-100 transition-all active:scale-95"
+                                        >
+                                            <iconify-icon icon="lucide:external-link" width="20"></iconify-icon>
+                                            View Full PDF
+                                        </a>
+                                    </div>
+                                    <p class="text-xs text-[var(--text-muted)] mt-4 flex items-center gap-2">
+                                        <iconify-icon icon="lucide:shield-check" width="14" class="text-green-500"></iconify-icon>
+                                        Official fee structure for Academic Session 2026-27
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -713,7 +804,47 @@
             });
         }
 
+        // Fees Structure PDF Preview
+        (async function renderFeesPreview() {
+            const feesCanvas = document.getElementById('fees-preview-canvas');
+            const feesStatus = document.getElementById('fees-preview-status');
+            const feesFrame = document.getElementById('fees-preview-frame');
 
+            if (!window.pdfjsLib || !feesCanvas || !feesStatus) {
+                if (feesStatus) {
+                    feesStatus.innerHTML = '<iconify-icon icon="lucide:file-text" width="48" class="text-gray-300"></iconify-icon><p>Preview unavailable. Please download the PDF to view.</p>';
+                }
+                return;
+            }
+
+            try {
+                window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                const pdf = await window.pdfjsLib.getDocument('assets/Fees%20Structure.pdf').promise;
+                const page = await pdf.getPage(1);
+                const unscaledViewport = page.getViewport({ scale: 1 });
+                const hostWidth = Math.max((feesFrame?.clientWidth || 640) - 16, 260);
+                const scale = (hostWidth / unscaledViewport.width) * 1.08;
+                const viewport = page.getViewport({ scale });
+                const pixelRatio = window.devicePixelRatio || 1;
+                const context = feesCanvas.getContext('2d');
+
+                feesCanvas.width = Math.floor(viewport.width * pixelRatio);
+                feesCanvas.height = Math.floor(viewport.height * pixelRatio);
+                feesCanvas.style.width = viewport.width + 'px';
+                feesCanvas.style.height = viewport.height + 'px';
+
+                context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+                await page.render({
+                    canvasContext: context,
+                    viewport
+                }).promise;
+
+                feesCanvas.classList.remove('hidden');
+                feesStatus.classList.add('hidden');
+            } catch (error) {
+                feesStatus.innerHTML = '<iconify-icon icon="lucide:file-text" width="48" class="text-gray-300"></iconify-icon><p>Preview unavailable. Please download the PDF to view.</p>';
+            }
+        })();
     </script>
 </body>
 </html>
