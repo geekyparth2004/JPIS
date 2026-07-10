@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #01254c;
@@ -28,7 +31,10 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -55,96 +61,149 @@
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
         }
     </style>
-  <style>sd-component { display: block; }</style>
-  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+    <style>
+        sd-component {
+            display: block;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
 </head>
+
 <body>
     <div class="min-h-screen bg-white relative">
         <!-- Navigation bar -->
         <!-- component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
-<div v-scope="{ ...{&quot;activeItem&quot;:&quot;about&quot;,&quot;mobileMenuOpen&quot;:false,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;galleryHref&quot;:&quot;06-photo-gallery.html&quot;}, $emit() {} }">
-<nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
-        <a :href="logoHref" class="flex items-center gap-3">
-            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg" alt="JPIS Logo" class="h-14 w-auto object-contain">
-        </a>
-        
-        <div class="hidden md:flex items-center gap-8">
-            <a :href="homeHref" :class="activeItem === 'home' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
-                Home
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'home' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
-            </a>
-            <a :href="aboutHref" :class="activeItem === 'about' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
-                About
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'about' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
-            </a>
-            <a :href="teamHref" :class="activeItem === 'team' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
-                About Team
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'team' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
-            </a>
-            <a :href="legacyHref" :class="activeItem === 'legacy' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
-                JPIS Legacy
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'legacy' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
-            </a>
-            <a :href="programsHref" :class="activeItem === 'programs' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
-                Programs
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'programs' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
-            </a>
-            <a :href="admissionsHref" :class="activeItem === 'admissions' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
-                Admissions
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'admissions' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
-            </a>
-            <a href="06-photo-gallery.html" :class="activeItem === 'gallery' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
-                Gallery
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'gallery' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
-            </a>
-            <a :href="contactHref" :class="activeItem === 'contact' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'" class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
-                Contact
-                <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300" :class="activeItem === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
-            </a>
-        </div>
+        <div
+            v-scope="{ ...{&quot;activeItem&quot;:&quot;about&quot;,&quot;mobileMenuOpen&quot;:false,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;galleryHref&quot;:&quot;06-photo-gallery.html&quot;}, $emit() {} }">
+            <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
+                <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+                    <a :href="logoHref" class="flex items-center gap-3">
+                        <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/brand-assets/www.jpinternationalschool.in/logo-1776767936687.jpg"
+                            alt="JPIS Logo" class="h-14 w-auto object-contain">
+                    </a>
 
-        <div class="flex items-center gap-3">
-            <a :href="applyHref" class="hidden sm:inline-flex bg-[#01254c] text-white px-6 py-3 rounded-full text-sm font-bold hover:shadow-lg transition-all active:scale-95 whitespace-nowrap">Apply Now</a>
-            <button
-                type="button"
-                class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-gray-200 text-[#01254c] hover:bg-gray-50 transition-colors"
-                @click="mobileMenuOpen = !mobileMenuOpen"
-                :aria-expanded="mobileMenuOpen ? 'true' : 'false'"
-                aria-label="Toggle navigation menu"
-            >
-                <iconify-icon :icon="mobileMenuOpen ? 'lucide:x' : 'lucide:menu'" width="22"></iconify-icon>
-            </button>
+                    <div class="hidden md:flex items-center gap-8">
+                        <a :href="homeHref"
+                            :class="activeItem === 'home' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'"
+                            class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                            Home
+                            <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300"
+                                :class="activeItem === 'home' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                        </a>
+                        <a :href="aboutHref"
+                            :class="activeItem === 'about' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'"
+                            class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                            About
+                            <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300"
+                                :class="activeItem === 'about' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                        </a>
+                        <a :href="teamHref"
+                            :class="activeItem === 'team' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'"
+                            class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                            About Team
+                            <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300"
+                                :class="activeItem === 'team' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                        </a>
+                        <a :href="legacyHref"
+                            :class="activeItem === 'legacy' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'"
+                            class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                            JPIS Legacy
+                            <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300"
+                                :class="activeItem === 'legacy' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                        </a>
+                        <a :href="programsHref"
+                            :class="activeItem === 'programs' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'"
+                            class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                            Programs
+                            <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300"
+                                :class="activeItem === 'programs' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                        </a>
+                        <a :href="admissionsHref"
+                            :class="activeItem === 'admissions' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'"
+                            class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                            Admissions
+                            <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300"
+                                :class="activeItem === 'admissions' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                        </a>
+                        <a href="06-photo-gallery.html"
+                            :class="activeItem === 'gallery' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'"
+                            class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                            Gallery
+                            <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300"
+                                :class="activeItem === 'gallery' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                        </a>
+                        <a :href="contactHref"
+                            :class="activeItem === 'contact' ? 'text-[#01254c]' : 'text-[#676767] hover:text-[#01254c]'"
+                            class="group relative font-semibold text-sm uppercase tracking-wider transition-colors duration-200">
+                            Contact
+                            <span class="absolute bottom-[-4px] left-0 h-[2px] bg-[#fdc236] transition-all duration-300"
+                                :class="activeItem === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                        </a>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <a :href="applyHref"
+                            class="hidden sm:inline-flex bg-[#01254c] text-white px-6 py-3 rounded-full text-sm font-bold hover:shadow-lg transition-all active:scale-95 whitespace-nowrap">Apply
+                            Now</a>
+                        <button type="button"
+                            class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-gray-200 text-[#01254c] hover:bg-gray-50 transition-colors"
+                            @click="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen ? 'true' : 'false'"
+                            aria-label="Toggle navigation menu">
+                            <iconify-icon :icon="mobileMenuOpen ? 'lucide:x' : 'lucide:menu'" width="22"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                <div v-cloak v-show="mobileMenuOpen" class="md:hidden border-t border-gray-100 bg-white/95">
+                    <div class="px-6 py-4 flex flex-col gap-2">
+                        <a :href="homeHref" @click="mobileMenuOpen = false"
+                            :class="activeItem === 'home' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'"
+                            class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Home</a>
+                        <a :href="aboutHref" @click="mobileMenuOpen = false"
+                            :class="activeItem === 'about' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'"
+                            class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">About</a>
+                        <a :href="teamHref" @click="mobileMenuOpen = false"
+                            :class="activeItem === 'team' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'"
+                            class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">About
+                            Team</a>
+                        <a :href="legacyHref" @click="mobileMenuOpen = false"
+                            :class="activeItem === 'legacy' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'"
+                            class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">JPIS
+                            Legacy</a>
+                        <a :href="programsHref" @click="mobileMenuOpen = false"
+                            :class="activeItem === 'programs' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'"
+                            class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Programs</a>
+                        <a :href="admissionsHref" @click="mobileMenuOpen = false"
+                            :class="activeItem === 'admissions' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'"
+                            class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Admissions</a>
+                        <a href="06-photo-gallery.html" @click="mobileMenuOpen = false"
+                            class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors text-[#01254c] hover:bg-gray-50 flex items-center gap-2"><iconify-icon
+                                icon="lucide:image" width="16"></iconify-icon> Gallery</a>
+                        <a :href="contactHref" @click="mobileMenuOpen = false"
+                            :class="activeItem === 'contact' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'"
+                            class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Contact</a>
+                        <a :href="applyHref" @click="mobileMenuOpen = false"
+                            class="mt-2 inline-flex items-center justify-center bg-[#01254c] text-white px-6 py-3 rounded-2xl text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply
+                            Now</a>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </div>
-    <div v-cloak v-show="mobileMenuOpen" class="md:hidden border-t border-gray-100 bg-white/95">
-        <div class="px-6 py-4 flex flex-col gap-2">
-            <a :href="homeHref" @click="mobileMenuOpen = false" :class="activeItem === 'home' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Home</a>
-            <a :href="aboutHref" @click="mobileMenuOpen = false" :class="activeItem === 'about' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">About</a>
-            <a :href="teamHref" @click="mobileMenuOpen = false" :class="activeItem === 'team' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">About Team</a>
-            <a :href="legacyHref" @click="mobileMenuOpen = false" :class="activeItem === 'legacy' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">JPIS Legacy</a>
-            <a :href="programsHref" @click="mobileMenuOpen = false" :class="activeItem === 'programs' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Programs</a>
-            <a :href="admissionsHref" @click="mobileMenuOpen = false" :class="activeItem === 'admissions' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Admissions</a>
-            <a href="06-photo-gallery.html" @click="mobileMenuOpen = false" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors text-[#01254c] hover:bg-gray-50 flex items-center gap-2"><iconify-icon icon="lucide:image" width="16"></iconify-icon> Gallery</a>
-            <a :href="contactHref" @click="mobileMenuOpen = false" :class="activeItem === 'contact' ? 'bg-[#01254c] text-white' : 'text-[#01254c] hover:bg-gray-50'" class="rounded-2xl px-4 py-3 font-semibold uppercase tracking-wider text-sm transition-colors">Contact</a>
-            <a :href="applyHref" @click="mobileMenuOpen = false" class="mt-2 inline-flex items-center justify-center bg-[#01254c] text-white px-6 py-3 rounded-2xl text-sm font-bold hover:shadow-lg transition-all active:scale-95">Apply Now</a>
-        </div>
-    </div>
-</nav>
-</div>
-<!-- /component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
+        <!-- /component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
 
         <!-- Page Header -->
         <section class="relative mt-20 h-auto py-16 md:min-h-[60vh] md:py-0 flex items-center overflow-hidden">
-            <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/fa832acf-26b4-447b-8e80-6c3fddb51d04.png" alt="School Campus" class="absolute inset-0 w-full h-full object-cover">
+            <img src="https://pquxfbbxflqvtidtlrhl.supabase.co/storage/v1/object/public/hmac-uploads/brand/8810addf-169e-4291-99cc-f83402c6a260/assets/fa832acf-26b4-447b-8e80-6c3fddb51d04.png"
+                alt="School Campus" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 hero-overlay"></div>
             <div class="relative max-w-7xl mx-auto px-6 w-full">
                 <div class="max-w-2xl">
-                    <h1 class="text-white text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 tracking-tight animate-fade-in">
+                    <h1
+                        class="text-white text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 tracking-tight animate-fade-in">
                         About J.P. <br><span class="text-[var(--accent)]">International School</span>
                     </h1>
                     <p class="text-blue-50 text-base md:text-xl font-light leading-relaxed">
-                        A legacy of educational excellence dedicated to nurturing the leaders of tomorrow through holistic growth and values-based learning.
+                        A legacy of educational excellence dedicated to nurturing the leaders of tomorrow through
+                        holistic growth and values-based learning.
                     </p>
                 </div>
             </div>
@@ -152,18 +211,29 @@
 
         <!-- School History/Mission -->
         <section class="py-12 md:py-24 px-6">
-            <div class="max-w-4xl mx-auto">
-                <div class="reveal-up text-center">
+            <div class="max-w-7xl mx-auto grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+                <div class="reveal-up text-left">
                     <span class="text-[var(--accent)] font-bold uppercase tracking-widest text-sm">Our Story</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary)] mt-4 mb-6 md:mb-8 leading-tight">Rooted in Excellence, <br>Growing for the Future</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary)] mt-4 mb-6 md:mb-8 leading-tight">
+                        Rooted in Excellence, <br>Growing for the Future</h2>
                     <div class="space-y-6 text-[var(--text-muted)] leading-relaxed text-base md:text-lg">
                         <p>
-                            Founded with a vision to revolutionize the educational landscape in the district, J.P. International School has grown from a visionary concept into a premier institution of learning. We believe that education is not merely the transmission of knowledge but the ignition of curiosity and character.
+                            Founded with a vision to revolutionize the educational landscape in the district, J.P.
+                            International School has grown from a visionary concept into a premier institution of
+                            learning. We believe that education is not merely the transmission of knowledge but the
+                            ignition of curiosity and character.
                         </p>
                         <p>
-                            Our mission is to provide a nurturing environment where students are encouraged to explore their potential, embrace innovation, and develop into compassionate global citizens. Through a blend of rigorous academics and vibrant extra-curricular activities, we ensure every child finds their unique path to success.
+                            Our mission is to provide a nurturing environment where students are encouraged to explore
+                            their potential, embrace innovation, and develop into compassionate global citizens. Through
+                            a blend of rigorous academics and vibrant extra-curricular activities, we ensure every child
+                            finds their unique path to success.
                         </p>
                     </div>
+                </div>
+                <div class="reveal-up">
+                    <img src="assets/Front%20View.jpeg" alt="Front view of J.P. International School"
+                        class="w-full h-auto rounded-2xl shadow-lg">
                 </div>
             </div>
         </section>
@@ -197,103 +267,163 @@
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-10 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary)] mb-4">Our Core Values</h2>
-                    <p class="text-[var(--text-muted)]">The pillars that define the spirit of J.P. International School</p>
+                    <p class="text-[var(--text-muted)]">The pillars that define the spirit of J.P. International School
+                    </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     <!-- Value 1 -->
-                    <div class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
-                        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
+                    <div
+                        class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
+                        <div
+                            class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
                             <iconify-icon icon="lucide:award" width="32"></iconify-icon>
                         </div>
                         <h3 class="text-xl font-bold text-[var(--primary)] mb-3">Excellence</h3>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Striving for the highest standards in academics, sports, and personal conduct in everything we do.</p>
+                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Striving for the highest standards
+                            in academics, sports, and personal conduct in everything we do.</p>
                     </div>
                     <!-- Value 2 -->
-                    <div class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
-                        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
+                    <div
+                        class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
+                        <div
+                            class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
                             <iconify-icon icon="lucide:shield-check" width="32"></iconify-icon>
                         </div>
                         <h3 class="text-xl font-bold text-[var(--primary)] mb-3">Integrity</h3>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Fostering a culture of honesty, transparency, and strong moral principles among students and staff.</p>
+                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Fostering a culture of honesty,
+                            transparency, and strong moral principles among students and staff.</p>
                     </div>
                     <!-- Value 3 -->
-                    <div class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
-                        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
+                    <div
+                        class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
+                        <div
+                            class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
                             <iconify-icon icon="lucide:zap" width="32"></iconify-icon>
                         </div>
                         <h3 class="text-xl font-bold text-[var(--primary)] mb-3">Innovation</h3>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Encouraging creative thinking and embracing new methodologies to enhance the learning experience.</p>
+                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Encouraging creative thinking and
+                            embracing new methodologies to enhance the learning experience.</p>
                     </div>
                     <!-- Value 4 -->
-                    <div class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
-                        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
+                    <div
+                        class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
+                        <div
+                            class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
                             <iconify-icon icon="lucide:users" width="32"></iconify-icon>
                         </div>
                         <h3 class="text-xl font-bold text-[var(--primary)] mb-3">Inclusivity</h3>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Celebrating diversity and ensuring every individual feels valued and supported in our community.</p>
+                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Celebrating diversity and ensuring
+                            every individual feels valued and supported in our community.</p>
                     </div>
                     <!-- Value 5 -->
-                    <div class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
-                        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
+                    <div
+                        class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
+                        <div
+                            class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
                             <iconify-icon icon="lucide:compass" width="32"></iconify-icon>
                         </div>
                         <h3 class="text-xl font-bold text-[var(--primary)] mb-3">Leadership</h3>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Cultivating leadership qualities that empower students to take initiative and lead with responsibility.</p>
+                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Cultivating leadership qualities
+                            that empower students to take initiative and lead with responsibility.</p>
                     </div>
                     <!-- Value 6 -->
-                    <div class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
-                        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
+                    <div
+                        class="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
+                        <div
+                            class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
                             <iconify-icon icon="lucide:heart" width="32"></iconify-icon>
                         </div>
                         <h3 class="text-xl font-bold text-[var(--primary)] mb-3">Holistic Growth</h3>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Developing the mind, body, and soul through a well-rounded educational journey.</p>
+                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Developing the mind, body, and soul
+                            through a well-rounded educational journey.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Our Guiding Lights -->
-        <section class="py-12 md:py-24 px-6 bg-white overflow-hidden">
+
+        <!-- Campus Facilities Section -->
+        <section class="py-12 md:py-24 px-6 bg-slate-50 overflow-hidden">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-10 md:mb-16">
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--primary)] mb-4">Our Guiding Lights</h2>
-                    <div class="w-24 h-1 bg-[var(--accent)] mx-auto rounded-full"></div>
+                <div class="text-center mb-10 md:mb-16 reveal-up">
+                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--primary)] mb-4">Campus Facilities</h2>
+                    <div class="w-24 h-1 bg-[var(--accent)] mx-auto rounded-full mb-6"></div>
+                    <p class="text-[var(--text-muted)] max-w-2xl mx-auto text-base md:text-lg">
+                        State-of-the-art infrastructure designed to provide the best learning and development
+                        environment for our students.
+                    </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto gap-8 md:gap-10">
-                    <!-- Chairman -->
-                    <div class="reveal-up group">
-                        <div class="relative bg-blue-50/30 rounded-[2rem] overflow-hidden card-shadow border border-gray-100 hover:-translate-y-2 transition-all duration-300">
-                            <div class="aspect-[3/4] overflow-hidden bg-gray-100 flex items-center justify-center">
-                                <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/chairman.jpg" alt="Adv. Amit Chaudhary" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            </div>
-                            <div class="p-6 text-center bg-white">
-                                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary)] mb-1">Adv. Amit Chaudhary</h3>
-                                <p class="text-sm text-[var(--accent)] font-bold uppercase tracking-wider">Chairman</p>
-                            </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Physics Lab -->
+                    <div class="bg-white rounded-[2rem] overflow-hidden card-shadow group reveal-up">
+                        <div class="aspect-video bg-gray-100 relative overflow-hidden flex items-center justify-center">
+                            <img src="./assets/WhatsApp Image 2026-07-03 at 12.20.01.jpeg" alt="Physics Lab"
+                                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 facility-img">
+                        </div>
+                        <div class="p-6 text-center border-t border-gray-50">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Physics Lab</h3>
                         </div>
                     </div>
-                    <!-- Director -->
-                    <div class="reveal-up group" style="transition-delay: 100ms;">
-                        <div class="relative bg-blue-50/30 rounded-[2rem] overflow-hidden card-shadow border border-gray-100 hover:-translate-y-2 transition-all duration-300">
-                            <div class="aspect-[3/4] overflow-hidden bg-gray-100 flex items-center justify-center">
-                                <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/Director.jpg" alt="Mr. Sanjeev Chaudhary" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            </div>
-                            <div class="p-6 text-center bg-white">
-                                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary)] mb-1">Mr. Sanjeev Chaudhary</h3>
-                                <p class="text-sm text-[var(--accent)] font-bold uppercase tracking-wider">Director</p>
-                            </div>
+
+                    <!-- Biology Lab -->
+                    <div class="bg-white rounded-[2rem] overflow-hidden card-shadow group reveal-up"
+                        style="transition-delay: 100ms;">
+                        <div class="aspect-video bg-gray-100 relative overflow-hidden flex items-center justify-center">
+                            <img src="./assets/WhatsApp Image 2026-07-03 at 12.20.39.jpeg" alt="Biology Lab"
+                                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 facility-img">
+                        </div>
+                        <div class="p-6 text-center border-t border-gray-50">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Biology Lab</h3>
                         </div>
                     </div>
-                    <!-- Principal -->
-                    <div class="reveal-up group" style="transition-delay: 200ms;">
-                        <div class="relative bg-blue-50/30 rounded-[2rem] overflow-hidden card-shadow border border-gray-100 hover:-translate-y-2 transition-all duration-300">
-                            <div class="aspect-[3/4] overflow-hidden bg-gray-100 flex items-center justify-center">
-                                <img src="assets/principal.jpeg" alt="Mrs. Parul Singh" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            </div>
-                            <div class="p-6 text-center bg-white">
-                                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary)] mb-1">Mrs. Parul Singh</h3>
-                                <p class="text-sm text-[var(--accent)] font-bold uppercase tracking-wider">Principal</p>
-                            </div>
+
+                    <!-- Computer Lab -->
+                    <div class="bg-white rounded-[2rem] overflow-hidden card-shadow group reveal-up"
+                        style="transition-delay: 200ms;">
+                        <div class="aspect-video bg-gray-100 relative overflow-hidden flex items-center justify-center">
+                            <img src="./assets/new potos/WhatsApp Image 2026-05-25 at 10.03.10 AM.jpeg"
+                                alt="Computer Lab"
+                                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 facility-img">
+                        </div>
+                        <div class="p-6 text-center border-t border-gray-50">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Computer Lab</h3>
+                        </div>
+                    </div>
+
+                    <!-- Solar Panels -->
+                    <div class="bg-white rounded-[2rem] overflow-hidden card-shadow group reveal-up">
+                        <div class="aspect-video bg-gray-100 relative overflow-hidden flex items-center justify-center">
+                            <img src="./assets/WhatsApp Image 2026-07-03 at 12.21.16.jpeg" alt="Solar Panels"
+                                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 facility-img">
+                        </div>
+                        <div class="p-6 text-center border-t border-gray-50">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Solar Panels</h3>
+                        </div>
+                    </div>
+
+                    <!-- Karate Classes -->
+                    <div class="bg-white rounded-[2rem] overflow-hidden card-shadow group reveal-up"
+                        style="transition-delay: 100ms;">
+                        <div class="aspect-video bg-gray-100 relative overflow-hidden flex items-center justify-center">
+                            <img src="./assets/for gallery photos/WhatsApp Image 2026-06-26 at 11.38.31 (1).jpeg"
+                                alt="Karate Classes"
+                                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 facility-img">
+                        </div>
+                        <div class="p-6 text-center border-t border-gray-50">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Karate Classes</h3>
+                        </div>
+                    </div>
+
+                    <!-- Music and Dance Classes -->
+                    <div class="bg-white rounded-[2rem] overflow-hidden card-shadow group reveal-up"
+                        style="transition-delay: 200ms;">
+                        <div class="aspect-video bg-gray-100 relative overflow-hidden flex items-center justify-center">
+                            <img src="./assets/annual photos/3C9A4489.JPG" alt="Music and Dance Classes"
+                                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 facility-img">
+                        </div>
+                        <div class="p-6 text-center border-t border-gray-50">
+                            <h3 class="text-xl font-bold text-[var(--primary)]">Music & Dance Classes</h3>
                         </div>
                     </div>
                 </div>
@@ -309,37 +439,51 @@
                 </div>
                 <div class="flex flex-wrap justify-center gap-8 md:gap-12">
                     <div class="reveal-up flex flex-col items-center group">
-                        <div class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[var(--accent)] transition-all">
-                            <iconify-icon icon="lucide:award" width="40" class="group-hover:text-[var(--primary)]"></iconify-icon>
+                        <div
+                            class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[var(--accent)] transition-all">
+                            <iconify-icon icon="lucide:award" width="40"
+                                class="group-hover:text-[var(--primary)]"></iconify-icon>
                         </div>
                         <p class="font-bold">CBSE Affiliated</p>
                     </div>
                     <div class="reveal-up flex flex-col items-center group">
-                        <div class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[var(--accent)] transition-all">
-                            <iconify-icon icon="lucide:check-circle" width="40" class="group-hover:text-[var(--primary)]"></iconify-icon>
+                        <div
+                            class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[var(--accent)] transition-all">
+                            <iconify-icon icon="lucide:check-circle" width="40"
+                                class="group-hover:text-[var(--primary)]"></iconify-icon>
                         </div>
                         <p class="font-bold">ISO 9001 Certified</p>
                     </div>
                     <div class="reveal-up flex flex-col items-center group">
-                        <div class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[var(--accent)] transition-all">
-                            <iconify-icon icon="lucide:star" width="40" class="group-hover:text-[var(--primary)]"></iconify-icon>
+                        <div
+                            class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[var(--accent)] transition-all">
+                            <iconify-icon icon="lucide:star" width="40"
+                                class="group-hover:text-[var(--primary)]"></iconify-icon>
                         </div>
                         <p class="font-bold">Top 10 School (District)</p>
                     </div>
                 </div>
             </div>
-            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl -mr-64 -mt-64"></div>
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl -mr-64 -mt-64">
+            </div>
         </section>
 
 
         <!-- Final CTA -->
         <section class="py-12 md:py-24 px-6">
-            <div class="max-w-5xl mx-auto bg-[var(--accent)] rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-20 text-center relative overflow-hidden">
-                <h2 class="text-3xl md:text-5xl font-bold text-[var(--primary)] mb-4 md:mb-6">Shape Your Child's Future Today</h2>
-                <p class="text-[var(--primary)] text-base md:text-xl opacity-80 mb-8 md:mb-10 max-w-2xl mx-auto">Join a community dedicated to educational excellence and student-centered learning.</p>
+            <div
+                class="max-w-5xl mx-auto bg-[var(--accent)] rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-20 text-center relative overflow-hidden">
+                <h2 class="text-3xl md:text-5xl font-bold text-[var(--primary)] mb-4 md:mb-6">Shape Your Child's Future
+                    Today</h2>
+                <p class="text-[var(--primary)] text-base md:text-xl opacity-80 mb-8 md:mb-10 max-w-2xl mx-auto">Join a
+                    community dedicated to educational excellence and student-centered learning.</p>
                 <div class="flex flex-wrap justify-center gap-4 md:gap-6">
-                    <a id="footer-cta-apply" href="04-integrated-navigation-for-admissions-page.html" class="bg-[var(--primary)] text-white px-8 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-base md:text-lg hover:shadow-2xl transition-all">Apply Now</a>
-                    <a id="footer-cta-contact" href="05-contact-us-j-p-international-school.html" class="bg-white text-[var(--primary)] px-8 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-base md:text-lg hover:shadow-2xl transition-all">Contact Us</a>
+                    <a id="footer-cta-apply" href="04-integrated-navigation-for-admissions-page.html"
+                        class="bg-[var(--primary)] text-white px-8 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-base md:text-lg hover:shadow-2xl transition-all">Apply
+                        Now</a>
+                    <a id="footer-cta-contact" href="05-contact-us-j-p-international-school.html"
+                        class="bg-white text-[var(--primary)] px-8 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-base md:text-lg hover:shadow-2xl transition-all">Contact
+                        Us</a>
                 </div>
             </div>
         </section>
@@ -379,4 +523,5 @@
         });
     </script>
 </body>
+
 </html>
