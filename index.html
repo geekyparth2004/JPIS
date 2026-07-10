@@ -687,60 +687,6 @@
             </div>
         </section>
 
-        <!-- Leaders Messages Section -->
-        <section class="py-12 md:py-24 px-6 overflow-hidden" v-scope="{ chairmanExpanded: false }">
-            <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 max-w-4xl mx-auto gap-8 md:gap-12">
-                    <!-- Chairman -->
-                    <div class="reveal-up group relative">
-                        <div class="relative bg-white rounded-[3rem] overflow-hidden border border-gray-100 card-shadow">
-                            <div class="h-80 md:h-[28rem] overflow-hidden relative bg-gradient-to-b from-red-50 to-white flex items-center justify-center">
-                                <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/chairman.jpg" alt="Chairman Message" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
-                                    <h3 class="text-2xl font-bold text-white">Chairman's Message</h3>
-                                </div>
-                            </div>
-                            <div class="p-6 md:p-10 space-y-4">
-                                <p class="italic text-[18px] text-[var(--primary)] font-medium leading-relaxed">
-                                    Dear parents
-                                </p>
-                                <div class="space-y-4 text-[14px] text-[var(--text-muted)] leading-7">
-                                    <p>
-                                        Our vision is simple yet powerful: every child deserves an education that is <span class="font-semibold italic text-[var(--primary)]">inclusive, holistic, and future-ready</span>.
-                                    </p>
-                                    <div v-cloak v-show="chairmanExpanded" class="space-y-4">
-                                        <p>We are developing our school around four pillars:</p>
-                                        <ul class="list-disc pl-5 space-y-2">
-                                            <li><span class="font-semibold text-[var(--primary)]">Inclusive Education</span> - A place where every learner, regardless of background or ability, feels seen, supported, and celebrated.</li>
-                                            <li><span class="font-semibold text-[var(--primary)]">Holistic Development</span> - Beyond marks, we nurture intellect, health, creativity, and emotional strength.</li>
-                                            <li><span class="font-semibold text-[var(--primary)]">Skill &amp; Vocational Education</span> - From AI to Information technology, we equip students with real-world skills that build confidence and livelihoods.</li>
-                                            <li><span class="font-semibold text-[var(--primary)]">Strong Value System</span> - Knowledge without character is incomplete. Integrity, respect, and service remain at the heart of everything we teach.</li>
-                                        </ul>
-                                        <p>
-                                            As Chairman, my commitment is to create a campus where tradition meets innovation, and where your child grows into a capable, compassionate citizen. Thank you for being part of our journey.
-                                        </p>
-                                        <div class="pt-2 text-[var(--primary)]">
-                                            <p class="font-semibold">Advocate Amit Chaudhary</p>
-                                            <p>Chairman</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button
-                                    type="button"
-                                    id="director-link"
-                                    class="inline-flex items-center gap-2 text-[var(--primary)] font-bold hover:gap-4 transition-all"
-                                    @click="chairmanExpanded = !chairmanExpanded"
-                                    :aria-expanded="chairmanExpanded ? 'true' : 'false'"
-                                >
-                                    <span v-text="chairmanExpanded ? 'Read Less' : 'Read More'"></span>
-                                    <iconify-icon :icon="chairmanExpanded ? 'lucide:chevron-up' : 'lucide:arrow-right'"></iconify-icon>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- CTA Section -->
         <section class="py-12 md:py-24 px-6">
