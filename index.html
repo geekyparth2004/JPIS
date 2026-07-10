@@ -408,7 +408,7 @@
 
         <!-- Navigation bar -->
         <!-- component: NavigationBar (e530bfc1-326a-4acb-a332-cb401e1a3ce2) -->
-<div v-scope="{ ...{&quot;activeItem&quot;:&quot;home&quot;,&quot;mobileMenuOpen&quot;:false,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;}, $emit() {} }">
+<div v-scope="{ ...{&quot;activeItem&quot;:&quot;home&quot;,&quot;mobileMenuOpen&quot;:false,&quot;logoHref&quot;:&quot;index.html&quot;,&quot;homeHref&quot;:&quot;index.html&quot;,&quot;aboutHref&quot;:&quot;02-about-us-updated-navigation.html&quot;,&quot;teamHref&quot;:&quot;02-about-team-j-p-international-school-faculty-updated-navigation.html&quot;,&quot;legacyHref&quot;:&quot;01-jpis-legacy-student-excellence-updated-navigation.html&quot;,&quot;programsHref&quot;:&quot;03-academic-programs-j-p-international-school.html&quot;,&quot;admissionsHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;contactHref&quot;:&quot;05-contact-us-j-p-international-school.html&quot;,&quot;applyHref&quot;:&quot;04-integrated-navigation-for-admissions-page.html&quot;,&quot;galleryHref&quot;:&quot;06-photo-gallery.html&quot;}, $emit() {} }">
 <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
         <a :href="logoHref" class="flex items-center gap-3">
@@ -502,6 +502,8 @@
                             <div class="flex flex-col justify-center gap-1 pl-2 border-l-2 border-[var(--accent)] py-1">
                                 <p class="text-[var(--text-muted)] text-sm md:text-base">School Number: <span class="text-[var(--primary)] font-bold tracking-wide">60627</span></p>
                                 <p class="text-[var(--text-muted)] text-sm md:text-base">Affiliation Number: <span class="text-[var(--primary)] font-bold tracking-wide">2131392</span></p>
+                                <p class="text-[var(--text-muted)] text-sm md:text-base">Phone: <a href="tel:9639569000" class="text-[var(--primary)] font-bold tracking-wide hover:underline">9639569000</a></p>
+                                <p class="text-[var(--text-muted)] text-sm md:text-base">Email: <a href="mailto:jpiseducation@rediffmail.com" class="text-[var(--primary)] font-bold tracking-wide hover:underline">jpiseducation@rediffmail.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -545,6 +547,11 @@
         <!-- New Big Slideshow -->
         <section class="py-10 px-6">
             <div class="max-w-7xl mx-auto">
+                <!-- Fixed Image -->
+                <div class="mb-8">
+                    <img src="assets/Fixed%20image%20home%20page.jpeg" alt="JPIS Home Page" class="w-full h-auto rounded-2xl shadow-xl">
+                </div>
+
                 <div class="slideshow-container" id="hero-slideshow" style="aspect-ratio: 16/9; max-height: 70vh;">
                     <div class="slideshow-slide active">
                         <img src="assets/slideshow/WhatsApp%20Image%202026-07-02%20at%2011.41.03.jpeg" alt="JPIS Campus View" loading="eager">
@@ -687,6 +694,60 @@
             </div>
         </section>
 
+        <!-- Leaders Messages Section -->
+        <section class="py-12 md:py-24 px-6 overflow-hidden" v-scope="{ chairmanExpanded: false }">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 max-w-4xl mx-auto gap-8 md:gap-12">
+                    <!-- Chairman -->
+                    <div class="reveal-up group relative">
+                        <div class="relative bg-white rounded-[3rem] overflow-hidden border border-gray-100 card-shadow">
+                            <div class="h-80 md:h-[28rem] overflow-hidden relative bg-gradient-to-b from-red-50 to-white flex items-center justify-center">
+                                <img src="https://pub-bd63e1d2b92646408ec795bcec957944.r2.dev/assets/chairman.jpg" alt="Chairman Message" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
+                                    <h3 class="text-2xl font-bold text-white">Chairman's Message</h3>
+                                </div>
+                            </div>
+                            <div class="p-6 md:p-10 space-y-4">
+                                <p class="italic text-[18px] text-[var(--primary)] font-medium leading-relaxed">
+                                    Dear parents
+                                </p>
+                                <div class="space-y-4 text-[14px] text-[var(--text-muted)] leading-7">
+                                    <p>
+                                        Our vision is simple yet powerful: every child deserves an education that is <span class="font-semibold italic text-[var(--primary)]">inclusive, holistic, and future-ready</span>.
+                                    </p>
+                                    <div v-cloak v-show="chairmanExpanded" class="space-y-4">
+                                        <p>We are developing our school around four pillars:</p>
+                                        <ul class="list-disc pl-5 space-y-2">
+                                            <li><span class="font-semibold text-[var(--primary)]">Inclusive Education</span> - A place where every learner, regardless of background or ability, feels seen, supported, and celebrated.</li>
+                                            <li><span class="font-semibold text-[var(--primary)]">Holistic Development</span> - Beyond marks, we nurture intellect, health, creativity, and emotional strength.</li>
+                                            <li><span class="font-semibold text-[var(--primary)]">Skill &amp; Vocational Education</span> - From AI to Information technology, we equip students with real-world skills that build confidence and livelihoods.</li>
+                                            <li><span class="font-semibold text-[var(--primary)]">Strong Value System</span> - Knowledge without character is incomplete. Integrity, respect, and service remain at the heart of everything we teach.</li>
+                                        </ul>
+                                        <p>
+                                            As Chairman, my commitment is to create a campus where tradition meets innovation, and where your child grows into a capable, compassionate citizen. Thank you for being part of our journey.
+                                        </p>
+                                        <div class="pt-2 text-[var(--primary)]">
+                                            <p class="font-semibold">Advocate Amit Chaudhary</p>
+                                            <p>Chairman</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    type="button"
+                                    id="director-link"
+                                    class="inline-flex items-center gap-2 text-[var(--primary)] font-bold hover:gap-4 transition-all"
+                                    @click="chairmanExpanded = !chairmanExpanded"
+                                    :aria-expanded="chairmanExpanded ? 'true' : 'false'"
+                                >
+                                    <span v-text="chairmanExpanded ? 'Read Less' : 'Read More'"></span>
+                                    <iconify-icon :icon="chairmanExpanded ? 'lucide:chevron-up' : 'lucide:arrow-right'"></iconify-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- CTA Section -->
         <section class="py-12 md:py-24 px-6">
@@ -712,8 +773,7 @@
             </div>
         </section>
 
-        <!-- Footer -->
-        <sd-component componentId='a09ad959-168a-4091-a2ee-1dc9421719be' name='Footer'></sd-component>
+
     </div>
 
     <div class="chatbot-shell" v-scope="{
