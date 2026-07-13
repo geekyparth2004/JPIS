@@ -208,7 +208,7 @@
         </section>
 
         <!-- Leaders Messages Section -->
-        <section class="py-12 md:py-24 px-6 overflow-hidden" v-scope="{ chairmanExpanded: false }">
+        <section class="py-12 md:py-24 px-6 overflow-hidden" v-scope="{ chairmanExpanded: false, principalExpanded: false }">
             <div class="max-w-7xl mx-auto">
                 <div class="grid grid-cols-1 max-w-4xl mx-auto gap-8 md:gap-12">
                     <!-- Chairman -->
@@ -254,6 +254,58 @@
                                 >
                                     <span v-text="chairmanExpanded ? 'Read Less' : 'Read More'"></span>
                                     <iconify-icon :icon="chairmanExpanded ? 'lucide:chevron-up' : 'lucide:arrow-right'"></iconify-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Principal Message -->
+                    <div class="reveal-up group relative">
+                        <div class="relative bg-white rounded-[3rem] overflow-hidden border border-gray-100 card-shadow">
+                            <div class="h-80 md:h-[28rem] overflow-hidden relative bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
+                                <img src="assets/principal%20new%20photo.jpg" alt="Principal Message" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
+                                    <h3 class="text-2xl font-bold text-white">Principal's Message</h3>
+                                    <p class="text-white/90 text-[15px] mt-1 font-medium">Parul Singh <br> <span class="text-sm font-normal">M Com.,M.A.Edu.,B.Ed.,PGDM</span></p>
+                                </div>
+                            </div>
+                            <div class="p-6 md:p-10 space-y-4">
+                                <p class="italic text-[18px] text-[var(--primary)] font-medium leading-relaxed">
+                                    Dear parents and well wishers
+                                </p>
+                                <div class="space-y-4 text-[14px] text-[var(--text-muted)] leading-7">
+                                    <p>
+                                        J P International school was founded under the aegis of GL Educational Society on 15 April 2010 with the vision to provide an inclusive, holistic and value based education to children. At JPIS every child is special.
+                                    </p>
+                                    <div v-cloak v-show="principalExpanded" class="space-y-4">
+                                        <p>We always strive to provide a cohesive environment in the school be it morning assembly, sports activities, yoga classes, karate classes, and a year around different events which are solely managed and organised by the students under the supervision of teachers and we make sure that every child finds its space to express, compete and grow.</p>
+                                        <ul class="space-y-2">
+                                            <li><span class="font-semibold text-[var(--primary)]">Academic Excellence:</span> Our students secured outstanding results in the recent Board Examinations, with a 100% pass rate and many scoring above 90%. This success reflects their hard work, your support at home, and our teachers’ dedication in the classroom.</li>
+                                            <li><span class="font-semibold text-[var(--primary)]">Sports, Arts &amp; Expression:</span> From the cricket field to the stage, our children are exploring their talents. With regular coaching in athletics, football, and yoga, plus thriving clubs for music, art, and drama, we ensure every child finds a space to express, compete, and grow.</li>
+                                            <li><span class="font-semibold text-[var(--primary)]">Values That Last:</span> While we celebrate awards and ranks, our greatest achievement is seeing students who are disciplined, empathetic, and responsible. Morning assemblies, shram daan, plantation drive and greater emphasis on value education are woven into daily life so that success is always paired with character.</li>
+                                        </ul>
+                                        <p>
+                                            Thank you for trusting us with your child’s most formative years. Together, we are not just chasing results — we are raising capable, creative, and compassionate individuals.
+                                        </p>
+                                        <p class="italic font-semibold text-[var(--primary)] text-center py-2 text-base">
+                                            “Educating minds, nurturing hearts.”
+                                        </p>
+                                        <div class="pt-2 text-[var(--primary)]">
+                                            <p>Best regards,</p>
+                                            <p class="font-semibold mt-2">Parul Singh</p>
+                                            <p>Principal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    type="button"
+                                    id="principal-link"
+                                    class="inline-flex items-center gap-2 text-[var(--primary)] font-bold hover:gap-4 transition-all"
+                                    @click="principalExpanded = !principalExpanded"
+                                    :aria-expanded="principalExpanded ? 'true' : 'false'"
+                                >
+                                    <span v-text="principalExpanded ? 'Read Less' : 'Read More'"></span>
+                                    <iconify-icon :icon="principalExpanded ? 'lucide:chevron-up' : 'lucide:arrow-right'"></iconify-icon>
                                 </button>
                             </div>
                         </div>
